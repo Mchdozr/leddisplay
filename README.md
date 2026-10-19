@@ -38,6 +38,16 @@ Ana sayfanın özgün Canvas/CSS açılışı yaklaşık 2,2 saniye sürer; sekm
 
 `python3 scripts/navigation-visual-check.py` geliştirme sunucusu üzerinde temiz adresleri, eski adres yönlendirmelerini, altı sayfanın ürün görsellerini, 31 ürünün önizlemesini ve marka açılışının erişilebilir kapanma davranışını doğrular.
 
+## Etkileşimli deneyimler
+
+Ana sayfada `#urun-deneyimi` scroll anlatımı ve üretici fotoğrafına oturan dört etkileşimli nokta; `#ekran-planlayici` altında boyutlandırıcı ve piksel aralığı simülasyonu bulunur. Grand Air ürün detaylarında da kabin noktaları kullanılabilir. Yeni hero, harici video indirmeyen özgün bir Canvas ışık animasyonudur; mimari fotoğrafa geçiş ve durdurma/başlatma düğmeleri vardır. Sekme gizliyken veya alan görünmüyorken animasyon çalışmaz; hareket azaltma tercihinde duraklar.
+
+Katalogdaki ve ürün detaylarındaki karşılaştırma düğmeleri en fazla üç ürün seçer. Modal tabloda yalnızca farklar gösterilebilir; seçimlerin tamamı iletişim formuna aktarılabilir. Sekme oturumunda sessionStorage sadece halka açık ürün kimliklerini tutar. Modül/kabin boyutlandırıcı, üretici föylerinden türetilen 42 gerçek seçenek üzerinden ölçüyü birim katlarına yuvarlar, toplam adedi ve çözünürlüğü hesaplar. Varyantlar ayrı seçilir; dinamik piksel serisinde fiziksel piksel çözünürlüğü kullanılır. Çelişkili zemin föyü bu hesapta kullanılmaz. Çerçeve, taşıyıcı ve kurulum payları hesap dışıdır. Hesaplanan ölçü ve ürün, teklif formuna taşınır.
+
+Piksel simülasyonu açıklayıcı bir modeldir; gerçek göz/kamera testi veya kesin izleme mesafesi hesabı değildir. Tam ekran uygulama galerisi dört **konsept** sahnesi içerir ve müşteri referansı olarak sunulmaz. Klavye okları, Escape, kapatma düğmesi ve mobil kaydırma kullanılabilir. Sayfalar arası geçişler destekleyen tarayıcılarda yerel View Transitions API ile çalışır; ürün görseli karttan detay sayfasına taşınır. Bağlantı tıklamaları engellenmez; eski tarayıcılar normal gezinmeye devam eder. Hareket azaltma tercihi desteklenir.
+
+`assets/leddisplay-logo-white.png`, kullanıcının paylaştığı logonun beyaz zeminli uyarlamasıdır. Üst menü, footer ve karşılama ekranında kullanılır. `npm run test:experience` hesaplamaları ve sekiz deneyimin tarayıcı davranışlarını kontrol eder; gerçek e-posta göndermez.
+
 ## İletişim formu
 
 Form, ziyaretçiyi sayfadan çıkarmadan `POST /api/contact.php` üzerinden bilgileri ve tüm seçilen ürünleri **info@leddisplay.com.tr** adresine yollar. Gönderici sabit olarak `LEDDISPLAY <info@leddisplay.com.tr>`; Reply-To doğrulanmış ziyaretçi e-postasıdır. SMTP şifresi veya diğer kimlik bilgileri repoya eklenmez. Özel SMTP ayar dosyası varsa PHPMailer 7.1.1 ile şifreli ve kimlik doğrulamalı SMTP kullanılır. Ayar dosyası henüz oluşturulmadıysa mevcut PHP `mail()` aktarımı korunur. SMTP yapılandırılmışken bağlantı/şifre/sertifika hatasında yerel `mail()` aktarımına geri dönülmez.

@@ -3,7 +3,7 @@ from playwright.sync_api import sync_playwright
 with sync_playwright() as p:
     browser=p.chromium.launch(executable_path='/usr/bin/chromium',args=['--no-sandbox'])
     for width in [1440,390]:
-        for path,selector in [('/','.series-card'),('/urunler.html','.product-card:nth-child(18)')]:
+        for path,selector in [('/','.series-card'),('/urunler.html','.catalog-product-shell:nth-child(18)')]:
             page=browser.new_page(viewport={'width':width,'height':900},reduced_motion='no-preference')
             page.add_init_script("sessionStorage.setItem('leddisplay-intro-v1','1')")
             page.goto('http://localhost:3000'+path,wait_until='networkidle')

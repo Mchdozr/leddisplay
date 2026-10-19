@@ -1,7 +1,7 @@
 import {contact,whatsappButton} from './contact.mjs';
 export function renderFooter(){
 const group=(title,label,items)=>`<details class="footer-link-group" open><summary><span>${title}</span><i aria-hidden="true">+</i></summary><nav aria-label="${label}" class="footer-compact-links">${items.map(([text,href])=>`<a href="${href}">${text}</a>`).join('')}</nav></details>`;
-return `<footer class="footer corporate-footer footer-compact"><div class="wrap"><div class="footer-compact-grid"><div class="footer-about"><a href="/" class="logo" aria-label="LEDDISPLAY ana sayfa"><i></i>led<span>display</span></a><p>LED ekran satışı, kiralama, kurulum ve teknik destek.</p><span class="footer-signature">TEKNOLOJİ. UYGULAMA. DEVAMLILIK.</span></div>${group('Ürünler & çözümler','Alt menü ürünler',[
+return `<footer class="footer corporate-footer footer-compact"><div class="wrap"><div class="footer-compact-grid"><div class="footer-about"><a href="/" class="logo" aria-label="LEDDISPLAY ana sayfa"><img class="brand-logo-image" src="/assets/leddisplay-logo-white.png" alt="LEDDISPLAY" width="210" height="44"></a><p>LED ekran satışı, kiralama, kurulum ve teknik destek.</p><span class="footer-signature">TEKNOLOJİ. UYGULAMA. DEVAMLILIK.</span></div>${group('Ürünler & çözümler','Alt menü ürünler',[
 ['Ürün kataloğu','/urunler.html'],['İç mekân LED ekran','/ic-mekan-led-ekran.html'],['Dış mekân LED ekran','/dis-mekan-led-ekran.html'],['LED ekran kiralama','/kiralik-led-ekran.html'],['Özel LED çözümleri','/ozel-led-cozumleri.html']
 ])}${group('LEDDISPLAY','Alt menü kurumsal',[
 ['Hakkımızda','/kurumsal.html'],['Proje yaklaşımımız','/proje-yaklasimimiz.html'],['Sektörler','/sektorler.html'],['Bilgi merkezi','/bilgi-merkezi.html'],['İletişim','/iletisim.html']

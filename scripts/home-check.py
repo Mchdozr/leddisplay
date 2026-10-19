@@ -8,7 +8,8 @@ with sync_playwright() as p:
     errors = []
     page.on('pageerror', lambda error: errors.append(str(error)))
     page.goto('http://127.0.0.1:3000/', wait_until='networkidle')
-    assert page.locator('.home-section').count() == 12
+    assert page.locator('.home-section').count() == 14
+    assert page.locator('#urun-deneyimi').count() == 1 and page.locator('#ekran-planlayici').count() == 1
     assert page.locator('.featured-product:visible').count() == 8
     page.get_by_role('button', name='Dış mekân', exact=True).click()
     assert page.locator('.featured-product:visible').count() == 3
