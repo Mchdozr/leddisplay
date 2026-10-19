@@ -46,7 +46,7 @@ Katalogdaki ve ürün detaylarındaki karşılaştırma düğmeleri en fazla ü�
 
 Piksel simülasyonu açıklayıcı bir modeldir; gerçek göz/kamera testi veya kesin izleme mesafesi hesabı değildir. Tam ekran uygulama galerisi dört **konsept** sahnesi içerir ve müşteri referansı olarak sunulmaz. Klavye okları, Escape, kapatma düğmesi ve mobil kaydırma kullanılabilir. Sayfalar arası geçişler destekleyen tarayıcılarda yerel View Transitions API ile çalışır; ürün görseli karttan detay sayfasına taşınır. Bağlantı tıklamaları engellenmez; eski tarayıcılar normal gezinmeye devam eder. Hareket azaltma tercihi desteklenir.
 
-`assets/leddisplay-logo-white.png`, kullanıcının paylaştığı logonun beyaz zeminli uyarlamasıdır. Üst menü, footer ve karşılama ekranında kullanılır. `npm run test:experience` hesaplamaları ve sekiz deneyimin tarayıcı davranışlarını kontrol eder; gerçek e-posta göndermez.
+`assets/leddisplay-logo-navy.png`, kullanıcının paylaştığı lacivert ve şeffaf zeminli logodur. Üst menü, footer ve karşılama ekranında kullanılır. `npm run test:experience` hesaplamaları ve sekiz deneyimin tarayıcı davranışlarını kontrol eder; gerçek e-posta göndermez.
 
 ## İletişim formu
 
