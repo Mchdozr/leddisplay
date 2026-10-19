@@ -79,3 +79,7 @@ Ortak üst menü `scripts/navigation.mjs` içindedir. Anasayfa bağlantısı ile
 İç sayfa başlıkları tek satır akışı ve daha kısa açıklama alanıyla küçültüldü. Başlık etiketi tekrar edilmez. Ana içerik ve menü metinleri büyütüldü. Bilgi merkezi kartları mevcut temsili görselleri kullanır. Kaydırmayla giriş hareketi yalnızca dikey konum değiştirir; opaklık değişmez.
 
 İletişimde e-posta bağlantısı, kategorili çoklu ürün seçimi, ürün arama ve seçim sayacı bulunur. Ürün detayından gelen `urun` parametresi ilgili kutuyu seçer. Mailto taslağı ile indirilen özet tüm seçili ürünleri içerir. `scripts/ux-check.py` bu akışı, kategori bağlantılarını, mobil menüyü, kompakt başlığı ve opaklık değiştirmeyen hareketi doğrular.
+
+## Telefon ve WhatsApp
+
+Kullanıcının sağladığı iletişim numarası: **0549 900 91 77**. Ortak iletişim bağlantıları `scripts/contact.mjs` içindedir; arama bağlantısı `tel:+905499009177`, WhatsApp bağlantısı `https://wa.me/905499009177` kullanır. Üst bilgi, footer, iletişim sayfası, ana sayfa iletişim alanı ve ürün detayı WhatsApp bağlantılarını içerir. Her sayfada sabit WhatsApp kısayolu vardır; sayfa başına dönüş düğmesiyle çakışmaması için ayrı konumlandırılır. Ürün detayı WhatsApp taslağı ürün adını içerir. Bağlantılar mesajı otomatik göndermez; son gönderimi kullanıcı WhatsApp içinde tamamlar. Numaranın WhatsApp hesabına bağlılığı bu ortamdan doğrulanmamıştır.

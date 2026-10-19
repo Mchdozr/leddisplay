@@ -1,0 +1,4 @@
+export const contact={phone:'0549 900 91 77',tel:'tel:+905499009177',email:'info@leddisplay.com.tr'};
+export const whatsappUrl=(message='Merhaba, LED ekran çözümleriniz hakkında bilgi almak istiyorum.')=>'https://wa.me/905499009177?text='+encodeURIComponent(message);
+export const whatsappIcon='<svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M20.5 11.7a8.4 8.4 0 0 1-12.4 7.4L3 20.5l1.4-5a8.4 8.4 0 1 1 16.1-3.8Z" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/><path d="m8.4 7.4 1.3 2.4-.9 1.1c.8 1.4 1.8 2.4 3.3 3.2l1.1-.9 2.4 1.3c-.2 1.2-1.1 1.8-2.2 1.6-3.4-.7-6.4-3.7-7-6.8-.2-1.1.6-1.9 2-1.9Z" fill="currentColor"/></svg>';
+export const whatsappButton=(label='WhatsApp ile iletişime geç',className='whatsapp-link',message)=>`<a class="${className}" href="${whatsappUrl(message)}" target="_blank" rel="noopener noreferrer" aria-label="${label} (yeni sekmede açılır)">${whatsappIcon}<span>${label}</span></a>`;
