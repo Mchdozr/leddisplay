@@ -34,7 +34,7 @@ Ana sayfa; filtrelenebilir 31 kayıtlı ürün/modül ve kabin kataloğu, 31 ür
 
 - İşletme unvanı, telefon, e-posta, açık adres, hizmet kapsamı ve doğrulanmış firma geçmişi eklenmeli.
 - Kuruluş yılı, müşteri logoları, referans projeler, sertifikalar, garantiler ve teknik ürün değerleri doğrulanmadan kullanılmamalı.
-- İletişim formu **gönderim yapmaz**: tarayıcıda proje özeti indirir. Gerçek başvuru almak için sunucu tarafında doğrulama, istek sınırlama, spam koruması ve e-posta/CRM teslimatı kurulmalı; başarılı teslimat test edilmeli.
+- İletişim formu seçilen birden fazla ürünle `info@leddisplay.com.tr` adresine mailto taslağı hazırlar; gönderimi kullanıcı e-posta uygulamasında tamamlar. Alternatif olarak proje özeti indirilebilir. Sunucu üzerinden otomatik e-posta/CRM teslimatı kurulu değildir; bu yönde teslimat iddiası yapılmamalıdır.
 - Gizlilik sayfası mevcut teknik davranışı anlatır; işletmeye özgü KVKK metni ve veri sorumlusu bilgileri tamamlanmalıdır.
 - Proje yaklaşımı bölümü gerçek referans portföyü değildir. Görseller kavramsaldır.
 
@@ -71,3 +71,11 @@ CSS ve JavaScript dosya adreslerinde içerik hash'i bulunur; Pull/Deploy sonras�
 Ana sayfada H/GOB/Q-Air/Grand Air ailelerini açıklayan ek ürün vitrini ile altı maddelik kurulum kontrol listesi ve açılır teknik destek başlıkları bulunur. Bölüm ve kart girişleri görünür içerik üzerine Web Animations API ile uygulanır; JavaScript kapalıyken de içerik görünür kalır. `prefers-reduced-motion` etkinse giriş animasyonları atlanır; tercih sonradan değişirse çalışan giriş animasyonları iptal edilir. Kaydırma göstergesi ve sayfa başına dönüş bağlantısı uzun sayfada gezinmeyi kolaylaştırır.
 
 Tüm sayfaların ortak footer kaynağı `scripts/footer.mjs` içindedir. Hizmetlere hızlı erişim, ürün çözümleri, ürün aileleri, kurumsal/hizmet menüsü, bilgi merkezi, sektörler, teknik katalog ve yasal bağlantıları içerir. Telefon veya e-posta gibi doğrulanmamış firma bilgileri eklenmemiştir. Bölüm bağlantıları `npm test` ile gerçek hedef kimliklerine karşı doğrulanır. Stil ve JS değişiklikleri için HTML çıktısını `npm run build` ile yenileyin.
+
+## Navigasyon ve okunabilirlik iyileştirmeleri
+
+Ortak üst menü `scripts/navigation.mjs` içindedir. Anasayfa bağlantısı ile iç/dış mekân ve kiralık/özel uygulama gruplarını içeren Ürünler alt menüsü vardır. Masaüstünde hover, tıklama, klavye ve Escape; mobilde açılır kategori düğmesi desteklenir. Kategori bağlantıları katalogdaki `seri` ve `ortam` sorgu parametrelerini uygular. Katalog daha küçük kartlar ve kategori seçim paneli kullanır.
+
+İç sayfa başlıkları tek satır akışı ve daha kısa açıklama alanıyla küçültüldü. Başlık etiketi tekrar edilmez. Ana içerik ve menü metinleri büyütüldü. Bilgi merkezi kartları mevcut temsili görselleri kullanır. Kaydırmayla giriş hareketi yalnızca dikey konum değiştirir; opaklık değişmez.
+
+İletişimde e-posta bağlantısı, kategorili çoklu ürün seçimi, ürün arama ve seçim sayacı bulunur. Ürün detayından gelen `urun` parametresi ilgili kutuyu seçer. Mailto taslağı ile indirilen özet tüm seçili ürünleri içerir. `scripts/ux-check.py` bu akışı, kategori bağlantılarını, mobil menüyü, kompakt başlığı ve opaklık değiştirmeyen hareketi doğrular.
