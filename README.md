@@ -65,3 +65,9 @@ Ana sayfa kaynağı `scripts/home.mjs` içinde bulunur; `scripts/build.mjs` tara
 `assets/corporate-hero.webp` ve `assets/application-scenes.webp` bu tasarım için üretilmiş temsilî görsellerdir. Gerçek müşteri projesi veya firma referansı olarak kullanılmaz. Uygulama kartları bunu açıklar. Müşteri adları, referans fotoğrafları ve proje bilgileri doğrulandığında gerçek portföy ayrı içerikle eklenmelidir.
 
 CSS ve JavaScript dosya adreslerinde içerik hash'i bulunur; Pull/Deploy sonrasında güncellemelerin eski tarayıcı önbelleği nedeniyle kaybolmasını önler. Görseller WebP olarak optimize edilmiştir. `npm run test:browser`, temel sayfa/katalog testlerine ek olarak ana sayfa sekmelerini ve çözüm seçiciyi de doğrular.
+
+## İçerik yoğunluğu, hareket ve alt menü
+
+Ana sayfada H/GOB/Q-Air/Grand Air ailelerini açıklayan ek ürün vitrini ile altı maddelik kurulum kontrol listesi ve açılır teknik destek başlıkları bulunur. Bölüm ve kart girişleri görünür içerik üzerine Web Animations API ile uygulanır; JavaScript kapalıyken de içerik görünür kalır. `prefers-reduced-motion` etkinse giriş animasyonları atlanır; tercih sonradan değişirse çalışan giriş animasyonları iptal edilir. Kaydırma göstergesi ve sayfa başına dönüş bağlantısı uzun sayfada gezinmeyi kolaylaştırır.
+
+Tüm sayfaların ortak footer kaynağı `scripts/footer.mjs` içindedir. Hizmetlere hızlı erişim, ürün çözümleri, ürün aileleri, kurumsal/hizmet menüsü, bilgi merkezi, sektörler, teknik katalog ve yasal bağlantıları içerir. Telefon veya e-posta gibi doğrulanmamış firma bilgileri eklenmemiştir. Bölüm bağlantıları `npm test` ile gerçek hedef kimliklerine karşı doğrulanır. Stil ve JS değişiklikleri için HTML çıktısını `npm run build` ile yenileyin.

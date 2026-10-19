@@ -14,3 +14,8 @@ console.log('31 product / family records, manufacturer PDFs, images and matching
 
 for(const p of products)assert.equal(createHash('sha256').update(readFileSync(`assets/spec/${p.slug}.pdf`)).digest('hex'),p.sourceSha256);
 console.log('All source PDF SHA-256 fingerprints match the catalog provenance records.');
+
+// Footer deep links must land on a real page section, including cross-page anchors.
+let sectionLinks=0;
+for(const page of pages){for(const [,href] of readFileSync(page,'utf8').matchAll(/href="([^"\s]*#[^"\s]+)"/g)){if(!href.startsWith('/')&&!href.startsWith('#'))continue;const target=new URL(href,'https://leddisplay.com.tr/'+page);const file=target.pathname==='/'?'index.html':target.pathname.slice(1);assert.ok(existsSync(file),`${page}: missing anchored page ${file}`);const id=decodeURIComponent(target.hash.slice(1));assert.ok(readFileSync(file,'utf8').includes(`id="${id}"`),`${page}: missing section ${href}`);sectionLinks++;}}
+console.log(`${sectionLinks} anchored navigation links verified.`);
