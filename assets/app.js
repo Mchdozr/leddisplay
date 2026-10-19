@@ -79,3 +79,7 @@ if(gallery){
   const close=()=>dialog.close();dialog.querySelector('.image-dialog-close').addEventListener('click',close);dialog.addEventListener('click',event=>{if(event.target===dialog)close()});dialog.addEventListener('cancel',()=>document.documentElement.classList.remove('product-image-open'));dialog.addEventListener('close',()=>{document.documentElement.classList.remove('product-image-open');stage.focus({preventScroll:true})});
  }
 }
+
+// Footer groups stay expanded on desktop and become native accordions on mobile.
+const footerGroups=document.querySelectorAll('.footer-link-group');
+if(footerGroups.length){const smallFooter=matchMedia('(max-width:760px)');const syncFooter=()=>footerGroups.forEach(group=>{group.open=!smallFooter.matches});syncFooter();smallFooter.addEventListener('change',syncFooter)}

@@ -89,3 +89,7 @@ Kullanıcının sağladığı iletişim numarası: **0549 900 91 77**. Ortak ile
 Ürün görselleri `scripts/product-gallery.mjs` tarafından üretilen sabit yükseklikte bir galeri içinde gösterilir. Küçük görsel düğmeleri ana görseli değiştirir; ikinci görsel sayfaya eklenmez. Portre kabin fotoğrafları `object-fit: contain` ile sınırlandırılır. Ürün metni üstten hizalanır ve görsel seçimi sırasında konumu değişmez. Büyütme penceresi ekran sınırları içinde kalır; kapatma düğmesi, dış alan tıklaması ve Escape desteklenir.
 
 Masaüstü Ürünler tetikleyicisi menü satırının tüm yüksekliğini kaplar; tetikleyici ile alt panel arasında fare geçişini kesen boşluk bırakılmaz. 220 ms kapanma gecikmesi ve panel üzerine girişte iptal, çapraz fare hareketini de destekler. `scripts/product-check.py`, gerçek fare geçişini ve 31 ürün sayfasının masaüstü/mobil galeri boyutlarını, görsel seçimi sırasında metin konumunu ve büyütme penceresini doğrular.
+
+## Kompakt footer düzeni
+
+Footer, önceki geniş bağlantı blokları yerine marka özeti, beş ürün/çözüm bağlantısı, beş kurumsal bağlantı ve telefon/e-posta/WhatsApp iletişimiyle sadeleştirilmiştir. Tekrarlanan hizmet şeridi, ayrı ürün ailesi/rehber listeleri, sektör etiketleri ve katalog tanıtım bandı kaldırılmıştır. Masaüstünde dört sütun, mobilde iki yerel `details` grubu kullanılır; mobil gruplar başlangıçta kapalıdır. Yasal bağlantılar ayrı kısa satırdadır. Tam ürün kategorileri üst menü ve katalogda bulunur.
