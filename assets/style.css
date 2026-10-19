@@ -8,3 +8,41 @@
 /* Content remains readable with JavaScript disabled; entry motion is progressive. */
 .reveal{opacity:1;transform:none;transition:none}.reveal.visible{animation:reveal-in .7s ease both}@keyframes reveal-in{from{opacity:0;transform:translateY(22px)}to{opacity:1;transform:translateY(0)}}
 .grid{grid-template-columns:repeat(3,minmax(0,1fr))}.card{min-width:0}.product-metrics>span{min-width:0}@media(max-width:1050px){.grid{grid-template-columns:repeat(2,minmax(0,1fr))}}@media(max-width:760px){.grid{grid-template-columns:minmax(0,1fr)}}
+
+/* Light content surfaces framed by the dark teal brand shell. */
+.section,.page-hero{
+  --bg:#F8FAFC;
+  --surface:#FFFFFF;
+  --ink:#072A2D;
+  --muted:#0B3A40CC;
+  --line:#0B3A4026;
+  background:var(--bg);
+  color:var(--ink);
+}
+.section:nth-of-type(even){background:#FFFFFF}
+.page-hero{background:#F8FAFC;border-bottom-color:#0B3A4026}
+.section .eyebrow,.page-hero .eyebrow{color:#0B3A40}
+.page-hero h1 em{color:#0B3A40;text-decoration:underline;text-decoration-color:#FDBA74;text-decoration-thickness:3px;text-underline-offset:12px}
+.section .btn.ghost{border-color:#0B3A4059;color:#072A2D}
+.section .btn.ghost:hover{background:#F9731614;border-color:#F97316;color:#072A2D}
+.section .card{background:#FFFFFF;border-color:#0B3A4026;box-shadow:0 8px 30px #072A2D06;transition:transform .3s,border-color .3s,box-shadow .3s}
+.section .card:hover{border-color:#FDBA74;box-shadow:0 16px 40px #072A2D0D}
+.section .card .arrow,.section .list-row>span{color:#0B3A40}
+.section .panel{--ink:#F8FAFC;--muted:#F8FAFCCC;--line:#F8FAFC26;background:#0B3A40;color:#F8FAFC}
+.section .panel p{color:#F8FAFCCC}
+.section .panel .eyebrow{color:#FDBA74}
+.section .panel .eyebrow:before{background:#F97316}
+.section .statement span{color:#0B3A4099}
+.section .pill{border-color:#FDBA74;background:#F973160D;color:#072A2D}
+.section .notice{background:#0B3A4008}
+.section .form label{color:#0B3A40}
+.section .form input,.section .form select,.section .form textarea{color:#072A2D;background:#FFFFFF;border-color:#0B3A4040}
+.section .form input::placeholder,.section .form textarea::placeholder{color:#0B3A4099}
+.section .catalog-filters input,.section .catalog-filters select{background:#FFFFFF;color:#072A2D}
+.section .detail-metrics strong{color:#0B3A40}
+.section .spec-table,.section .variant-table{background:#FFFFFF}
+.section caption,.section .variant-table thead th{background:#0B3A40;color:#F8FAFC}
+.section .spec-table tr:nth-child(even){background:#F8FAFC}
+.section .module-photo{background:#F8FAFC;border-bottom:1px solid #0B3A401A}
+.section .module-photo.large{border:1px solid #0B3A4026}
+.section .product-back{background:#FFFFFF}
