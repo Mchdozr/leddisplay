@@ -59,10 +59,10 @@ Bulut ortamından leddisplay.com.tr erişimi ağ politikası nedeniyle engellend
 
 ## Natro SMTP — Plesk üzerinde özel yapılandırma
 
-Natro’nun hesap için gösterdiği **giden posta sunucusu, port, şifreleme türü** kullanılmalı; alan adından SMTP sunucusu tahmin edilmemeli. Kullanıcının verdiği Natro destek sayfası bu çalışma ortamından HTTP 403 döndürdüğü için bu değerler doğrulanmadı ve kodda Natro sunucusu sabitlenmedi.
+Hesap sahibi Outlook ayarlarını `mail.kurumsaleposta.com`, giden SMTP `465`, gelen IMAP `993` olarak bildirdi. Örnek dosya giden posta için **465 / örtük SSL/TLS** kullanır. Form posta okumadığı için 993 kullanılmaz. Natro destek sayfası bu çalışma ortamından HTTP 403 döndürüyor; gerçek hesapla SMTP bağlantısı henüz doğrulanmadı.
 
 1. Plesk **Dosyalar** bölümünde `httpdocs` klasörünün bir üstüne, alan adının ana dizinine geçin. `httpdocs` ile aynı seviyede **`leddisplay-mail.php`** dosyası oluşturun.
-2. [Örnek dosyanın](deployment/leddisplay-mail.example.php) içeriğini buraya aktarın. `host`, `port`, `encryption` değerlerini Natro panelindeki bilgilere göre doldurun. `tls` STARTTLS, `ssl` bağlantı başında TLS demektir. Örnekteki 587/tls hesabınız için doğrulanmış bir ayar değildir.
+2. [Örnek dosyanın](deployment/leddisplay-mail.example.php) içeriğini buraya aktarın. `host`, `port`, `encryption` değerlerini Natro panelindeki bilgilere göre doldurun. `tls` STARTTLS, `ssl` bağlantı başında TLS demektir. Örnek dosya hesap sahibinin verdiği `mail.kurumsaleposta.com`, `465`, `ssl` değerleriyle hazırdır.
 3. `username` değeri `info@leddisplay.com.tr` kalır. `password` alanına bu posta kutusunun şifresini **yalnızca Plesk dosya düzenleyicisinde** yazın. PHP tek tırnaklı metin içinde `'` ve `\` karakterlerini sırasıyla `\'` ve `\\` olarak kaçırın. Dosyayı GitHub’a veya sohbet mesajına koymayın; erişim izni hosting kullanıcısına özel `0600` olmalı.
 4. `api/mail-transport.php` ve `api/vendor/phpmailer/` dahil yeni kodu **Pull → Deploy** ile alın. SMTP ayar dosyası Git dağıtım alanının dışında olduğu için sonraki dağıtımlarda korunur. PHP OpenSSL ve Plesk’ten ilgili SMTP portuna giden erişim gerekir.
 5. Gerçek formdan bir talep gönderip Natro webmail’de aynı talep numarasıyla iletiyi kontrol edin. SMTP sunucusunun kabulü son teslim teyidi değildir. Hata olursa şifreyi veya mesaj içeriğini paylaşmadan sunucu günlüklerini inceleyin.
