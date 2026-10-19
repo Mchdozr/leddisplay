@@ -84,3 +84,7 @@ npm run test:browser
 `data/products.json`, iki kullanıcı spec arşivindeki 31 benzersiz föyden aktarılmış 26 modül ve 5 kabin/ürün ailesini içerir. İki birebir kopya SHA-256 ile ayıklanmıştır. Grand Air aileleri çoklu boyut/piksel seçeneklerini ayrı varyant tablosunda gösterir. Kaynak eşlemesi ve çelişkiler `DATA_SOURCES.md` içindedir. Özellikle P0.93 dinamik/fiziksel aralık, P3.91 zemin IP çelişkisi ve Grand Air dış mekân parlaklık seçenekleri üretici teyidi gerektirir.
 
 Ürün fotoğrafları PDF'lerden çıkarılmıştır. Ana sayfadaki mimari/mağaza/sahne görselleri temsilî üretilmiş konseptlerdir; gerçekleşmiş müşteri projeleri değildir. Firma geçmişi, sertifika, garanti, müşteri logoları ve referans projeler doğrulanmadan eklenmemelidir.
+
+## Akıcı kaydırma hareketi
+
+Ekranın altındaki kartlar kullanıcı görmeden önce 18 px aşağıda hazırlanır; görünür alana yaklaşırken tek seferlik, 760 ms yumuşak çıkış eğrisiyle yerine gelir. Görünür kartlar başlangıçta oynatılmaz. Hareket, hover efektinin `transform` özelliği yerine bağımsız CSS `translate` özelliğini kullanır; opaklık değişmez. Kısa kademelendirme en fazla 75 ms'dir. Geçici compositor ipucu animasyon bitince kaldırılır ve son kare sabitlendikten sonra animasyon temizlenir. Hareket azaltma tercihinde bekleyen ve çalışan hareketler tamamen temizlenir. Site 3000 portunda çalışırken `npm run test:motion` masaüstü/mobil ana sayfa ve katalogda kareler arasında ters sıçrama, opaklık, bitiş konumu ve temizlik davranışını doğrular; gerçek cihaz performansı ayrıca tarayıcı ve donanıma bağlıdır.

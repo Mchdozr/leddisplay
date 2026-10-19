@@ -63,7 +63,7 @@ with sync_playwright() as p:
     animated.goto('http://localhost:3000/')
     animated.locator('.series-card').first.scroll_into_view_if_needed()
     animated.wait_for_function("document.querySelector('.series-card').classList.contains('motion-seen')")
-    assert animated.evaluate("entryFrames.some(frames=>frames[0].transform==='translateY(18px)')")
+    assert animated.evaluate("entryFrames.some(frames=>frames[0].translate && frames[0].translate.endsWith('18px'))")
     assert animated.evaluate("entryFrames.every(frames=>frames.every(frame=>!('opacity' in frame)))")
     assert animated.locator('.series-card').first.evaluate('(e)=>getComputedStyle(e).opacity')=='1'
     browser.close()

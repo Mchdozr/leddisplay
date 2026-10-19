@@ -40,12 +40,29 @@ const finder=document.querySelector('#solution-finder');if(finder){function upda
 
 // Scroll entries translate upward at full opacity; reduced-motion preferences skip movement.
 const motionPreference=window.matchMedia('(prefers-reduced-motion: reduce)');
-function animateEntry(element,delay=0){if(motionPreference.matches||!element.animate)return;return element.animate([{transform:'translateY(18px)'},{transform:'translateY(0)'}],{duration:560,delay,easing:'cubic-bezier(.2,.65,.3,1)'})}
+// Prepare below-viewport content before it is seen, then animate only the independent
+// translate property. Hover transforms remain separate and completion cannot snap back.
+const entryMotionElements=new Set();const activeEntryMotions=new WeakMap();
+function clearEntryMotion(element){const animation=activeEntryMotions.get(element);activeEntryMotions.delete(element);element.style.removeProperty('translate');element.style.removeProperty('will-change');element.removeAttribute('data-entry-pending');animation?.cancel()}
+function animateEntry(element,delay=0,distance=6){
+ if(!element)return;entryMotionElements.add(element);
+ if(motionPreference.matches||!element.animate){clearEntryMotion(element);return}
+ const previous=activeEntryMotions.get(element);const start=previous?getComputedStyle(element).translate:element.style.translate||`0 ${distance}px`;
+ activeEntryMotions.delete(element);previous?.cancel();element.style.translate=start;element.style.willChange='translate';element.removeAttribute('data-entry-pending');
+ const animation=element.animate([{translate:start},{translate:'0 0px'}],{duration:760,delay:Math.min(delay,75),easing:'cubic-bezier(.22,1,.36,1)',fill:'both'});activeEntryMotions.set(element,animation);
+ const settle=()=>{if(activeEntryMotions.get(element)===animation)clearEntryMotion(element)};animation.finished.then(settle,settle);return animation;
+}
+function observeEntryMotion(elements){
+ if(!('IntersectionObserver'in window)||motionPreference.matches){elements.forEach(element=>{element.classList.add('motion-seen');clearEntryMotion(element)});return}
+ const observer=new IntersectionObserver(items=>{items.forEach(item=>{if(!item.isIntersecting)return;const element=item.target;element.classList.add('motion-seen');if(element.hasAttribute('data-entry-pending')){const siblings=[...element.parentElement.children];animateEntry(element,(siblings.indexOf(element)%4)*25,18)}observer.unobserve(element)})},{threshold:0,rootMargin:'0px 0px 60px 0px'});
+ elements.forEach(element=>{entryMotionElements.add(element);if(element.getBoundingClientRect().top>innerHeight+24){element.style.translate='0 18px';element.setAttribute('data-entry-pending','');observer.observe(element)}else{element.classList.add('motion-seen')}});
+}
+motionPreference.addEventListener('change',()=>{if(motionPreference.matches)entryMotionElements.forEach(clearEntryMotion)});
 const homeRoot=document.querySelector('.home-main');
 if(homeRoot){
  const targets=homeRoot.querySelectorAll('.home-heading,.solution-tile,.featured-product,.series-card,.service-card,.showcase-card,.technical-points>div,.sector-links>a,.process-grid>div,.knowledge-card,.readiness-checklist,.support-topic');
  targets.forEach(el=>el.setAttribute('data-entry-motion',''));
- if('IntersectionObserver'in window){const entries=new IntersectionObserver(items=>{items.forEach(item=>{if(!item.isIntersecting)return;item.target.classList.add('motion-seen');animateEntry(item.target,Math.min([...item.target.parentElement.children].indexOf(item.target)%4,3)*45);entries.unobserve(item.target)})},{threshold:.12,rootMargin:'0px 0px -24px 0px'});targets.forEach(el=>entries.observe(el))}
+ observeEntryMotion(targets);
  const progress=homeRoot.querySelector('.reading-progress>span');const back=homeRoot.querySelector('.back-to-top');let scrollPending=false;
  function updateScrollUI(){const range=document.documentElement.scrollHeight-innerHeight;progress.style.transform=`scaleX(${range>0?Math.min(1,Math.max(0,scrollY/range)):0})`;back.classList.toggle('is-visible',scrollY>700);document.querySelector('.header')?.classList.toggle('is-scrolled',scrollY>30);scrollPending=false}
  function queueScrollUI(){if(!scrollPending){scrollPending=true;requestAnimationFrame(updateScrollUI)}}
@@ -53,7 +70,7 @@ if(homeRoot){
  featuredFilters.forEach(button=>button.addEventListener('click',()=>{homeRoot.querySelectorAll('.featured-product:not([hidden])').forEach((el,i)=>animateEntry(el,(i%4)*35));queueScrollUI()}));
  finder?.addEventListener('change',()=>animateEntry(document.querySelector('.finder-result')));
  homeRoot.querySelectorAll('details').forEach(details=>details.addEventListener('toggle',()=>{if(details.open){const content=details.querySelector('p');if(content)animateEntry(content)}queueScrollUI()}));
- motionPreference.addEventListener('change',()=>{if(motionPreference.matches)homeRoot.querySelectorAll('[data-entry-motion],.finder-result,details p').forEach(el=>el.getAnimations().forEach(animation=>animation.cancel()))});
+
 }
 
 
@@ -74,9 +91,9 @@ if(productGroup&&productToggle){
  document.addEventListener('keydown',e=>{if(e.key==='Escape'&&productGroup.classList.contains('is-open')){setProductMenu(false);productToggle.focus()}});
  toggle?.addEventListener('click',()=>{if(toggle.getAttribute('aria-expanded')==='false')setProductMenu(false)});
 }
-if(!homeRoot&&'IntersectionObserver'in window){const entries=new IntersectionObserver(items=>items.forEach(item=>{if(item.isIntersecting){animateEntry(item.target);entries.unobserve(item.target)}}),{threshold:.1});document.querySelectorAll('.reveal').forEach(el=>entries.observe(el))}
+if(!homeRoot)observeEntryMotion(document.querySelectorAll('.reveal'));
 
-motionPreference.addEventListener('change',()=>{if(motionPreference.matches)document.querySelectorAll('.reveal').forEach(el=>el.getAnimations().forEach(animation=>animation.cancel()))});
+
 
 
 // Switch product photos inside a fixed-size stage; never expand the document.
