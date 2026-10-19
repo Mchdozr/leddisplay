@@ -8,6 +8,6 @@
     "dev": "python3 -m http.server 3000 --bind 0.0.0.0",
     "test": "node scripts/check.mjs",
     "package": "npm run build && npm test && python3 scripts/package.py",
-    "test:browser": "python3 scripts/browser-check.py && python3 scripts/catalog-check.py"
+    "test:browser": "python3 scripts/browser-check.py && python3 scripts/catalog-check.py && python3 scripts/home-check.py"
   }
 }

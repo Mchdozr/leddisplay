@@ -57,3 +57,11 @@ npm run package
 `/workspace/leddisplay-plesk.zip` oluşur. Paket yalnızca 48 HTML sayfasını (404 dâhil), varlıkları, PDF'leri, sitemap/robots dosyalarını ve `.htaccess` içerir; kaynak scriptler veya geliştirici belgeleri eklenmez. Plesk Dosya Yöneticisi ile `httpdocs` içine açılabilir. Var olan canlı dosyalar önce yedeklenmelidir. Bu paketin oluşturulması sunucuya yükleme veya GitHub'a push anlamına gelmez.
 
 `npm test` ayrıca ürünlerin benzersizliğini, PDF başlıklarını, fotoğraf yollarını, kaynak SHA-256 özetlerini ve ürün-detay eşleşmelerini doğrular. Tam tarayıcı kontrolü için Python Playwright ve Chromium bulunan ortamda `python3 scripts/browser-check.py` çalıştırılabilir; önce `npm run dev` başlatılmalıdır.
+
+## Kurumsal ana sayfa
+
+Ana sayfa kaynağı `scripts/home.mjs` içinde bulunur; `scripts/build.mjs` tarafından üretilir. Ürün vitrini sekmeleri, altı kombinasyonlu çözüm seçici, beş ürünlü teknik karşılaştırma, satış/kiralama/montaj/destek hizmetleri, uygulama senaryoları, sektörler, süreç, rehberler ve SSS bölümlerini içerir. Sayısal ürün ve seri bilgileri mevcut katalog kapsamını ifade eder; firma yaşı veya tamamlanan proje sayısı değildir.
+
+`assets/corporate-hero.webp` ve `assets/application-scenes.webp` bu tasarım için üretilmiş temsilî görsellerdir. Gerçek müşteri projesi veya firma referansı olarak kullanılmaz. Uygulama kartları bunu açıklar. Müşteri adları, referans fotoğrafları ve proje bilgileri doğrulandığında gerçek portföy ayrı içerikle eklenmelidir.
+
+CSS ve JavaScript dosya adreslerinde içerik hash'i bulunur; Pull/Deploy sonrasında güncellemelerin eski tarayıcı önbelleği nedeniyle kaybolmasını önler. Görseller WebP olarak optimize edilmiştir. `npm run test:browser`, temel sayfa/katalog testlerine ek olarak ana sayfa sekmelerini ve çözüm seçiciyi de doğrular.
