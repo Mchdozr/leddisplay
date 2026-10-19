@@ -23,7 +23,7 @@ def server(frontend=False):
     with tempfile.TemporaryDirectory(prefix='leddisplay-contact-test-') as tmp:
         folder=Path(tmp);web=folder/'web';runtime=folder/'runtime';runtime.mkdir();web.mkdir()
         (web/'api').mkdir();(web/'data').mkdir()
-        shutil.copy2(ROOT/'api/contact.php',web/'api/contact.php')
+        shutil.copytree(ROOT/'api',web/'api',dirs_exist_ok=True)
         shutil.copy2(ROOT/'data/products.json',web/'data/products.json')
         if frontend:
             shutil.copy2(ROOT/'iletisim.html',web/'iletisim.html');(web/'assets').mkdir()

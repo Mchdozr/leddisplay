@@ -5,3 +5,6 @@ node_modules/
 .env
 .env.*
 !.env.example
+
+# Production SMTP credentials must stay outside the document root.
+leddisplay-mail.php

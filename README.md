@@ -30,14 +30,14 @@ CSS/JS adresleri içerik hash'i taşır. Kaynak değişikliklerinden sonra build
 
 ## İletişim formu
 
-Form, ziyaretçiyi sayfadan çıkarmadan `POST /api/contact.php` üzerinden bilgileri ve tüm seçilen ürünleri **info@leddisplay.com.tr** adresine yollar. Gönderici sabit olarak `LEDDISPLAY <info@leddisplay.com.tr>`; Reply-To doğrulanmış ziyaretçi e-postasıdır. SMTP şifresi veya diğer kimlik bilgileri repoya eklenmez. PHP `mail()` ile Plesk'in yerel posta aktarımı kullanılır.
+Form, ziyaretçiyi sayfadan çıkarmadan `POST /api/contact.php` üzerinden bilgileri ve tüm seçilen ürünleri **info@leddisplay.com.tr** adresine yollar. Gönderici sabit olarak `LEDDISPLAY <info@leddisplay.com.tr>`; Reply-To doğrulanmış ziyaretçi e-postasıdır. SMTP şifresi veya diğer kimlik bilgileri repoya eklenmez. Özel SMTP ayar dosyası varsa PHPMailer 7.1.1 ile şifreli ve kimlik doğrulamalı SMTP kullanılır. Ayar dosyası henüz oluşturulmadıysa mevcut PHP `mail()` aktarımı korunur. SMTP yapılandırılmışken bağlantı/şifre/sertifika hatasında yerel `mail()` aktarımına geri dönülmez.
 
 - GET isteği, yalnızca form gönderimi gerektiğinde oturum bağlı doğrulama anahtarı üretir.
 - Zorunlu alanlar, e-posta, uzunluklar ve ürünler sunucuda doğrulanır. Alıcı adresi ziyaretçi tarafından değiştirilemez.
 - CSRF/origin kontrolü, honeypot ve oturumlar arasında IP başına 15 dakikada 5 deneme sınırı vardır.
 - Sayaç, sistem geçici dizininde yalnızca zaman damgaları tutar; dosya adı IP'nin hash'ini içerir. Mesaj içeriği veya açık IP bu sayaçta tutulmaz.
 - Oturumda başarılı talebin kimliği ve içeriğinin hash'i saklanır. Aynı talebin tekrar denenmesi ikinci e-posta oluşturmaz; farklı içerikle aynı kimlik kullanımı reddedilir.
-- Sadece yerel posta servisi mesajı kabul edince başarı ekranı ve talep numarası gösterilir. `mail()` kabulü, alıcı posta kutusuna son teslim veya okunma teyidi değildir.
+- Yalnızca seçilen posta servisi mesajı kabul edince başarı ekranı ve talep numarası gösterilir. SMTP veya `mail()` kabulü, alıcı posta kutusuna son teslim veya okunma teyidi değildir.
 - Gönderim/bağlantı hatasında form bilgileri korunur. Arayüz bir başarı bildirimi taklit etmez. İsteğe bağlı özet indirme e-posta göndermez.
 - E-posta içeriği uygulama veri tabanına yazılmaz; posta kuyruğu ve alıcı posta kutusunda işlenir. Gizlilik ve çerez sayfaları bu davranışı açıklar. İşletmeye özgü KVKK/unvan/başvuru bilgileri ayrıca tamamlanmalıdır.
 
@@ -48,7 +48,7 @@ Telefon: **0549 900 91 77** (`tel:+905499009177`). WhatsApp: `https://wa.me/9054
 1. Natro'da kök alan adı (`@`) A kaydı `194.36.87.191` olmalı. `www` için kök alan adına CNAME veya aynı IP'ye A kaydı kullanın. DNS ve canlı sunucu bu bulut oturumundan doğrulanmış değildir.
 2. Plesk'te belge kökü `httpdocs`, Git deposu `https://github.com/Mchdozr/leddisplay.git`, dal `main`, dağıtım modu **Manual** olmalı. **Pull**, ardından **Deploy** kullanın. Sunucuda npm/build gerekmez; üretilmiş dosyalar repodadır.
 3. Hosting/PHP ayarlarında **PHP 8.1 veya üzeri** etkin olmalı; PHP-FPM uygundur. PHP dosyaları kaynak metin olarak sunulmamalıdır. `api/contact.php` ve `data/products.json` dahil tüm dosyaları dağıtın.
-4. Plesk'in yerel mail servisi (ör. Postfix/sendmail) çalışmalı ve PHP `mail()` devre dışı bırakılmamış olmalı. Oturum ve sistem geçici dizinleri PHP kullanıcısı tarafından yazılabilir olmalı. `open_basedir` bu dizinlere izin vermeli.
+4. Natro posta kutusu için aşağıdaki SMTP yapılandırmasını uygulayın; PHP OpenSSL etkin olmalı. Ayar dosyası yokken eski yerel `mail()` yolu kullanılır ve Plesk posta servisini gerektirir. Oturum ve sistem geçici dizinleri PHP kullanıcısı tarafından yazılabilir olmalı. `open_basedir` özel SMTP dosyasını ve bu dizinleri okumaya izin vermeli.
 5. `info@leddisplay.com.tr` Plesk'te barınıyorsa posta kutusunun varlığını doğrulayın. Natro/başka sağlayıcıda barınıyorsa Plesk yerel alan adı teslimatının mesajı yanlış yerel kutuya yönlendirmediğini ve MX yönlendirmesini kontrol edin. SPF/DKIM ve giden SMTP erişimi, gerçek teslim edilebilirliği etkiler.
 6. Let's Encrypt ile kök alan adı ve `www` için HTTPS etkinleştirin; tercih edilen alan adına yönlendirin. Üretimde form oturum çerezi HTTPS gerektirir.
 7. Dağıtımdan sonra gerçek formu doldurun; info posta kutusu ve spam klasöründe mesajı ve talep numarasını kontrol edin. Başarı ekranı posta kuyruğu kabulünü gösterir. İleti gelmezse aynı talep numarasıyla Plesk posta kuyruğu/günlüklerini inceleyin. Gönderim hatası olursa arayüz bilgileri korur.
@@ -56,6 +56,18 @@ Telefon: **0549 900 91 77** (`tel:+905499009177`). WhatsApp: `https://wa.me/9054
 Özel GitHub deposu için Plesk'in SSH anahtarını salt okunur deploy key olarak ekleyebilirsiniz. Github hesap şifresini kod veya sohbet içine yazmayın. Apache `.htaccess`, geliştirici belgelerini ve `data/`, `scripts/` dizinlerini dış erişime kapatır. Nginx-only kurulumlarda eşdeğer erişim kurallarını sunucu ayarlarında uygulayın. `data/products.json` kamuya açık katalog verisidir ve backend tarafından dosya sisteminden okunur; gizli bilgi içermez.
 
 Bulut ortamından leddisplay.com.tr erişimi ağ politikası nedeniyle engellendiği için canlı Plesk PHP/mail ayarları veya gerçek posta kutusuna teslimat doğrulanmadı. Kod testleri ile canlı teslimat kontrolü ayrı işlemlerdir.
+
+## Natro SMTP — Plesk üzerinde özel yapılandırma
+
+Natro’nun hesap için gösterdiği **giden posta sunucusu, port, şifreleme türü** kullanılmalı; alan adından SMTP sunucusu tahmin edilmemeli. Kullanıcının verdiği Natro destek sayfası bu çalışma ortamından HTTP 403 döndürdüğü için bu değerler doğrulanmadı ve kodda Natro sunucusu sabitlenmedi.
+
+1. Plesk **Dosyalar** bölümünde `httpdocs` klasörünün bir üstüne, alan adının ana dizinine geçin. `httpdocs` ile aynı seviyede **`leddisplay-mail.php`** dosyası oluşturun.
+2. [Örnek dosyanın](deployment/leddisplay-mail.example.php) içeriğini buraya aktarın. `host`, `port`, `encryption` değerlerini Natro panelindeki bilgilere göre doldurun. `tls` STARTTLS, `ssl` bağlantı başında TLS demektir. Örnekteki 587/tls hesabınız için doğrulanmış bir ayar değildir.
+3. `username` değeri `info@leddisplay.com.tr` kalır. `password` alanına bu posta kutusunun şifresini **yalnızca Plesk dosya düzenleyicisinde** yazın. PHP tek tırnaklı metin içinde `'` ve `\` karakterlerini sırasıyla `\'` ve `\\` olarak kaçırın. Dosyayı GitHub’a veya sohbet mesajına koymayın; erişim izni hosting kullanıcısına özel `0600` olmalı.
+4. `api/mail-transport.php` ve `api/vendor/phpmailer/` dahil yeni kodu **Pull → Deploy** ile alın. SMTP ayar dosyası Git dağıtım alanının dışında olduğu için sonraki dağıtımlarda korunur. PHP OpenSSL ve Plesk’ten ilgili SMTP portuna giden erişim gerekir.
+5. Gerçek formdan bir talep gönderip Natro webmail’de aynı talep numarasıyla iletiyi kontrol edin. SMTP sunucusunun kabulü son teslim teyidi değildir. Hata olursa şifreyi veya mesaj içeriğini paylaşmadan sunucu günlüklerini inceleyin.
+
+Özel dosya varsa geçersiz/eksik ayarda veya SMTP hatasında form 503 döndürür ve ziyaretçinin bilgilerini korur. Şifre veya SMTP hata ayrıntıları istemciye/günlüklere yazılmaz. TLS sertifika ve sunucu adı doğrulaması kapatılmaz. Yerel testler gerçek posta göndermez: `python3 scripts/smtp-check.py` TLS üzerinden kimlik doğrulama, UTF-8 içerik, sabit alıcı/gönderici, Reply-To, reddedilen şifre/ileti/sertifika ve geçersiz ayarda geri dönüş olmamasını kontrol eder.
 
 ## Paket
 

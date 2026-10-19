@@ -7,3 +7,8 @@ ErrorDocument 404 /404.html
 <FilesMatch "^(package(-lock)?\.json|.*\.md)$">
   Require all denied
 </FilesMatch>
+
+# Documentation/templates must not be served from a Git deployment.
+<IfModule mod_alias.c>
+  RedirectMatch 404 ^/deployment(?:/|$)
+</IfModule>

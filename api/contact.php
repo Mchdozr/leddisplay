@@ -1,8 +1,8 @@
 <?php
 declare(strict_types=1);
 
-// Plesk PHP 8.1+ and its local, authorized mail transport are required.
-// Credentials and visitor-supplied mail headers are never accepted here.
+// PHP 8.1+: authenticated SMTP when configured, otherwise the existing local transport.
+// Credentials are read only from a private server file outside httpdocs.
 ini_set('display_errors', '0');
 ini_set('session.use_strict_mode', '1');
 date_default_timezone_set('Europe/Istanbul');
@@ -151,9 +151,8 @@ $headers = [
 ];
 $accepted = false;
 try {
-    if (function_exists('mail')) {
-        $accepted = @mail('info@leddisplay.com.tr', $subject, $body, $headers, '-finfo@leddisplay.com.tr');
-    }
+    require_once __DIR__ . '/mail-transport.php';
+    $accepted = sendContactMail($subject, $body, $headers);
 } catch (Throwable $error) {
     error_log('LEDDISPLAY contact: mail transport unavailable.');
 }
