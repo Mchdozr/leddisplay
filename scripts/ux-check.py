@@ -15,7 +15,9 @@ with sync_playwright() as p:
     page.keyboard.press('Escape')
     assert not page.locator('#product-megamenu').is_visible()
     page.locator('.product-menu-toggle').click()
-    page.get_by_role('link',name='GOB kaplamalı modüller',exact=True).click()
+    page.locator('.mega-product[href="/urun-gob-1-86-ic-mekan"]').click()
+    assert page.url.endswith('/urun-gob-1-86-ic-mekan')
+    page.goto('http://localhost:3000/urunler?seri=gob')
     assert page.locator('#series-filter').input_value()=='gob'
     assert page.locator('.catalog-grid .product-card:visible').count()==4
     page.locator('[data-catalog-series="rental"]').click()
@@ -30,7 +32,9 @@ with sync_playwright() as p:
     page.get_by_role('button',name='Menüyü aç').click()
     page.locator('.product-menu-toggle').click()
     assert page.locator('#product-megamenu').is_visible()
-    page.locator('.mega-column').first.get_by_role('link',name='Tüm iç mekân ürünleri').click()
+    page.locator('.mega-column').first.get_by_role('link',name='Çözümü keşfedin').click()
+    assert page.url.endswith('/ic-mekan-led-ekran')
+    page.goto('http://localhost:3000/urunler?ortam=ic')
     assert page.locator('#environment-filter').input_value()=='İç mekân'
     page.goto('http://localhost:3000/iletisim.html?urun=GOB%20P1.86%20İç%20Mekân%20LED%20Modül')
     assert page.locator('.page-hero').bounding_box()['height']<260
@@ -60,6 +64,7 @@ with sync_playwright() as p:
     # Restore upward-only entry motion, without any opacity keyframes.
     animated=browser.new_page(viewport={'width':1440,'height':1000},reduced_motion='no-preference')
     animated.add_init_script('''window.entryFrames=[];const original=Element.prototype.animate;Element.prototype.animate=function(frames,options){window.entryFrames.push(frames);return original.call(this,frames,options)}''')
+    animated.add_init_script("sessionStorage.setItem('leddisplay-intro-v1','1')")
     animated.goto('http://localhost:3000/')
     animated.locator('.series-card').first.scroll_into_view_if_needed()
     animated.wait_for_function("document.querySelector('.series-card').classList.contains('motion-seen')")

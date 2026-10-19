@@ -5,6 +5,7 @@ with sync_playwright() as p:
     for width in [1440,390]:
         for path,selector in [('/','.series-card'),('/urunler.html','.product-card:nth-child(18)')]:
             page=browser.new_page(viewport={'width':width,'height':900},reduced_motion='no-preference')
+            page.add_init_script("sessionStorage.setItem('leddisplay-intro-v1','1')")
             page.goto('http://localhost:3000'+path,wait_until='networkidle')
             target=page.locator(selector).first
             assert target.get_attribute('data-entry-pending') is not None

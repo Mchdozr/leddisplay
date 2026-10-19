@@ -28,6 +28,16 @@ Kaynaklar:
 
 CSS/JS adresleri içerik hash'i taşır. Kaynak değişikliklerinden sonra build çalıştırın. Sayfa kaydırma animasyonları yalnızca dikey konumu değiştirir; beyazlama/opacity efekti kullanılmaz. Hareket azaltma tercihi desteklenir. Yazı tipleri yüklenemezse sistem fontu kullanılır.
 
+## URL, ürün menüsü ve marka açılışı
+
+Kamuya açık sayfa adresleri `/urunler`, `/ic-mekan-led-ekran` ve `/urun-grand-air-ic-mekan` biçimindedir. Diskteki HTML dosyaları korunur. Üretimde Apache `mod_rewrite` ve `.htaccess` kuralları uzantısız adresleri bu dosyalardan sunar; eski `.html` adresleri sorgu parametreleri korunarak 301 ile yönlenir. `index.html` köke yönlenir. Site içi bağlantılar, canonical adresleri ve sitemap uzantısızdır. Nginx-only kurulumlarda aynı yönlendirme ve `try_files $uri $uri.html =404` davranışı ayrıca sunucu yapılandırmasında tanımlanmalıdır. `npm run dev` PHP router ile eşdeğer adresleri destekler.
+
+Masaüstü Ürünler menüsü 31 modeli üç grupta listeler. Fareyle üzerine gelmek veya klavyeyle odaklamak sağdaki görsel/açıklama/incele bağlantısını günceller. Ürün fotoğrafı olmayan zemin kabininde başka bir ürünün görselini göstermek yerine kaynak fotoğrafının bulunmadığı belirtilir. Mobilde doğrudan ürün bağlantıları kullanılır. Beş çözüm sayfasında gerçek üretici fotoğrafları ve ilgili ürünler; katalogda görselli koleksiyon kartları yer alır.
+
+Ana sayfanın özgün Canvas/CSS açılışı yaklaşık 2,2 saniye sürer; sekme oturumunda bir kez gösterilir. Atla düğmesi, Escape ve Tab ile kapanır. Hareket azaltma tercihinde veya JavaScript yokken gösterilmez; video indirme veya yükleme beklemez. Referans Xeron sayfası bu ortamdan HTTP 403 döndürdüğü için tamamı incelenemedi; kullanıcının paylaştığı menü ekran görüntüsü tasarım referansı olarak kullanıldı.
+
+`python3 scripts/navigation-visual-check.py` geliştirme sunucusu üzerinde temiz adresleri, eski adres yönlendirmelerini, altı sayfanın ürün görsellerini, 31 ürünün önizlemesini ve marka açılışının erişilebilir kapanma davranışını doğrular.
+
 ## İletişim formu
 
 Form, ziyaretçiyi sayfadan çıkarmadan `POST /api/contact.php` üzerinden bilgileri ve tüm seçilen ürünleri **info@leddisplay.com.tr** adresine yollar. Gönderici sabit olarak `LEDDISPLAY <info@leddisplay.com.tr>`; Reply-To doğrulanmış ziyaretçi e-postasıdır. SMTP şifresi veya diğer kimlik bilgileri repoya eklenmez. Özel SMTP ayar dosyası varsa PHPMailer 7.1.1 ile şifreli ve kimlik doğrulamalı SMTP kullanılır. Ayar dosyası henüz oluşturulmadıysa mevcut PHP `mail()` aktarımı korunur. SMTP yapılandırılmışken bağlantı/şifre/sertifika hatasında yerel `mail()` aktarımına geri dönülmez.

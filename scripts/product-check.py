@@ -13,14 +13,14 @@ with sync_playwright() as p:
     trigger=page.locator('.nav-product-group>a').bounding_box()
     page.mouse.move(trigger['x']+trigger['width']/2,trigger['y']+trigger['height']/2)
     page.wait_for_function("document.querySelector('.nav-product-group').classList.contains('is-open')")
-    link=page.get_by_role('link',name='GOB kaplamalı modüller',exact=True)
+    link=page.locator('.mega-product[href="/urun-gob-1-86-ic-mekan"]')
     box=link.bounding_box()
     page.mouse.move(box['x']+box['width']/2,box['y']+box['height']/2,steps=18)
     # Stay beyond the close-delay to catch a submenu disappearing under the pointer.
     page.wait_for_timeout(350)
     assert page.locator('#product-megamenu').is_visible()
     link.click()
-    assert page.locator('#series-filter').input_value()=='gob'
+    assert page.url.endswith('/urun-gob-1-86-ic-mekan')
     changed=0
     for width in [1440,390]:
         page.set_viewport_size({'width':width,'height':1000})

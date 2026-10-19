@@ -4,7 +4,7 @@ import {createHash} from 'node:crypto';
 const pages=readdirSync('.').filter(f=>f.endsWith('.html'));
 assert.equal(pages.length,48);
 let links=0;
-for(const page of pages){const html=readFileSync(page,'utf8');assert.ok(!html.includes('${'),`${page}: unresolved template expression`);assert.equal((html.match(/<h1>/g)||[]).length,1,`${page}: h1`);assert.match(html,/<html lang="tr">/);assert.match(html,/<meta name="description"/);for(const match of html.matchAll(/(?:href|src)="(\/[^"#]*)"/g)){const path=match[1].split('?')[0];const target=path==='/'?'index.html':path.slice(1);assert.ok(existsSync(target),`${page}: missing ${target}`);links++}}
+for(const page of pages){const html=readFileSync(page,'utf8');assert.ok(!html.includes('${'),`${page}: unresolved template expression`);assert.ok(!/href="\/[^"]*\.html(?:[?"#])/.test(html),`${page}: legacy internal URL`);assert.equal((html.match(/<h1>/g)||[]).length,1,`${page}: h1`);assert.match(html,/<html lang="tr">/);assert.match(html,/<meta name="description"/);for(const match of html.matchAll(/(?:href|src)="(\/[^"#]*)"/g)){const path=match[1].split('?')[0];const target=path==='/'?'index.html':(path.includes('.')?path.slice(1):path.slice(1)+'.html');assert.ok(existsSync(target),`${page}: missing ${target}`);links++}}
 assert.ok(existsSync('sitemap.xml'));assert.ok(existsSync('robots.txt'));
 console.log(`${pages.length} pages validated; ${links} local resource and navigation references resolved.`);
 
@@ -17,5 +17,5 @@ console.log('All source PDF SHA-256 fingerprints match the catalog provenance re
 
 // Footer deep links must land on a real page section, including cross-page anchors.
 let sectionLinks=0;
-for(const page of pages){for(const [,href] of readFileSync(page,'utf8').matchAll(/href="([^"\s]*#[^"\s]+)"/g)){if(!href.startsWith('/')&&!href.startsWith('#'))continue;const target=new URL(href,'https://leddisplay.com.tr/'+page);const file=target.pathname==='/'?'index.html':target.pathname.slice(1);assert.ok(existsSync(file),`${page}: missing anchored page ${file}`);const id=decodeURIComponent(target.hash.slice(1));assert.ok(readFileSync(file,'utf8').includes(`id="${id}"`),`${page}: missing section ${href}`);sectionLinks++;}}
+for(const page of pages){for(const [,href] of readFileSync(page,'utf8').matchAll(/href="([^"\s]*#[^"\s]+)"/g)){if(!href.startsWith('/')&&!href.startsWith('#'))continue;const target=new URL(href,'https://leddisplay.com.tr/'+page);const file=target.pathname==='/'?'index.html':(target.pathname.includes('.')?target.pathname.slice(1):target.pathname.slice(1)+'.html');assert.ok(existsSync(file),`${page}: missing anchored page ${file}`);const id=decodeURIComponent(target.hash.slice(1));assert.ok(readFileSync(file,'utf8').includes(`id="${id}"`),`${page}: missing section ${href}`);sectionLinks++;}}
 console.log(`${sectionLinks} anchored navigation links verified.`);

@@ -36,7 +36,7 @@ const filters=document.querySelector('#catalog-filters');if(filters){
 }
 
 const featuredFilters=document.querySelectorAll('[data-feature-filter]');featuredFilters.forEach(button=>button.addEventListener('click',()=>{const filter=button.dataset.featureFilter;featuredFilters.forEach(b=>{const active=b===button;b.classList.toggle('active',active);b.setAttribute('aria-pressed',String(active))});document.querySelectorAll('.featured-product').forEach(card=>{card.hidden=!(filter==='all'||card.dataset.homeEnvironment===filter||(filter==='rental'&&['rental','esnek-kabin'].includes(card.dataset.homeSeries)))})}));
-const finder=document.querySelector('#solution-finder');if(finder){function updateFinder(){const place=finder.elements.place.value;const project=finder.elements.project.value;let title,description,href;if(project==='curved'){title='Esnek ve özel LED çözümleri';description=place==='outdoor'?'Dış mekânda kavisli uygulama için ürün uygunluğu, koruma ve taşıyıcı sistem ayrıca projelendirilmelidir.':'İç mekân kavisli yüzeylerde esnek Q modül ve Q-Air kabin seçeneklerini değerlendirin.';href='/ozel-led-cozumleri.html'}else if(project==='rental'){title=place==='outdoor'?'Dış mekân kiralık LED kabin':'İç mekân kiralık LED kabin';description='Grand Air kabinleri; sahne ölçüsü, görüş mesafesi, içerik ve kamera kullanımıyla birlikte değerlendirin.';href='/urun-grand-air-'+(place==='outdoor'?'dis':'ic')+'-mekan.html'}else{title=place==='outdoor'?'Dış mekân LED ekran':'İç mekân LED ekran';description=place==='outdoor'?'Ortam ışığı, ön/arka koruma, taşıyıcı koşulları ve servis erişimini birlikte planlayın.':'Yakın izleme mesafesi, piksel aralığı ve mekân ışığını birlikte değerlendirin.';href=place==='outdoor'?'/dis-mekan-led-ekran.html':'/ic-mekan-led-ekran.html'}document.querySelector('#finder-title').textContent=title;document.querySelector('#finder-description').textContent=description;document.querySelector('#finder-link').href=href}finder.addEventListener('change',updateFinder);finder.addEventListener('submit',e=>e.preventDefault())}
+const finder=document.querySelector('#solution-finder');if(finder){function updateFinder(){const place=finder.elements.place.value;const project=finder.elements.project.value;let title,description,href;if(project==='curved'){title='Esnek ve özel LED çözümleri';description=place==='outdoor'?'Dış mekânda kavisli uygulama için ürün uygunluğu, koruma ve taşıyıcı sistem ayrıca projelendirilmelidir.':'İç mekân kavisli yüzeylerde esnek Q modül ve Q-Air kabin seçeneklerini değerlendirin.';href='/ozel-led-cozumleri'}else if(project==='rental'){title=place==='outdoor'?'Dış mekân kiralık LED kabin':'İç mekân kiralık LED kabin';description='Grand Air kabinleri; sahne ölçüsü, görüş mesafesi, içerik ve kamera kullanımıyla birlikte değerlendirin.';href='/urun-grand-air-'+(place==='outdoor'?'dis':'ic')+'-mekan'}else{title=place==='outdoor'?'Dış mekân LED ekran':'İç mekân LED ekran';description=place==='outdoor'?'Ortam ışığı, ön/arka koruma, taşıyıcı koşulları ve servis erişimini birlikte planlayın.':'Yakın izleme mesafesi, piksel aralığı ve mekân ışığını birlikte değerlendirin.';href=place==='outdoor'?'/dis-mekan-led-ekran':'/ic-mekan-led-ekran'}document.querySelector('#finder-title').textContent=title;document.querySelector('#finder-description').textContent=description;document.querySelector('#finder-link').href=href}finder.addEventListener('change',updateFinder);finder.addEventListener('submit',e=>e.preventDefault())}
 
 // Scroll entries translate upward at full opacity; reduced-motion preferences skip movement.
 const motionPreference=window.matchMedia('(prefers-reduced-motion: reduce)');
@@ -81,7 +81,7 @@ if(productGroup&&productToggle){
  const desktop=()=>matchMedia('(min-width:1101px)').matches;
  let productMenuCloseTimer;
  function setProductMenu(open){clearTimeout(productMenuCloseTimer);productGroup.classList.toggle('is-open',open);productToggle.setAttribute('aria-expanded',String(open));productToggle.setAttribute('aria-label',open?'Ürün kategorilerini kapat':'Ürün kategorilerini aç')}
- productToggle.addEventListener('click',()=>setProductMenu(productToggle.getAttribute('aria-expanded')!=='true'));
+ productToggle.addEventListener('click',event=>setProductMenu(desktop()&&event.detail>0?true:productToggle.getAttribute('aria-expanded')!=='true'));
  productGroup.addEventListener('pointerenter',()=>{if(desktop())setProductMenu(true)});
  productGroup.addEventListener('pointerleave',()=>{if(desktop()&&!productGroup.contains(document.activeElement))productMenuCloseTimer=setTimeout(()=>setProductMenu(false),220)});
  const megaMenu=document.querySelector('#product-megamenu');megaMenu.addEventListener('pointerenter',()=>{if(desktop())setProductMenu(true)});
@@ -111,3 +111,46 @@ if(gallery){
 // Footer groups stay expanded on desktop and become native accordions on mobile.
 const footerGroups=document.querySelectorAll('.footer-link-group');
 if(footerGroups.length){const smallFooter=matchMedia('(max-width:760px)');const syncFooter=()=>footerGroups.forEach(group=>{group.open=!smallFooter.matches});syncFooter();smallFooter.addEventListener('change',syncFooter)}
+
+// The product itself remains a regular link; hover and keyboard focus update its preview.
+const previewPanel=document.querySelector('.mega-preview');
+if(previewPanel){
+ const image=previewPanel.querySelector('img');let previewVersion=0;
+ document.querySelectorAll('.mega-product').forEach(link=>{
+  function preview(){
+   const version=++previewVersion;
+   document.querySelectorAll('.mega-product.is-previewed').forEach(item=>item.classList.remove('is-previewed'));
+   link.classList.add('is-previewed');
+   previewPanel.querySelector('#mega-preview-title').textContent=link.dataset.previewTitle;
+   previewPanel.querySelector('#mega-preview-description').textContent=link.dataset.previewDescription;
+   previewPanel.querySelector('#mega-preview-model').textContent=link.dataset.previewModel;
+   previewPanel.querySelector('#mega-preview-link').href=link.href;
+   image.hidden=!link.dataset.previewImage;
+   previewPanel.querySelector('#mega-preview-unavailable').hidden=!!link.dataset.previewImage;
+   if(link.dataset.previewImage){image.src=link.dataset.previewImage;image.alt=link.dataset.previewTitle}
+   const animate=()=>{if(version===previewVersion&&!matchMedia('(prefers-reduced-motion: reduce)').matches)image.animate([{transform:'translateY(6px) scale(.98)'},{transform:'translateY(0) scale(1)'}],{duration:260,easing:'cubic-bezier(.22,1,.36,1)'})};
+   if(image.complete)animate();else image.onload=animate;
+  }
+  link.addEventListener('pointerenter',preview);link.addEventListener('focus',preview);
+ });
+}
+
+// A short, original LED-field brand sequence, once per tab. No video download or loading wait.
+function showBrandIntro(){
+ if(!document.querySelector('.home-main')||matchMedia('(prefers-reduced-motion: reduce)').matches)return;
+ try{if(sessionStorage.getItem('leddisplay-intro-v1'))return;sessionStorage.setItem('leddisplay-intro-v1','1')}catch{return}
+ const intro=document.createElement('div');intro.className='brand-intro';intro.setAttribute('aria-label','LEDDISPLAY marka açılışı');
+ intro.innerHTML='<canvas aria-hidden="true"></canvas><div class="intro-horizon" aria-hidden="true"></div><div class="intro-content"><span class="intro-kicker">GÖRÜNTÜYE YENİ BİR PERSPEKTİF</span><div class="intro-wordmark" aria-label="leddisplay"><i aria-hidden="true"></i><span>led<b>display</b></span></div><p>Teknoloji. Tasarım. Etki.</p><div class="intro-progress" aria-hidden="true"><span></span></div></div><button type="button" class="intro-skip">Açılışı geç <svg class="inline-arrow" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M6 18 18 6M6 6h12v12" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></button>';
+ document.body.append(intro);document.documentElement.classList.add('intro-playing');
+ const siblings=[...document.body.children].filter(el=>el!==intro&&!el.inert);siblings.forEach(el=>el.inert=true);
+ const canvas=intro.querySelector('canvas');const ctx=canvas.getContext('2d');let frame;let finished=false;const start=performance.now();
+ const resize=()=>{const ratio=Math.min(devicePixelRatio||1,1.5);canvas.width=Math.round(innerWidth*ratio);canvas.height=Math.round(innerHeight*ratio);ctx?.setTransform(ratio,0,0,ratio,0,0)};
+ function close(){if(finished)return;finished=true;cancelAnimationFrame(frame);clearTimeout(timer);removeEventListener('resize',resize);document.removeEventListener('keydown',onKey);document.documentElement.classList.remove('intro-playing');siblings.forEach(el=>el.inert=false);intro.classList.add('is-finished');setTimeout(()=>intro.remove(),500)}
+ function onKey(e){if(e.key==='Escape'||e.key==='Tab'){close()}}
+ function draw(now){if(!ctx||finished)return;const t=(now-start)/1000;const width=innerWidth,height=innerHeight;ctx.clearRect(0,0,width,height);const spacing=width<600?22:28;
+  for(let x=0;x<width;x+=spacing){for(let y=0;y<height;y+=spacing){const wave=Math.sin(x*.008+y*.005-t*2.4);const sweep=Math.exp(-Math.pow((x/width-t*.65+.4)*4,2));const center=Math.abs(y-height*.6)/height;const alpha=(.035+sweep*.28*(wave*.5+.5))*(.6+center);ctx.fillStyle=`rgba(${sweep>.4?'239,107,45':'131,158,185'},${alpha})`;ctx.beginPath();ctx.arc(x,y,1.1+sweep*.7,0,Math.PI*2);ctx.fill()}}
+  frame=requestAnimationFrame(draw);
+ }
+ const timer=setTimeout(close,2200);intro.querySelector('button').addEventListener('click',close);document.addEventListener('keydown',onKey);addEventListener('resize',resize);addEventListener('pagehide',close,{once:true});resize();frame=requestAnimationFrame(draw);
+}
+showBrandIntro();
