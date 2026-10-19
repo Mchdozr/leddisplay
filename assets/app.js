@@ -51,10 +51,13 @@ const productGroup=document.querySelector('.nav-product-group');const productTog
 if(productGroup&&productToggle){
  document.documentElement.classList.add('navigation-ready');
  const desktop=()=>matchMedia('(min-width:1101px)').matches;
- function setProductMenu(open){productGroup.classList.toggle('is-open',open);productToggle.setAttribute('aria-expanded',String(open));productToggle.setAttribute('aria-label',open?'Ürün kategorilerini kapat':'Ürün kategorilerini aç')}
+ let productMenuCloseTimer;
+ function setProductMenu(open){clearTimeout(productMenuCloseTimer);productGroup.classList.toggle('is-open',open);productToggle.setAttribute('aria-expanded',String(open));productToggle.setAttribute('aria-label',open?'Ürün kategorilerini kapat':'Ürün kategorilerini aç')}
  productToggle.addEventListener('click',()=>setProductMenu(productToggle.getAttribute('aria-expanded')!=='true'));
  productGroup.addEventListener('pointerenter',()=>{if(desktop())setProductMenu(true)});
- productGroup.addEventListener('pointerleave',()=>{if(desktop()&&!productGroup.contains(document.activeElement))setProductMenu(false)});
+ productGroup.addEventListener('pointerleave',()=>{if(desktop()&&!productGroup.contains(document.activeElement))productMenuCloseTimer=setTimeout(()=>setProductMenu(false),220)});
+ const megaMenu=document.querySelector('#product-megamenu');megaMenu.addEventListener('pointerenter',()=>{if(desktop())setProductMenu(true)});
+ productGroup.addEventListener('focusin',()=>{if(desktop())clearTimeout(productMenuCloseTimer)});
  productGroup.addEventListener('focusout',e=>{if(!productGroup.contains(e.relatedTarget))setProductMenu(false)});
  document.addEventListener('click',e=>{if(!productGroup.contains(e.target))setProductMenu(false)});
  document.addEventListener('keydown',e=>{if(e.key==='Escape'&&productGroup.classList.contains('is-open')){setProductMenu(false);productToggle.focus()}});
@@ -63,3 +66,16 @@ if(productGroup&&productToggle){
 if(!homeRoot&&'IntersectionObserver'in window){const entries=new IntersectionObserver(items=>items.forEach(item=>{if(item.isIntersecting){animateEntry(item.target);entries.unobserve(item.target)}}),{threshold:.1});document.querySelectorAll('.reveal').forEach(el=>entries.observe(el))}
 
 motionPreference.addEventListener('change',()=>{if(motionPreference.matches)document.querySelectorAll('.reveal').forEach(el=>el.getAnimations().forEach(animation=>animation.cancel()))});
+
+
+// Switch product photos inside a fixed-size stage; never expand the document.
+const gallery=document.querySelector('.product-gallery');
+if(gallery){
+ const stage=gallery.querySelector('.gallery-stage');const image=gallery.querySelector('#product-main-image');const dialog=gallery.querySelector('.product-image-dialog');
+ if(stage&&image&&dialog){
+  const dialogImage=dialog.querySelector('img');const caption=gallery.querySelector('.gallery-caption');const dialogCaption=dialog.querySelector('.image-dialog-caption');const baseName=dialog.querySelector('#image-dialog-title').textContent;
+  gallery.querySelectorAll('[data-gallery-src]').forEach(button=>button.addEventListener('click',()=>{image.src=button.dataset.gallerySrc;image.alt=baseName+' — '+button.dataset.galleryLabel;dialogImage.src=image.src;dialogImage.alt=image.alt;caption.textContent=button.dataset.galleryLabel;dialogCaption.textContent=button.dataset.galleryLabel;gallery.querySelectorAll('[data-gallery-src]').forEach(b=>{const active=b===button;b.classList.toggle('active',active);b.setAttribute('aria-pressed',String(active))})}));
+  stage.addEventListener('click',()=>{dialog.showModal();document.documentElement.classList.add('product-image-open')});
+  const close=()=>dialog.close();dialog.querySelector('.image-dialog-close').addEventListener('click',close);dialog.addEventListener('click',event=>{if(event.target===dialog)close()});dialog.addEventListener('cancel',()=>document.documentElement.classList.remove('product-image-open'));dialog.addEventListener('close',()=>{document.documentElement.classList.remove('product-image-open');stage.focus({preventScroll:true})});
+ }
+}
