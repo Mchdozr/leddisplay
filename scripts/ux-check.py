@@ -45,12 +45,6 @@ with sync_playwright() as p:
     page.locator('[name=name]').fill('Test Kullanıcı')
     page.locator('[name=email]').fill('test@example.com')
     page.locator('[name=message]').fill('İki ürün için İstanbul projesine teklif istiyorum.')
-    page.evaluate("document.addEventListener('click',e=>{if(e.target.id==='email-draft')e.preventDefault()})")
-    page.get_by_role('button',name='E-posta uygulamasında aç').click()
-    href=page.locator('#email-draft').get_attribute('href')
-    assert href.startswith('mailto:info@leddisplay.com.tr?')
-    body=parse_qs(urlparse(href).query)['body'][0]
-    assert 'GOB P1.86 İç Mekân LED Modül' in body and 'H1.25 İç Mekân LED Modül' in body
     with page.expect_download() as download:
         page.get_by_role('button',name='Proje özetini indir').click()
     text=Path(download.value.path()).read_text(encoding='utf-8-sig')
@@ -73,4 +67,4 @@ with sync_playwright() as p:
     assert animated.evaluate("entryFrames.every(frames=>frames.every(frame=>!('opacity' in frame)))")
     assert animated.locator('.series-card').first.evaluate('(e)=>getComputedStyle(e).opacity')=='1'
     browser.close()
-    print('Navigation, category URLs, mobile menu, compact banner, multi-product mailto/download, guide images and opacity-free entry motion passed.')
+    print('Navigation, category URLs, mobile menu, compact banner, multi-product selection/download, guide images and opacity-free entry motion passed.')

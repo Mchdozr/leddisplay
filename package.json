@@ -5,9 +5,10 @@
   "type": "module",
   "scripts": {
     "build": "node scripts/build.mjs",
-    "dev": "python3 -m http.server 3000 --bind 0.0.0.0",
+    "dev": "python3 scripts/dev.py",
     "test": "node scripts/check.mjs",
     "package": "npm run build && npm test && python3 scripts/package.py",
-    "test:browser": "python3 scripts/browser-check.py && python3 scripts/catalog-check.py && python3 scripts/home-check.py && python3 scripts/ux-check.py && python3 scripts/product-check.py"
+    "test:browser": "python3 scripts/browser-check.py && python3 scripts/catalog-check.py && python3 scripts/home-check.py && python3 scripts/ux-check.py && python3 scripts/product-check.py",
+    "test:contact": "python3 scripts/contact-check.py"
   }
 }

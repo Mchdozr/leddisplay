@@ -1,10 +1,10 @@
 # LEDDISPLAY
 
-Türkçe, duyarlı ve çok sayfalı LED ekran kurumsal web sitesi. Üretim çıktısı düz HTML/CSS/JavaScript'tir; Plesk sunucusunda Node.js veya veritabanı gerekmez. Görseller özgün SVG ve CSS konseptleridir, gerçek müşteri projesi olarak sunulmaz.
+Türkçe kurumsal LED ekran sitesi: 48 HTML sayfası, 31 belgeli ürün/kabin ailesi ve PHP üzerinden çalışan iletişim formu. Üretim sunucusunda Node.js veya veritabanı gerekmez. İletişim gönderimi için **PHP 8.1+ ve çalışan yerel posta servisi** gerekir.
 
-## Yerel geliştirme
+## Geliştirme
 
-Node.js 22+ ve Python 3 kullanın. Harici npm bağımlılığı yoktur.
+Node.js 22+, Python 3 ve PHP 8.1+ kullanın. Npm bağımlılığı yoktur.
 
 ```sh
 cd /workspace/leddisplay
@@ -13,83 +13,74 @@ npm test
 npm run dev
 ```
 
-Kaynak sayfa içerikleri `scripts/build.mjs`, ortak stiller `assets/style.css`, etkileşimler `assets/app.js` içindedir. HTML çıktıları depoda tutulur; kaynak değişikliklerinden sonra build çalıştırın. Google Fonts erişilemezse sistem yazı tipi kullanılır. Hareket azaltma tercihi desteklenir.
+`npm run dev` PHP geliştirme sunucusunu 3000 portunda açar. PHP `PATH` içinde değilse bu bulut oturumunda hazırlanmış `/workspace/.tools/leddisplay-php/php` aracını da bulabilir. Yerel posta sistemi olmayan makinelerde gerçek gönderim hata verir; testler güvenli bir yakalama transportu kullanır. PHP geliştirme sunucusunu üretimde kullanmayın.
 
-## Plesk ve DNS
+Kaynaklar:
 
-1. Natro'da kök alan adı (`@`) A kaydı `194.36.87.191` olmalı. `www` için kök alan adına CNAME veya aynı IP'ye A kaydı tanımlayın. Çakışan eski A/AAAA kayıtlarını kontrol edin. Bu oturumda DNS veya sunucu sahipliği doğrulanmadı.
-2. Plesk'te alan adının hosting ayarlarında belge kökünü `httpdocs` olarak seçin. DNS yayılımından sonra Let's Encrypt ile hem kök alan adına hem `www` adına sertifika alın. HTTPS ve tercih edilen alan adına yönlendirmeyi Plesk'te etkinleştirin.
-3. Git ekranında **Remote repository** ve `https://github.com/Mchdozr/leddisplay.git` doğrudur. Plesk'te `main` dalını seçin. Güncellemeleri almak için Pull, yayımlamak için Deploy kullanın.
-4. İlk yayın için **Manual** dağıtım önerilir. Deployment directory `/httpdocs` olabilir: hazır HTML dosyaları deponun kökünde bulunur. Plesk'te Node.js ve post-deployment build gerekmez.
-5. Özel depo için tercih edilen yöntem Plesk'in ürettiği SSH anahtarının GitHub'da bu depoya salt okunur deploy key olarak eklenmesi ve SSH URL kullanılmasıdır. HTTPS kimlik doğrulamasında GitHub hesap şifresi yerine sınırlı yetkili token gerekir; tokenı koda veya sohbet içine yazmayın.
-6. Automatic dağıtım, Plesk deposuna yeni commit çekildiğinde dosyaları yayımlar. GitHub push sonrasında otomatik çekim için Plesk'in webhook URL'sini GitHub webhook ayarına ekleyin; yalnızca Automatic seçmek GitHub push bildirimini kurmaz.
-7. `scripts/`, `package.json` ve README dağıtım dışında bırakılabiliyorsa hariç tutun. Apache `.htaccess` paket manifesti ve README erişimini kapatır; Nginx-only kurulumlarda eşdeğer kurallar Plesk üzerinden ayrıca uygulanmalıdır.
-8. Ana sayfayı, çözümleri, menüyü, iletişim indirmesini, SSL yönlendirmelerini ve gerçek bir bulunamayan URL'nin 404 durumunu canlı ortamda kontrol edin. Python geliştirme sunucusu Apache `.htaccess` kurallarını çalıştırmaz.
+- `scripts/build.mjs`: iç sayfalar, ürün detayları ve HTML üretimi.
+- `scripts/home.mjs`: ana sayfa ve interaktif çözüm seçici.
+- `scripts/navigation.mjs`: klavye, hover ve dokunma destekli kategorili üst menü.
+- `scripts/footer.mjs`: kompakt masaüstü footer ve mobil açılır gruplar.
+- `scripts/product-gallery.mjs`: sabit boyutlu görsel galerisi ve büyütme penceresi.
+- `scripts/contact.mjs`: telefon, e-posta ve WhatsApp bağlantıları.
+- `assets/style.css`, `assets/app.js`: ortak görünüm ve etkileşimler.
+- `api/contact.php`: sunucu doğrulaması ve e-posta gönderimi.
 
-## Sayfalar
+CSS/JS adresleri içerik hash'i taşır. Kaynak değişikliklerinden sonra build çalıştırın. Sayfa kaydırma animasyonları yalnızca dikey konumu değiştirir; beyazlama/opacity efekti kullanılmaz. Hareket azaltma tercihi desteklenir. Yazı tipleri yüklenemezse sistem fontu kullanılır.
 
-Ana sayfa; filtrelenebilir 31 kayıtlı ürün/modül ve kabin kataloğu, 31 ürün detay sayfası; kurumsal; çözümler; iç mekân, dış mekân, etkinlik, şeffaf, video wall ve özel LED çözüm detayları; sektörler; proje yaklaşımı; bilgi merkezi; iletişim; gizlilik; çerez kullanımı; 404.
+## İletişim formu
 
-## Yayın öncesi içerik gereksinimleri
+Form, ziyaretçiyi sayfadan çıkarmadan `POST /api/contact.php` üzerinden bilgileri ve tüm seçilen ürünleri **info@leddisplay.com.tr** adresine yollar. Gönderici sabit olarak `LEDDISPLAY <info@leddisplay.com.tr>`; Reply-To doğrulanmış ziyaretçi e-postasıdır. SMTP şifresi veya diğer kimlik bilgileri repoya eklenmez. PHP `mail()` ile Plesk'in yerel posta aktarımı kullanılır.
 
-- İşletme unvanı, telefon, e-posta, açık adres, hizmet kapsamı ve doğrulanmış firma geçmişi eklenmeli.
-- Kuruluş yılı, müşteri logoları, referans projeler, sertifikalar, garantiler ve teknik ürün değerleri doğrulanmadan kullanılmamalı.
-- İletişim formu seçilen birden fazla ürünle `info@leddisplay.com.tr` adresine mailto taslağı hazırlar; gönderimi kullanıcı e-posta uygulamasında tamamlar. Alternatif olarak proje özeti indirilebilir. Sunucu üzerinden otomatik e-posta/CRM teslimatı kurulu değildir; bu yönde teslimat iddiası yapılmamalıdır.
-- Gizlilik sayfası mevcut teknik davranışı anlatır; işletmeye özgü KVKK metni ve veri sorumlusu bilgileri tamamlanmalıdır.
-- Proje yaklaşımı bölümü gerçek referans portföyü değildir. Görseller kavramsaldır.
+- GET isteği, yalnızca form gönderimi gerektiğinde oturum bağlı doğrulama anahtarı üretir.
+- Zorunlu alanlar, e-posta, uzunluklar ve ürünler sunucuda doğrulanır. Alıcı adresi ziyaretçi tarafından değiştirilemez.
+- CSRF/origin kontrolü, honeypot ve oturumlar arasında IP başına 15 dakikada 5 deneme sınırı vardır.
+- Sayaç, sistem geçici dizininde yalnızca zaman damgaları tutar; dosya adı IP'nin hash'ini içerir. Mesaj içeriği veya açık IP bu sayaçta tutulmaz.
+- Oturumda başarılı talebin kimliği ve içeriğinin hash'i saklanır. Aynı talebin tekrar denenmesi ikinci e-posta oluşturmaz; farklı içerikle aynı kimlik kullanımı reddedilir.
+- Sadece yerel posta servisi mesajı kabul edince başarı ekranı ve talep numarası gösterilir. `mail()` kabulü, alıcı posta kutusuna son teslim veya okunma teyidi değildir.
+- Gönderim/bağlantı hatasında form bilgileri korunur. Arayüz bir başarı bildirimi taklit etmez. İsteğe bağlı özet indirme e-posta göndermez.
+- E-posta içeriği uygulama veri tabanına yazılmaz; posta kuyruğu ve alıcı posta kutusunda işlenir. Gizlilik ve çerez sayfaları bu davranışı açıklar. İşletmeye özgü KVKK/unvan/başvuru bilgileri ayrıca tamamlanmalıdır.
 
-## Doğrulama
+Telefon: **0549 900 91 77** (`tel:+905499009177`). WhatsApp: `https://wa.me/905499009177`. WhatsApp kısayolları yalnızca mesaj taslağı açar, otomatik mesaj göndermez.
 
-`npm test` tüm üretilmiş sayfalarda başlık, açıklama ve yerel dosya/bağlantı bütünlüğünü denetler. Kurulum oturumunda ayrıca Chromium ile tüm sayfaların 1440, 768 ve 390 piksel genişliklerinde açılması, yatay taşma, mobil menü, JavaScript hataları ve indirilen form dosyasının içeriği kontrol edilmiştir. Canlı DNS, Plesk dağıtımı ve gerçek iletişim teslimatı bu testlerin kapsamı dışındadır.
+## Plesk üzerinden Pull → Deploy
 
-## Sağlanan ürün föyleri
+1. Natro'da kök alan adı (`@`) A kaydı `194.36.87.191` olmalı. `www` için kök alan adına CNAME veya aynı IP'ye A kaydı kullanın. DNS ve canlı sunucu bu bulut oturumundan doğrulanmış değildir.
+2. Plesk'te belge kökü `httpdocs`, Git deposu `https://github.com/Mchdozr/leddisplay.git`, dal `main`, dağıtım modu **Manual** olmalı. **Pull**, ardından **Deploy** kullanın. Sunucuda npm/build gerekmez; üretilmiş dosyalar repodadır.
+3. Hosting/PHP ayarlarında **PHP 8.1 veya üzeri** etkin olmalı; PHP-FPM uygundur. PHP dosyaları kaynak metin olarak sunulmamalıdır. `api/contact.php` ve `data/products.json` dahil tüm dosyaları dağıtın.
+4. Plesk'in yerel mail servisi (ör. Postfix/sendmail) çalışmalı ve PHP `mail()` devre dışı bırakılmamış olmalı. Oturum ve sistem geçici dizinleri PHP kullanıcısı tarafından yazılabilir olmalı. `open_basedir` bu dizinlere izin vermeli.
+5. `info@leddisplay.com.tr` Plesk'te barınıyorsa posta kutusunun varlığını doğrulayın. Natro/başka sağlayıcıda barınıyorsa Plesk yerel alan adı teslimatının mesajı yanlış yerel kutuya yönlendirmediğini ve MX yönlendirmesini kontrol edin. SPF/DKIM ve giden SMTP erişimi, gerçek teslim edilebilirliği etkiler.
+6. Let's Encrypt ile kök alan adı ve `www` için HTTPS etkinleştirin; tercih edilen alan adına yönlendirin. Üretimde form oturum çerezi HTTPS gerektirir.
+7. Dağıtımdan sonra gerçek formu doldurun; info posta kutusu ve spam klasöründe mesajı ve talep numarasını kontrol edin. Başarı ekranı posta kuyruğu kabulünü gösterir. İleti gelmezse aynı talep numarasıyla Plesk posta kuyruğu/günlüklerini inceleyin. Gönderim hatası olursa arayüz bilgileri korur.
 
-`data/products.json`, iki spec arşivinden çıkarılan 31 benzersiz föyün verilerini tutar: 26 LED modül ve 5 kabin/ürün ailesi. Grand Air kabinleri birden fazla boyut ve piksel aralığı içerir; varyantlar ayrı tabloda gösterilir. `assets/spec/` özgün PDF'leri, `assets/products/` PDF'lerden değiştirilmeden çıkarılan fotoğrafları içerir. Zemin ekranı için belgede fotoğraf çıkarılamadığından açıkça temsilî çizim kullanılır.
+Özel GitHub deposu için Plesk'in SSH anahtarını salt okunur deploy key olarak ekleyebilirsiniz. Github hesap şifresini kod veya sohbet içine yazmayın. Apache `.htaccess`, geliştirici belgelerini ve `data/`, `scripts/` dizinlerini dış erişime kapatır. Nginx-only kurulumlarda eşdeğer erişim kurallarını sunucu ayarlarında uygulayın. `data/products.json` kamuya açık katalog verisidir ve backend tarafından dosya sisteminden okunur; gizli bilgi içermez.
 
-Kaynaklar ve tutarsızlıklar `DATA_SOURCES.md` içinde kayıtlıdır. Özellikle P0.93 dinamik/fiziksel aralık ayrımı, P3.91 zemin IP sınıfı çelişkisi ve Grand Air dış mekân parlaklık seçenekleri üretici teyidi gerektirir. Sayfalardaki teknik notlar bu ayrımları korur. İki birebir kopya SHA-256 ile ayıklanmıştır.
+Bulut ortamından leddisplay.com.tr erişimi ağ politikası nedeniyle engellendiği için canlı Plesk PHP/mail ayarları veya gerçek posta kutusuna teslimat doğrulanmadı. Kod testleri ile canlı teslimat kontrolü ayrı işlemlerdir.
 
-## Plesk yayın paketi
+## Paket
 
 ```sh
 npm run package
 ```
 
-`/workspace/leddisplay-plesk.zip` oluşur. Paket yalnızca 48 HTML sayfasını (404 dâhil), varlıkları, PDF'leri, sitemap/robots dosyalarını ve `.htaccess` içerir; kaynak scriptler veya geliştirici belgeleri eklenmez. Plesk Dosya Yöneticisi ile `httpdocs` içine açılabilir. Var olan canlı dosyalar önce yedeklenmelidir. Bu paketin oluşturulması sunucuya yükleme veya GitHub'a push anlamına gelmez.
+`/workspace/leddisplay-plesk.zip` üretilir. Pakette HTML, varlıklar/PDF'ler, `api/contact.php`, backend için katalog JSON'u ve erişim kuralları bulunur. Geliştirici araçları eklenmez. Dosya Yöneticisi ile `httpdocs` içine açılabilir. Var olan canlı dosyaları önce yedekleyin. Paket üretimi canlı dağıtım yapmaz.
 
-`npm test` ayrıca ürünlerin benzersizliğini, PDF başlıklarını, fotoğraf yollarını, kaynak SHA-256 özetlerini ve ürün-detay eşleşmelerini doğrular. Tam tarayıcı kontrolü için Python Playwright ve Chromium bulunan ortamda `python3 scripts/browser-check.py` çalıştırılabilir; önce `npm run dev` başlatılmalıdır.
+## Doğrulama
 
-## Kurumsal ana sayfa
+```sh
+npm test
+npm run test:contact
+# Site 3000 portunda çalışırken:
+npm run test:browser
+```
 
-Ana sayfa kaynağı `scripts/home.mjs` içinde bulunur; `scripts/build.mjs` tarafından üretilir. Ürün vitrini sekmeleri, altı kombinasyonlu çözüm seçici, beş ürünlü teknik karşılaştırma, satış/kiralama/montaj/destek hizmetleri, uygulama senaryoları, sektörler, süreç, rehberler ve SSS bölümlerini içerir. Sayısal ürün ve seri bilgileri mevcut katalog kapsamını ifade eder; firma yaşı veya tamamlanan proje sayısı değildir.
+- Statik kontrol: 48 sayfa, yerel bağlantılar, bölüm hedefleri, PDF/ürün eşleşmeleri ve SHA-256 kaynak özetleri.
+- PHP entegrasyonu: gerçek PHP uç noktası ve yalnızca yerel dosyaya kaydeden test posta aktarımı. Gerçek e-posta göndermez. Doğrulama, yanlış CSRF/origin, başlık enjeksiyonu, iki ürün içeriği, sabit alıcı/Reply-To, tekrar gönderim, mail hatası/yeniden deneme ve oturumlar arası hız sınırı kontrol edilir.
+- Aynı entegrasyon testi gerçek PHP + Chromium ile form hatasında bilgi korumayı, sayfadan çıkmadan başarı ekranını, eşleşen talep numarasını ve mobil düzeni doğrular. Python Playwright ve Chromium gerekir.
+- Tarayıcı testleri: tüm sayfalar, kategorili menü ve URL filtreleri, çoklu ürün/özet indirme, çözüm seçici, hareket azaltma, 31 ürünün sabit galerisi ve görsel büyütme.
 
-`assets/corporate-hero.webp` ve `assets/application-scenes.webp` bu tasarım için üretilmiş temsilî görsellerdir. Gerçek müşteri projesi veya firma referansı olarak kullanılmaz. Uygulama kartları bunu açıklar. Müşteri adları, referans fotoğrafları ve proje bilgileri doğrulandığında gerçek portföy ayrı içerikle eklenmelidir.
+## Ürün kaynakları ve görseller
 
-CSS ve JavaScript dosya adreslerinde içerik hash'i bulunur; Pull/Deploy sonrasında güncellemelerin eski tarayıcı önbelleği nedeniyle kaybolmasını önler. Görseller WebP olarak optimize edilmiştir. `npm run test:browser`, temel sayfa/katalog testlerine ek olarak ana sayfa sekmelerini ve çözüm seçiciyi de doğrular.
+`data/products.json`, iki kullanıcı spec arşivindeki 31 benzersiz föyden aktarılmış 26 modül ve 5 kabin/ürün ailesini içerir. İki birebir kopya SHA-256 ile ayıklanmıştır. Grand Air aileleri çoklu boyut/piksel seçeneklerini ayrı varyant tablosunda gösterir. Kaynak eşlemesi ve çelişkiler `DATA_SOURCES.md` içindedir. Özellikle P0.93 dinamik/fiziksel aralık, P3.91 zemin IP çelişkisi ve Grand Air dış mekân parlaklık seçenekleri üretici teyidi gerektirir.
 
-## İçerik yoğunluğu, hareket ve alt menü
-
-Ana sayfada H/GOB/Q-Air/Grand Air ailelerini açıklayan ek ürün vitrini ile altı maddelik kurulum kontrol listesi ve açılır teknik destek başlıkları bulunur. Bölüm ve kart girişleri görünür içerik üzerine Web Animations API ile uygulanır; JavaScript kapalıyken de içerik görünür kalır. `prefers-reduced-motion` etkinse giriş animasyonları atlanır; tercih sonradan değişirse çalışan giriş animasyonları iptal edilir. Kaydırma göstergesi ve sayfa başına dönüş bağlantısı uzun sayfada gezinmeyi kolaylaştırır.
-
-Tüm sayfaların ortak footer kaynağı `scripts/footer.mjs` içindedir. Hizmetlere hızlı erişim, ürün çözümleri, ürün aileleri, kurumsal/hizmet menüsü, bilgi merkezi, sektörler, teknik katalog ve yasal bağlantıları içerir. Telefon veya e-posta gibi doğrulanmamış firma bilgileri eklenmemiştir. Bölüm bağlantıları `npm test` ile gerçek hedef kimliklerine karşı doğrulanır. Stil ve JS değişiklikleri için HTML çıktısını `npm run build` ile yenileyin.
-
-## Navigasyon ve okunabilirlik iyileştirmeleri
-
-Ortak üst menü `scripts/navigation.mjs` içindedir. Anasayfa bağlantısı ile iç/dış mekân ve kiralık/özel uygulama gruplarını içeren Ürünler alt menüsü vardır. Masaüstünde hover, tıklama, klavye ve Escape; mobilde açılır kategori düğmesi desteklenir. Kategori bağlantıları katalogdaki `seri` ve `ortam` sorgu parametrelerini uygular. Katalog daha küçük kartlar ve kategori seçim paneli kullanır.
-
-İç sayfa başlıkları tek satır akışı ve daha kısa açıklama alanıyla küçültüldü. Başlık etiketi tekrar edilmez. Ana içerik ve menü metinleri büyütüldü. Bilgi merkezi kartları mevcut temsili görselleri kullanır. Kaydırmayla giriş hareketi yalnızca dikey konum değiştirir; opaklık değişmez.
-
-İletişimde e-posta bağlantısı, kategorili çoklu ürün seçimi, ürün arama ve seçim sayacı bulunur. Ürün detayından gelen `urun` parametresi ilgili kutuyu seçer. Mailto taslağı ile indirilen özet tüm seçili ürünleri içerir. `scripts/ux-check.py` bu akışı, kategori bağlantılarını, mobil menüyü, kompakt başlığı ve opaklık değiştirmeyen hareketi doğrular.
-
-## Telefon ve WhatsApp
-
-Kullanıcının sağladığı iletişim numarası: **0549 900 91 77**. Ortak iletişim bağlantıları `scripts/contact.mjs` içindedir; arama bağlantısı `tel:+905499009177`, WhatsApp bağlantısı `https://wa.me/905499009177` kullanır. Üst bilgi, footer, iletişim sayfası, ana sayfa iletişim alanı ve ürün detayı WhatsApp bağlantılarını içerir. Her sayfada sabit WhatsApp kısayolu vardır; sayfa başına dönüş düğmesiyle çakışmaması için ayrı konumlandırılır. Ürün detayı WhatsApp taslağı ürün adını içerir. Bağlantılar mesajı otomatik göndermez; son gönderimi kullanıcı WhatsApp içinde tamamlar. Numaranın WhatsApp hesabına bağlılığı bu ortamdan doğrulanmamıştır.
-
-## Ürün galerisi ve menü geçişi
-
-Ürün görselleri `scripts/product-gallery.mjs` tarafından üretilen sabit yükseklikte bir galeri içinde gösterilir. Küçük görsel düğmeleri ana görseli değiştirir; ikinci görsel sayfaya eklenmez. Portre kabin fotoğrafları `object-fit: contain` ile sınırlandırılır. Ürün metni üstten hizalanır ve görsel seçimi sırasında konumu değişmez. Büyütme penceresi ekran sınırları içinde kalır; kapatma düğmesi, dış alan tıklaması ve Escape desteklenir.
-
-Masaüstü Ürünler tetikleyicisi menü satırının tüm yüksekliğini kaplar; tetikleyici ile alt panel arasında fare geçişini kesen boşluk bırakılmaz. 220 ms kapanma gecikmesi ve panel üzerine girişte iptal, çapraz fare hareketini de destekler. `scripts/product-check.py`, gerçek fare geçişini ve 31 ürün sayfasının masaüstü/mobil galeri boyutlarını, görsel seçimi sırasında metin konumunu ve büyütme penceresini doğrular.
-
-## Kompakt footer düzeni
-
-Footer, önceki geniş bağlantı blokları yerine marka özeti, beş ürün/çözüm bağlantısı, beş kurumsal bağlantı ve telefon/e-posta/WhatsApp iletişimiyle sadeleştirilmiştir. Tekrarlanan hizmet şeridi, ayrı ürün ailesi/rehber listeleri, sektör etiketleri ve katalog tanıtım bandı kaldırılmıştır. Masaüstünde dört sütun, mobilde iki yerel `details` grubu kullanılır; mobil gruplar başlangıçta kapalıdır. Yasal bağlantılar ayrı kısa satırdadır. Tam ürün kategorileri üst menü ve katalogda bulunur.
+Ürün fotoğrafları PDF'lerden çıkarılmıştır. Ana sayfadaki mimari/mağaza/sahne görselleri temsilî üretilmiş konseptlerdir; gerçekleşmiş müşteri projeleri değildir. Firma geçmişi, sertifika, garanti, müşteri logoları ve referans projeler doğrulanmadan eklenmemelidir.

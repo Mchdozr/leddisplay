@@ -24,7 +24,7 @@ with sync_playwright() as p:
   page.get_by_role('button',name='Proje özetini indir').click()
  download=dl.value
  assert 'İstanbul' in Path(download.path()).read_text(encoding='utf-8-sig')
- assert 'gönderilmedi' in page.locator('#form-status').inner_text()
+ assert 'sunucuya göndermez' in page.locator('#form-status').inner_text()
  for width in [390,768]:
   page.set_viewport_size({'width':width,'height':844})
   for file in sorted(Path(__file__).resolve().parents[1].glob('*.html')):
