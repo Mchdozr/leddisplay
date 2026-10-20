@@ -4,6 +4,8 @@ const projects=JSON.parse(readFileSync('data/projects.json','utf8'));
 assert.equal(new Set(projects.map(p=>p.slug)).size,projects.length);
 const sitemap=readFileSync('sitemap.xml','utf8');
 for(const p of projects){
+ assert.ok(p.imageSize.length===2&&p.imageSize.every(n=>n>0),`${p.slug}: image dimensions`);
+ assert.ok(p.facts.every(([label])=>!label.toLocaleLowerCase('tr').includes('fatura')),`${p.slug}: date heading must be Yapılış tarihi`);
  const file=`proje-${p.slug}.html`;
  assert.ok(existsSync(file));
  const html=readFileSync(file,'utf8');

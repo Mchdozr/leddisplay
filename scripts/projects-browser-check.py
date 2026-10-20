@@ -4,6 +4,7 @@ import json
 from playwright.sync_api import sync_playwright
 
 ROOT=Path(__file__).resolve().parents[1]
+projects=json.loads((ROOT/'data/projects.json').read_text())
 BASE='http://127.0.0.1:3000'
 public=[f.stem for f in ROOT.glob('*.html') if not f.stem.startswith('urun-') and f.stem not in ['urunler','404']]
 with sync_playwright() as p:
@@ -28,10 +29,12 @@ with sync_playwright() as p:
     for route in ['/urunler','/urunler.html','/urun-grand-air-ic-mekan','/kiralik-led-ekran','/assets/spec/gob-1-86-ic-mekan.pdf','/assets/products/gob-1-86-ic-mekan-front.jpg','/assets/catalog-experience.json','/data/projects.json']:
         response=context.request.get(BASE+route);assert response.status==404,(route,response.status)
     page.set_viewport_size({'width':1440,'height':1000})
-    page.goto(BASE+'/projeler');assert page.locator('.reference-card').count()==2
+    page.goto(BASE+'/projeler');assert page.locator('.reference-card').count()==len(projects)
     page.screenshot(path='/workspace/leddisplay-projeler-desktop.png',full_page=True)
     page.goto(BASE+'/proje-ankara-dis-isleri')
     assert page.locator('.project-facts').inner_text().find('7 Ocak 2026')>=0
+    assert 'Yapılış tarihi' in page.locator('.project-facts').inner_text()
+    assert 'Fatura' not in page.locator('.project-facts').inner_text()
     assert page.locator('video').count()==1
     page.locator('[data-project-photo]').first.click()
     assert page.locator('.project-lightbox').is_visible()
@@ -48,6 +51,12 @@ with sync_playwright() as p:
     page.wait_for_timeout(700)
     assert videos,'Video did not load after play'
     page.locator('video').first.evaluate('(v)=>v.pause()')
+    for project in projects:
+        page.goto(BASE+'/proje-'+project['slug'])
+        assert page.locator('video').count()==len(project['videos'])
+        assert page.locator('[data-project-photo]').count()==len(project['gallery'])
+        assert page.locator('.project-facts').inner_text().find('Fatura')==-1
+        assert len({v['src'] for v in project['videos']})==len(project['videos'])
     page.set_viewport_size({'width':390,'height':844})
     page.goto(BASE+'/projeler');page.screenshot(path='/workspace/leddisplay-projeler-mobile.png',full_page=True)
     page.get_by_role('button',name='Menüyü aç',exact=True).click()
@@ -75,11 +84,12 @@ with sync_playwright() as p:
     page.get_by_role('button',name='Yeni bir talep oluştur').click()
     assert page.locator('#project-form').is_visible()
     assert not errors,errors
-    # Desktop project section pins while both real projects move horizontally.
+    # Desktop project section pins while all featured projects move horizontally.
     page.emulate_media(reduced_motion='no-preference');page.set_viewport_size({'width':1440,'height':1000})
     page.goto(BASE+'/');page.wait_for_timeout(400)
     page.screenshot(path='/workspace/leddisplay-gercek-projeler-hero.png')
     assert page.locator('.showcase-pinned').count()==1
+    assert page.locator('.showcase-card').count()==sum(bool(project.get('featured')) for project in projects)
     geometry=page.locator('.showcase-section').evaluate('(el)=>({start:el.getBoundingClientRect().top+scrollY-document.querySelector(".header").offsetHeight,height:el.offsetHeight,stage:el.querySelector(".showcase-stage").offsetHeight})')
     tops=[]
     for progress in [.2,.7]:
@@ -88,6 +98,21 @@ with sync_playwright() as p:
         tops.append(page.locator('.showcase-stage').bounding_box()['y'])
     assert abs(tops[0]-tops[1])<2,('Pinned project section moved vertically',tops)
     page.screenshot(path='/workspace/leddisplay-gercek-projeler-scroll.png')
+    # Longer shop names must not clip the project link in a laptop-height stage.
+    for width in [1480,1024,901]:
+        page.set_viewport_size({'width':width,'height':764})
+        page.goto(BASE+'/');page.wait_for_timeout(400)
+        assert page.locator('.showcase-pinned').count()==1
+        geometry=page.locator('.showcase-section').evaluate('(el)=>({start:el.getBoundingClientRect().top+scrollY-document.querySelector(".header").offsetHeight,distance:el.offsetHeight-el.querySelector(".showcase-stage").offsetHeight})')
+        cards=page.locator('.showcase-card')
+        for index in range(cards.count()):
+            page.evaluate('(y)=>scrollTo({top:y,behavior:"instant"})',geometry['start']+geometry['distance']*index/(cards.count()-1))
+            page.wait_for_timeout(100)
+            visible=cards.nth(index).evaluate('(el)=>{const card=el.getBoundingClientRect(),link=el.querySelector(".showcase-copy>a").getBoundingClientRect();return link.bottom<=card.bottom+1&&link.top>=card.top}')
+            assert visible,('Clipped project copy',width,index)
+    page.set_viewport_size({'width':1024,'height':650})
+    page.wait_for_timeout(150)
+    assert page.locator('.showcase-pinned').count()==0,'Short windows must let all project content flow vertically'
     assert not errors,errors
     print(f'{len(public)} public pages × 4 viewports: no overflow or catalog access; project gallery, deferred videos, pinned showcase and mocked contact flow passed.')
     browser.close()

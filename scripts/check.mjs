@@ -2,7 +2,8 @@ import {readFileSync,readdirSync,existsSync} from 'node:fs';
 import assert from 'node:assert/strict';
 import {createHash} from 'node:crypto';
 const pages=readdirSync('.').filter(f=>f.endsWith('.html'));
-assert.equal(pages.length,51);
+const projects=JSON.parse(readFileSync('data/projects.json','utf8'));
+assert.equal(pages.length,49+projects.length);
 let links=0;
 for(const page of pages){const html=readFileSync(page,'utf8');assert.ok(!html.includes('${'),`${page}: unresolved template expression`);assert.ok(!/href="\/[^"]*\.html(?:[?"#])/.test(html),`${page}: legacy internal URL`);assert.equal((html.match(/<h1>/g)||[]).length,1,`${page}: h1`);assert.match(html,/<html lang="tr">/);assert.match(html,/<meta name="description"/);for(const match of html.matchAll(/(?:href|src)="(\/[^"#]*)"/g)){const path=match[1].split('?')[0];const target=path==='/'?'index.html':(path.includes('.')?path.slice(1):path.slice(1)+'.html');assert.ok(existsSync(target),`${page}: missing ${target}`);links++}}
 assert.ok(existsSync('sitemap.xml'));assert.ok(existsSync('robots.txt'));

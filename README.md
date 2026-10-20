@@ -40,7 +40,7 @@ Ana sayfanın özgün LEDDISPLAY açılış filmi 2,7 saniye sürer; sekme oturu
 
 ## Gerçek proje deneyimi
 
-Ana sayfa gerçek Ankara uygulama görüntüsü, masaüstünde sabitlenerek yatay ilerleyen proje hikâyeleri ve anahtar teslim süreç anlatımı içerir. Mobilde projeler dikey akar. Hareket azaltma tercihi sabitlenen yatay geçişi kapatır. Proje detaylarında doğrulanmış bilgiler, uygulama kapsamı, büyütülebilir WebP galeri ve kullanıcı oynattığında yüklenen üç sessiz saha videosu bulunur. Ham faturalar/teklifler web köküne veya depoya eklenmez.
+Ana sayfa gerçek Ankara uygulama görüntüsü, masaüstünde sabitlenerek yatay ilerleyen dört seçili proje hikâyesi ve anahtar teslim süreç anlatımı içerir. Seçili projeler `data/projects.json` içindeki `featured` alanıyla belirlenir; tüm işler proje arşivinde listelenir. Mobilde projeler dikey akar. Hareket azaltma tercihi sabitlenen yatay geçişi kapatır. Proje detaylarında doğrulanmış bilgiler, uygulama kapsamı, büyütülebilir WebP galeri ve kullanıcı oynattığında yüklenen sessiz saha videoları bulunur. Dikey kaynak görseller ekranın tamamı görülecek şekilde sunulur. Ham faturalar/teklifler web köküne veya depoya eklenmez.
 
 `npm test` sayfaları, arşiv dosyalarının korunduğunu, bağlantıları, proje medyasını ve katalog görünürlüğünün kapalı kaldığını doğrular. `npm run dev` açıkken `npm run test:browser` / `npm run test:projects`, 4 ekran genişliğinde genel sayfaları, galeri klavye kontrolünü, video yükleme davranışını, sabitlenen proje bölümünü ve e-posta göndermeyen taklit form akışını kontrol eder. `npm run test:contact`, ayrı bir yerel posta yakalama sistemiyle gerçek PHP gönderimini test eder; gerçek posta göndermez.
 

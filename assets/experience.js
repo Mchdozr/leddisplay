@@ -59,7 +59,7 @@ if(showcase){
   if(index!==active){active=index;cards.forEach((card,i)=>card.classList.toggle('is-current',i===index));steps.forEach((step,i)=>{if(i===index)step.setAttribute('aria-current','step');else step.removeAttribute('aria-current')});}
  };
  const layout=()=>{
-  enabled=innerWidth>=901&&innerHeight>=600&&!motion.matches;
+  enabled=innerWidth>=901&&innerHeight>=740&&!motion.matches;
   showcase.classList.toggle('showcase-pinned',enabled);
   if(!enabled){track.style.transform='';showcase.style.height='';showcase.style.removeProperty('--project-progress');cards.forEach(card=>card.classList.remove('is-current'));active=-1;return}
   const headerHeight=$('.header').getBoundingClientRect().height;

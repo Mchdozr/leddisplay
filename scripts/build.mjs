@@ -48,9 +48,9 @@ writeFileSync('404.html',cleanLinks(layout('404','Sayfa bulunamadı','Aradığı
 // Keep archived route files in Git without publishing catalog contents.
 const inactiveBody=pageHero('Sayfa kullanılamıyor','Bu sayfa yayında değil.','Gerçek uygulamalarımızı keşfedebilir veya projeniz için bizimle iletişime geçebilirsiniz.')+section(btn('Projelerimizi keşfedin','/projeler'));
 for(const slug of ['urunler',...catalog.map(p=>'urun-'+p.slug)])writeFileSync(`${slug}.html`,cleanLinks(layout(slug,'Sayfa kullanılamıyor','Bu sayfa yayında değil.',inactiveBody)));
-save('index','LED ekran satışı, kurulum ve teknik destek','Ankara Dış İşleri ve İzmir Homend: gerçek saha projeleri, anahtar teslim LED ekran uygulamaları, kurulum ve teknik destek.',renderHome({catalog,seriesNames,btn,eyebrow,faq}));
+save('index','LED ekran satışı, kurulum ve teknik destek','Kurumsal alanlar ve mağazalar için gerçek saha projeleri, anahtar teslim LED ekran uygulamaları, kurulum ve teknik destek.',renderHome({catalog,seriesNames,btn,eyebrow,faq}));
 
-save('projeler','Anahtar teslim LED ekran projelerimiz','Ankara Dış İşleri ve İzmir Homend uygulamaları: gerçek saha videoları, uygulama kapsamları ve anahtar teslim LED ekran çözümleri.',renderProjectIndex());
+save('projeler','Anahtar teslim LED ekran projelerimiz','Ankara, Antalya ve İzmir’de kurumsal alanlar ve mağazalar için anahtar teslim LED ekran uygulamaları. Gerçek saha videoları, proje kapsamları ve galeriler.',renderProjectIndex());
 for(const project of projects)save('proje-'+project.slug,project.name+' LED ekran projesi',project.summary,renderProjectDetail(project));
 writeFileSync('assets/catalog-experience.json','[]');
 writeFileSync('sitemap.xml',`<?xml version="1.0" encoding="UTF-8"?><urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">${pages.map(s=>`<url><loc>https://leddisplay.com.tr${url(s)}</loc></url>`).join('')}</urlset>`);
