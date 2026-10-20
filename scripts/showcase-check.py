@@ -4,7 +4,7 @@ from playwright.sync_api import sync_playwright
 with sync_playwright() as p:
     browser = p.chromium.launch(executable_path='/usr/bin/chromium', args=['--no-sandbox'])
     page = browser.new_page(viewport={'width': 1480, 'height': 900})
-    page.add_init_script("sessionStorage.setItem('leddisplay-intro-v2','1')")
+    page.add_init_script("sessionStorage.setItem('leddisplay-intro-v3','1')")
     errors = []
     page.on('pageerror', lambda error: errors.append(str(error)))
     page.goto('http://127.0.0.1:3000/', wait_until='networkidle')

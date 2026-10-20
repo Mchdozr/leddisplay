@@ -59,7 +59,7 @@ with sync_playwright() as p:
     page.screenshot(path='/workspace/leddisplay-mobil-onizleme.png', full_page=True)
     # Normal-motion entry effects complete and respond to an accessibility preference change.
     animated = browser.new_page(viewport={'width': 1440, 'height': 1000}, reduced_motion='no-preference')
-    animated.add_init_script("sessionStorage.setItem('leddisplay-intro-v1','1')")
+    animated.add_init_script("sessionStorage.setItem('leddisplay-intro-v3','1')")
     animated.goto('http://127.0.0.1:3000/', wait_until='networkidle')
     animated.locator('.series-card').first.scroll_into_view_if_needed()
     animated.wait_for_function("document.querySelector('.series-card').classList.contains('motion-seen')")

@@ -135,17 +135,19 @@ if(previewPanel){
  });
 }
 
-// A short, original LED-field brand sequence, once per tab. No video download or loading wait.
+// Original responsive brand film, once per tab; the page remains available on any playback failure.
 function showBrandIntro(){
  if(!document.querySelector('.home-main')||matchMedia('(prefers-reduced-motion: reduce)').matches)return;
- try{if(sessionStorage.getItem('leddisplay-intro-v2'))return;sessionStorage.setItem('leddisplay-intro-v2','1')}catch{return}
- const intro=document.createElement('div');intro.className='brand-intro';intro.setAttribute('aria-label','LEDDISPLAY marka açılışı');
- intro.innerHTML='<video class="intro-film" autoplay muted playsinline preload="auto" poster="/assets/video/leddisplay-brand-intro-poster.jpg" aria-label="LEDDISPLAY marka açılış filmi"><source src="/assets/video/leddisplay-brand-intro.webm" type="video/webm"><source src="/assets/video/leddisplay-brand-intro.mp4" type="video/mp4"></video><button type="button" class="intro-skip">Açılışı geç <svg class="inline-arrow" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M6 18 18 6M6 6h12v12" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></button>';
+ try{if(sessionStorage.getItem('leddisplay-intro-v3'))return;sessionStorage.setItem('leddisplay-intro-v3','1')}catch{return}
+ const filmPath='/assets/video/leddisplay-brand-intro-v3'+(matchMedia('(orientation: portrait)').matches?'-portrait':'');
+ const intro=document.createElement('div');intro.className='brand-intro';intro.setAttribute('role','dialog');intro.setAttribute('aria-modal','true');intro.setAttribute('aria-label','LEDDISPLAY marka açılışı');
+ intro.innerHTML=`<video class="intro-film" autoplay muted playsinline preload="auto" poster="${filmPath}-poster.jpg" aria-label="LEDDISPLAY marka açılış filmi"><source src="${filmPath}.webm" type="video/webm"><source src="${filmPath}.mp4" type="video/mp4"></video><span class="intro-film-progress" aria-hidden="true"></span><button type="button" class="intro-skip">Açılışı geç <svg class="inline-arrow" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M6 18 18 6M6 6h12v12" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></button>`;
+ const previousFocus=document.activeElement;
  document.body.append(intro);document.documentElement.classList.add('intro-playing');
  const siblings=[...document.body.children].filter(el=>el!==intro&&!el.inert);siblings.forEach(el=>el.inert=true);
  const film=intro.querySelector('.intro-film');let finished=false;
- function close(){if(finished)return;finished=true;clearTimeout(timer);document.removeEventListener('keydown',onKey);document.documentElement.classList.remove('intro-playing');siblings.forEach(el=>el.inert=false);intro.classList.add('is-finished');setTimeout(()=>intro.remove(),500)}
+ function close(){if(finished)return;finished=true;clearTimeout(timer);film.pause();document.removeEventListener('keydown',onKey);document.documentElement.classList.remove('intro-playing');siblings.forEach(el=>el.inert=false);intro.classList.add('is-finished');if(previousFocus!==document.body&&previousFocus?.isConnected)previousFocus.focus({preventScroll:true});setTimeout(()=>intro.remove(),650)}
  function onKey(e){if(e.key==='Escape'||e.key==='Tab'){close()}}
- const timer=setTimeout(close,6500);film.addEventListener('ended',close,{once:true});film.play().catch(()=>{});intro.querySelector('button').addEventListener('click',close);document.addEventListener('keydown',onKey);addEventListener('pagehide',close,{once:true});
+ const timer=setTimeout(close,8000);film.addEventListener('ended',close,{once:true});film.addEventListener('error',close,{once:true});film.addEventListener('timeupdate',()=>intro.style.setProperty('--intro-progress',film.duration?film.currentTime/film.duration:0));film.muted=true;film.play().catch(close);intro.querySelector('button').addEventListener('click',close);document.addEventListener('keydown',onKey);addEventListener('pagehide',close,{once:true});
 }
 showBrandIntro();

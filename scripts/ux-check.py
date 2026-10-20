@@ -64,7 +64,7 @@ with sync_playwright() as p:
     # Restore upward-only entry motion, without any opacity keyframes.
     animated=browser.new_page(viewport={'width':1440,'height':1000},reduced_motion='no-preference')
     animated.add_init_script('''window.entryFrames=[];const original=Element.prototype.animate;Element.prototype.animate=function(frames,options){window.entryFrames.push(frames);return original.call(this,frames,options)}''')
-    animated.add_init_script("sessionStorage.setItem('leddisplay-intro-v1','1')")
+    animated.add_init_script("sessionStorage.setItem('leddisplay-intro-v3','1')")
     animated.goto('http://localhost:3000/')
     animated.locator('.series-card').first.scroll_into_view_if_needed()
     animated.wait_for_function("document.querySelector('.series-card').classList.contains('motion-seen')")

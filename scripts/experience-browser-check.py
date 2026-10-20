@@ -5,7 +5,7 @@ BASE='http://127.0.0.1:3000'
 with sync_playwright() as p:
     browser=p.chromium.launch(executable_path='/usr/bin/chromium',args=['--no-sandbox'])
     context=browser.new_context(viewport={'width':1480,'height':1000},reduced_motion='reduce')
-    context.add_init_script("sessionStorage.setItem('leddisplay-intro-v1','1')")
+    context.add_init_script("sessionStorage.setItem('leddisplay-intro-v3','1')")
     page=context.new_page();errors=[];page.on('pageerror',lambda e:errors.append(str(e)))
     page.goto(BASE+'/',wait_until='domcontentloaded')
     page.wait_for_selector('#size-result .size-result-heading')
@@ -84,7 +84,7 @@ with sync_playwright() as p:
     page.set_viewport_size({'width':390,'height':844});page.locator('#ekran-planlayici').screenshot(path='/workspace/leddisplay-deneyim-mobil.png')
     # Live hero pauses, resumes, and switches to a real image. Scroll changes the sticky story.
     animated=browser.new_page(viewport={'width':1480,'height':1000},reduced_motion='no-preference')
-    animated.add_init_script("sessionStorage.setItem('leddisplay-intro-v1','1')")
+    animated.add_init_script("sessionStorage.setItem('leddisplay-intro-v3','1')")
     animated.on('pageerror',lambda e:errors.append(str(e)));animated.goto(BASE+'/',wait_until='domcontentloaded')
     animated.wait_for_selector('.hero-motion-ready')
     first=animated.locator('#hero-motion').evaluate('(e)=>e.toDataURL()');animated.wait_for_timeout(200)

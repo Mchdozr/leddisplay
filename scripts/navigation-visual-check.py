@@ -60,7 +60,7 @@ with sync_playwright() as p:
     assert page.locator('.brand-intro').is_visible()
     assert page.locator('main').evaluate('e=>e.inert')
     page.wait_for_timeout(700);page.screenshot(path='/workspace/leddisplay-marka-acilis.png')
-    page.wait_for_selector('.brand-intro',state='detached',timeout=4000)
+    page.wait_for_selector('.brand-intro',state='detached',timeout=9000)
     assert not page.locator('main').evaluate('e=>e.inert')
     assert page.evaluate('getComputedStyle(document.documentElement).overflow')!='hidden'
     page.reload();assert page.locator('.brand-intro').count()==0
