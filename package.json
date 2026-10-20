@@ -16,6 +16,7 @@
     "test:smtp": "python3 scripts/smtp-check.py",
     "test:navigation": "python3 scripts/navigation-visual-check.py",
     "test:experience": "node scripts/experience-check.mjs && python3 scripts/experience-browser-check.py",
-    "test:projects": "python3 scripts/projects-browser-check.py"
+    "test:projects": "python3 scripts/projects-browser-check.py",
+    "test:discovery": "python3 scripts/project-discovery-check.py"
   }
 }

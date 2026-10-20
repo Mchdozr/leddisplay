@@ -44,7 +44,13 @@ Ana sayfa LEDDISPLAY için üretilmiş fotogerçekçi küre LED mimari görselle
 
 Seçili projeler `data/projects.json` içindeki `featured` alanıyla belirlenir; tüm işler proje arşivinde listelenir. Mobilde projeler dikey akar. Hareket azaltma tercihi sabitlenen yatay geçişi kapatır. Proje detaylarında doğrulanmış bilgiler, uygulama kapsamı, büyütülebilir WebP galeri ve kullanıcı oynattığında yüklenen sessiz saha videoları bulunur. Dikey kaynak görseller ekranın tamamı görülecek şekilde sunulur. Ham faturalar/teklifler web köküne veya depoya eklenmez.
 
+Ana sayfadaki vitrin gerçek proje fotoğraflarını geniş bir alanda, açıklamaları ayrı bir bilgi panelinde sunar. Küçük fotoğraflı proje düğmeleri sabitlenen yatay geçişte doğrudan seçim sağlar. Dikey fotoğrafların tamamı korunur; yan boşluklar aynı görselin yumuşatılmış arka planıyla tamamlanır. Kısa pencerelerde, mobilde ve hareket azaltma açıkken içerik dikey akar.
+
+`/projeler` arşivi sektör filtreleri ve marka/proje/şehir araması içerir. `sektor` ve `ara` sorgu parametreleriyle seçim paylaşılabilir; arama Türkçe karakterleri ve marka adlarındaki kesme işaretlerini eşleştirir. JavaScript kapalıysa tüm projeler görünür kalır. Proje detaylarında önce aynı sektörden fotoğrafı bulunan işler önerilir; bu kartlar mevcut projeye ait saha medyası olarak sunulmaz.
+
 `npm test` sayfaları, arşiv dosyalarının korunduğunu, bağlantıları, proje medyasını ve katalog görünürlüğünün kapalı kaldığını doğrular. `npm run dev` açıkken `npm run test:browser` / `npm run test:projects`, 4 ekran genişliğinde genel sayfaları, galeri klavye kontrolünü, video yükleme davranışını, sabitlenen proje bölümünü ve e-posta göndermeyen taklit form akışını kontrol eder. `npm run test:contact`, ayrı bir yerel posta yakalama sistemiyle gerçek PHP gönderimini test eder; gerçek posta göndermez.
+
+`npm run test:discovery`, proje araması ve sektör filtrelerini, paylaşılan arama bağlantılarını, sonuç bulunamaması durumunu ve sıfırlamayı doğrular. Ayrıca 320–1440 px genişliklerinde görselli proje navigasyonunu, sabitlenen sahnedeki metinlerin sığmasını, ilgili proje bağlantılarını ve JavaScript/hareket azaltma seçeneklerini kontrol eder.
 
 Saha medyası olmayan projelerde `cover: null`, boş `gallery` / `videos` ve ölçüleri açıklayan `visual` kaydı kullanılır. Bu projeler tipografik kapsam kartıyla gösterilir; boş galeri, video bölümü veya başka projeden alınmış bir fotoğraf oluşturulmaz. Paylaşım görseli olarak marka logosu kullanılır. Ek uygulama tarihleri ana ekranın yapılış tarihinden ayrı etiketlenir.
 
