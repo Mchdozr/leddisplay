@@ -209,3 +209,8 @@ html.intro-playing{overflow:hidden}.brand-intro{position:fixed;inset:0;z-index:1
 .visual-round{right:7%;top:76%;width:48px;height:48px;border-color:#FFFFFF99;background:#EF6B2D;color:#101E34;transform:translateY(-50%);font-weight:700}
 .visual-round:hover{background:#FDBA74}
 @media(max-width:760px){.visual-caption{right:6%;top:46%;width:78vw;max-width:300px;padding:15px 16px 14px}.visual-caption strong{font-size:30px}.visual-round{right:6%;top:69%;width:44px;height:44px}}
+/* Transparent right-edge treatment for the hero callout. */
+.visual-caption{right:3%;padding:14px 0 14px 20px;background:transparent;backdrop-filter:none;border-right:2px solid #EF6B2D}
+.visual-round{right:3%;background:transparent;color:#FFFFFF;border-color:#FFFFFF99}
+.visual-round:hover{background:#EF6B2D;color:#101E34}
+@media(max-width:760px){.visual-caption{right:4%;padding-left:14px}.visual-round{right:4%}}
