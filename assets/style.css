@@ -239,3 +239,10 @@ html.intro-playing{overflow:hidden}.brand-intro{position:fixed;inset:0;z-index:1
 .visual-round{right:3%;background:transparent;color:#FFFFFF;border-color:#FFFFFF99}
 .visual-round:hover{background:#EF6B2D;color:#101E34}
 @media(max-width:760px){.visual-caption{right:4%;padding-left:14px}.visual-round{right:4%}}
+/* Keep the closing project prompt in the same light visual language as the page. */
+.home-contact-band{background:#F3F6F9;color:#101E34;border-top:1px solid #DCE3EA}
+.home-contact-band .eyebrow{color:#C45220}
+.home-contact-band h2{color:#101E34}
+.home-contact-band p{color:#536579}
+.home-contact-phone{color:#18334A}
+.home-contact-phone:hover{color:#C45220}
