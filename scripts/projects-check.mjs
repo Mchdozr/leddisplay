@@ -19,7 +19,7 @@ for(const p of projects){
 for(const file of readdirSync('.').filter(f=>f.endsWith('.html'))){
  const html=readFileSync(file,'utf8');
  assert.ok(!/(?:href|src|poster)="\/(?:urunler(?:[?"/])|urun-|assets\/(?:products|spec)\/)/i.test(html),`${file}: archived product access`);
- assert.ok(!/kiralama|kiralık|modül|nav-product-group|product-picker|data-compare-id/i.test(html),`${file}: disabled catalog content`);
+ assert.ok(!/kiralama|kiralık|rental|modül|nav-product-group|product-picker|data-compare-id/i.test(html),`${file}: disabled catalog content`);
  assert.ok(!/GKGD.*(?:USD|Birim Fiyat)|IBAN|119CFA6F|LED2026000000001/.test(html),`${file}: private invoice content`);
 }
 assert.ok(!/\/urun(?:ler|-)/.test(sitemap),'Archived catalog must stay out of sitemap');

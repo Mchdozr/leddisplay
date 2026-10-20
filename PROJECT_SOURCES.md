@@ -146,3 +146,95 @@ Kaynaklar: “others-1-1.zip”, “others-1-2.zip”, “others-1-3.zip”. Ü�
 - Gerçek saha videosu renkli/test içerikleri ve ekranın yerleşimini gösteriyor; hasta verisi, klinik bilgi veya sağlık hizmeti sonucu yayımlanmadı.
 
 Bu gruptan sekiz sessiz H.264 MP4, videolardan WebP kareleri ve iki optimize edilmiş gerçek saha fotoğrafı eklendi. Ana sayfadaki dört seçili proje, farklı uygulama türlerini göstermek için Ankara Dış İşleri, Borsa İstanbul, Ankara Colin’s ve Gordion AVM olarak güncellendi. Diğer projeler arşiv ve sonraki proje bağlantılarında korunuyor.
+
+## Others / beşinci dosya grubu
+
+Kaynaklar: “orhers-2-1.zip” (dosya adı bu şekilde), “others-2-2.zip”, “others-3-1.zip”, “others-3-2.zip”, “others-4-1.zip”, “others-4-2.zip”. Önceki büyük arşivlerin yerine gönderilen altı parça birlikte incelendi. 17 proje/şube eklendi; toplam 37 proje oldu. Belgeler, parça görselleri, paketli donanım, okunabilir cihaz notları ve açık ekran iç yapısı web kökü dışında tutuldu.
+
+### İstinyePark / Homend
+
+- Kullanıcı, bu uygulamanın mevcut İzmir Homend projesinden ayrı bir mağaza olduğunu açıkça doğruladı. Eski proje değiştirilmedi. Şehir kaydı doğrulanmadığından konum yalnızca İstinyePark olarak verildi.
+- E-fatura 24 Şubat 2026. GKGD P2.5 mm GOB yatay bantlar: 16 × 256, 16 × 160, 16 × 96, 16 × 64 cm; sırasıyla 1/2/3/1 adet. Colorlight X7M / X2M ve kurulum kayıtlı.
+- Çift taraflı ekran faturada 64 × 128, malzeme listesinde 128 × 16 olarak geçiyor. Bu yüzey için kesin ölçü yayımlanmadı. X7 MALL-IN-ONE yazımının X7M yorumu Excel ve malzeme listesiyle destekleniyor.
+- Fotoğraflardan aynı byte içeriğine sahip kopya ayıklandı; dört mağaza görüntüsü kullanıldı. Listeler ve fatura yayımlanmadı.
+
+### İTÜ / Maslak
+
+- Fatura ve Excel: 400 × 200 cm GKGD P2.9 dış mekân ekranı, Colorlight A200, kurulum. 8 m² alan fiziksel ölçüden hesaplandı.
+- E-fatura 16 Haziran 2026, proje geçmişi raporu 13 Haziran 2025 diyor. Tarih çelişkisi nedeniyle kesin yapılış tarihi kamuya açık sayfaya eklenmedi.
+- Kaynaktaki Rental kelimesi ekipman tanımında geçiyor; kamuya açık sayfa ekran ve kurulum projesini anlatıyor, kiralama teklifi/ürün kataloğu oluşturmuyor. Bu yaklaşım diğer aynı tanımlı ekipman projelerinde de uygulandı.
+
+### Koru Florya / Atasun Optik
+
+- E-fatura 31 Ağustos 2026; GKGD P2.6 HOB GOB, 100 × 225H ve 100 × 250H; Colorlight X2M ve kurulum.
+- Üç ekran videosu farklı bakışları ve saha testlerini gösteriyor. Dördüncü kayıt kontrol donanımı ve cihaz notlarına odaklandığından yayımlanmadı.
+
+### Çankırı / Atasay
+
+- E-fatura 8 Nisan 2026; 640 × 160H GKGD P4 Outdoor Front, Colorlight X2M, ulaşım ve kurulum. Excel aynı kapsamı destekliyor. Önden servis tanımı bu kaynağa dayanıyor.
+- Tek gerçek saha videosu mağaza cephesini ve ekranda çalışan içeriği gösteriyor.
+
+### DASDAS / Ataşehir
+
+- E-fatura 5 Haziran 2026; iki adet 500 × 300 cm GKGD P3.9 iç mekân ekran, NovaStar VX400, asma bağlantı donanımı ve kurulum. Toplam 30 m², iki adet 5 × 3 m yüzeyden hesaplandı.
+- Video dosyasında P3.91 geçse de kamuya açık teknik tanım faturadaki P3.9 esas alınarak verildi. İki gerçek fotoğraf sağ/sol ekran noktalarını doğruluyor.
+- Galeri kurulum ve görüntü testi olarak etiketlendi; son etkinlik sahnesi, özel içerik üretimi veya yük/sertifika onayı iddiası eklenmedi.
+
+### Forum İstanbul AVM
+
+- E-fatura 20 Mayıs 2026; P5.7 Outdoor 768 × 480 ve 576 × 384; P3.07 Outdoor 608 × 352; Colorlight X4M / X2M; konstrüksiyon ve kurulum.
+- Bu iş için bağımsız saha medyası bulunmuyor. Önceki İTÜ klasöründeki genel raporda geçen farklı Forum yemek alanı kaydı bu projeyle birleştirilmedi. Tipografik kapsam kartı kullanıldı.
+
+### Kentpark AVM / HIGH5
+
+- E-fatura 14 Mayıs 2026; P1.86 GOB 256 × 288 ve 576 × 256 yüzeyler. Bu ölçüler tek bir toplam ekran boyutuna dönüştürülmedi.
+- U formu gerçek mağaza videosuyla destekleniyor. Kontrol kabini videosundaki okunabilir notlar ve bilgisayar etiketleri yayımlanmadı; kesin kontrol modeli çıkarılmadı.
+
+### Bağdat Caddesi / NinjaShark
+
+- E-fatura 15 Mayıs 2026; 128 × 256H GKGD P2.5 GOB, Colorlight X2M ve kurulum. Parça listesi kamuya açık içeriğe alınmadı.
+- Gerçek video mağaza girişindeki ekranı gösteriyor. Dönüş metadata’sı uygulanarak yayın kopyası 576 × 1024 olarak üretildi.
+
+### PAWKO / Acıbadem ve Kozyatağı
+
+- Her şube için ayrı Excel var: GKGD P3.91 Outdoor, 300 × 100 ve kurulum. Fatura veya kesin uygulama tarihi yok; tarih üretilmedi.
+- Acıbadem fotoğraf adları 600 × 100 ve 250 × 100 / 45 derece diyor; Excel’de 300 × 100 var. Acıbadem için nihai ölçü ve kesin açı yayımlanmadı; fotoğrafların gösterdiği yatay ve köşede devam eden yüzey anlatıldı.
+- İki gerçek fotoğraf yalnızca Acıbadem sayfasına atandı. Kozyatağı şubesinde fotoğraf bulunmadığından kendi teknik kapsamı ve 300 × 100 cm form ölçüsüyle ayrı kayıt oluşturuldu.
+
+### Sweat Heaven Cafe
+
+- Excel: GKGD P1.86 GOB 224 × 192H, Colorlight X4M, kurulum. Şehir ve kesin tarih doğrulanmadı; eklenmedi. Ad kullanıcı klasöründeki yazımla korundu.
+- Çalışan ekranı gösteren video kullanıldı. Diğer video açık ekran arkasını, parça ve bağlantıları gösterdiği için yayımlanmadı. Kontrol kabini fotoğrafı da gereksiz cihaz ayrıntıları nedeniyle kullanılmadı.
+
+### Kuşadası AVM / Atasun Optik
+
+- E-fatura 7 Temmuz 2026; iki adet 75 × 275H GKGD P2.9 Outdoor, Colorlight X4M, ulaşım ve kurulum. İki ekran videosu farklı ekran noktalarını doğruluyor; görüntü testi olarak etiketlendi.
+- Kaynak akışlar zaten H.264 ve doğal dikey yönelimde; yeniden kodlama daha büyük dosya ürettiğinden ses/metadata temizlenip faststart ile yeniden paketlendi. Gereksiz dosya büyümesi önlendi.
+
+### Nevada / Yeşilköy
+
+- E-fatura 16 Haziran 2026; 400 × 150 cm GKGD P2.9 dış mekân ekranı, Colorlight A200, kurulum. Alan 6 m² olarak fiziksel ölçüden hesaplandı.
+- Bu klasördeki genel proje raporu İTÜ/Forum örneklerini içeriyor ve Nevada’ya ait ayrı ölçü/tarih kanıtı değil; Nevada için kullanılmadı. Tek gerçek mekân videosu yayımlandı.
+
+### Yeditepe Üniversitesi / Koşuyolu
+
+- E-fatura 20 Mayıs 2026; iki adet 128 × 256H GKGD P1.53 GOB, Colorlight X4M ve kurulum. İki ekran videosu kullanıldı.
+- Kontrol kabini videosu yayımlanmadı. Kaynakta doğrulanmayan bölüm, sağlık hizmeti veya klinik kullanım iddiası eklenmedi; kurumsal iç mekân olarak anlatıldı.
+
+### Zorlu Center / Yves Rocher
+
+- Excel: P2.5 GOB, 256 × 128 cm, Colorlight X4M, konstrüksiyon ve kurulum. Malzeme listesi 96 + 96 + 96 × 256 U kolon tarif ediyor. Kapsamlar aynı nihai ölçüyü vermediğinden kesin yüzey boyutu yayımlanmadı.
+- U geometrisi, P2.5 GOB, X4M ve yapı/kurulum kapsamı ortak desteklenen bilgiler olarak kullanıldı. Tarih ve saha fotoğrafı bulunmuyor; tipografik kapsam kartı kullanıldı. Marka adı standart Yves Rocher yazımıyla verildi.
+
+### Van / Atasay
+
+- E-fatura 29 Temmuz 2026; GKGD P2.6 HOB GOB 75 × 275H ve Colorlight X4M. Excel aynı kapsamı destekliyor.
+- İki JPEG tamamlanmış mağazayı değil, elle yazılmış bir listeyi ve paketli donanımı gösteriyor; ikisi de yayımlanmadı. Proje kendi teknik kapsamıyla sunuldu.
+
+### Yeditepe Üniversitesi / giriş ve kolon
+
+- 26 Ocak 2026 tarihli ilk kayıt ile 29 Ocak 2026 revize e-fatura aynı projenin sürümleri. Revize kayıt esas alındı; iki ayrı proje oluşturulmadı.
+- P1.53 GOB, 768 × 80H giriş ekranı ve 128 × 192H / 96 × 192H kolon yüzeyleri; Colorlight X6M / X8M; kurulum. Kolon yüzeyleri varsayımsal toplam en ölçüsüne dönüştürülmedi.
+- Giriş ve köşe kolon videoları kullanıldı. Açıkça parça gösteren JPEG ve kontrol kabini fotoğrafı yayımlanmadı.
+
+Bu gruptan 16 sessiz saha videosu ve sekiz optimize edilmiş mağaza/sahne fotoğrafı, videolardan alınmış WebP karelerle birlikte eklendi. Medyası olmayan dört proje için mevcut tipografik kapsam sunumu kullanıldı. Altı parçanın tamamı işlendi; önceki büyük arşiv kuyruğunda bekleyen dosya kalmadı.
