@@ -1,6 +1,6 @@
 # LEDDISPLAY
 
-Türkçe kurumsal LED ekran sitesi: 48 HTML sayfası, 31 belgeli ürün/kabin ailesi ve PHP üzerinden çalışan iletişim formu. Üretim sunucusunda Node.js veya veritabanı gerekmez. İletişim gönderimi için **PHP 8.1+ ve çalışan yerel posta servisi** gerekir.
+Gerçek projeler ve anahtar teslim uygulama odaklı Türkçe kurumsal LED ekran sitesi. Proje arşivi ve detayları `data/projects.json` üzerinden üretilir; iletişim formu PHP ile çalışır. Üretim sunucusunda Node.js veya veritabanı gerekmez. İletişim gönderimi için **PHP 8.1+ ve çalışan yerel posta servisi** gerekir.
 
 ## Geliştirme
 
@@ -17,9 +17,11 @@ npm run dev
 
 Kaynaklar:
 
-- `scripts/build.mjs`: iç sayfalar, ürün detayları ve HTML üretimi.
+- `scripts/build.mjs`: genel sayfalar, proje detayları ve HTML üretimi.
+- `scripts/projects.mjs`, `data/projects.json`: gerçek proje arşivi, kapsam, galeri ve saha videoları.
+- `PROJECT_SOURCES.md`: belgelerden çıkarılan bilgilerin doğrulama ve belirsizlik notları.
 - `scripts/home.mjs`: ana sayfa ve interaktif çözüm seçici.
-- `scripts/navigation.mjs`: klavye, hover ve dokunma destekli kategorili üst menü.
+- `scripts/navigation.mjs`: Projeler dahil üst menü; ürün kataloğu navigasyonu kapalı.
 - `scripts/footer.mjs`: kompakt masaüstü footer ve mobil açılır gruplar.
 - `scripts/product-gallery.mjs`: sabit boyutlu görsel galerisi ve büyütme penceresi.
 - `scripts/contact.mjs`: telefon, e-posta ve WhatsApp bağlantıları.
@@ -30,27 +32,23 @@ CSS/JS adresleri içerik hash'i taşır. Kaynak değişikliklerinden sonra build
 
 ## URL, ürün menüsü ve marka açılışı
 
-Kamuya açık sayfa adresleri `/urunler`, `/ic-mekan-led-ekran` ve `/urun-grand-air-ic-mekan` biçimindedir. Diskteki HTML dosyaları korunur. Üretimde Apache `mod_rewrite` ve `.htaccess` kuralları uzantısız adresleri bu dosyalardan sunar; eski `.html` adresleri sorgu parametreleri korunarak 301 ile yönlenir. `index.html` köke yönlenir. Site içi bağlantılar, canonical adresleri ve sitemap uzantısızdır. Nginx-only kurulumlarda aynı yönlendirme ve `try_files $uri $uri.html =404` davranışı ayrıca sunucu yapılandırmasında tanımlanmalıdır. `npm run dev` PHP router ile eşdeğer adresleri destekler.
+Kamuya açık sayfalar `/projeler`, `/proje-ankara-dis-isleri`, `/proje-izmir-homend` ve çözüm sayfalarıdır. Diskteki HTML dosyaları korunur; `.htaccess` ve geliştirme router'ı uzantısız adresleri destekler. Ürün kataloğu, eski ürün detayları, kiralama rotası ve orijinal ürün görselleri/PDF'lerine HTTP erişimi 404 ile kapalıdır. Teknik veriler ve dosyalar Git arşivinde kalır; menü, footer, iletişim formu veya genel sayfalar bu dosyalara bağlanmaz. Ürün rotaları sitemap'e eklenmez.
 
-Masaüstü Ürünler menüsü 31 modeli üç grupta listeler. Fareyle üzerine gelmek veya klavyeyle odaklamak sağdaki görsel/açıklama/incele bağlantısını günceller. Ürün fotoğrafı olmayan zemin kabininde başka bir ürünün görselini göstermek yerine kaynak fotoğrafının bulunmadığı belirtilir. Mobilde doğrudan ürün bağlantıları kullanılır. Beş çözüm sayfasında gerçek üretici fotoğrafları ve ilgili ürünler; katalogda görselli koleksiyon kartları yer alır.
+Nginx-only sunucularda `.htaccess` çalışmaz; eşdeğer arşiv erişim kuralları ve temiz URL davranışı nginx yapılandırmasına taşınmalıdır.
 
 Ana sayfanın özgün LEDDISPLAY açılış filmi 2,7 saniye sürer; sekme oturumunda bir kez gösterilir. Sağlanan logonun silüeti ışık taramasıyla soldan sağa belirir; LED zemini, yansıma ve lacivert/turuncu ışıklar markayı tamamlar. Yatay (1920 × 1080) ve dikey (1080 × 1920) WebM/MP4 sürümleri `assets/video/leddisplay-brand-intro-v3*` dosyalarındadır; yalnızca ekran yönüne uygun sürüm yüklenir. Atla düğmesi, Escape ve Tab ile kapanır. Hareket azaltma tercihinde veya JavaScript yokken gösterilmez; oynatma hatasında kapanır ve 8 saniyelik güvenlik süresi sayfanın engellenmesini önler. `scripts/render-brand-film.py` Python/Pillow/NumPy/ffmpeg ile filmi yeniden üretir; bunlar yalnızca üretim aracıdır, Plesk çalışma bağımlılığı değildir. Referans Xeron sayfası bu ortamdan HTTP 403 döndürdüğü için tamamı incelenemedi; kullanıcının paylaştığı referanslar esas alındı.
 
-`python3 scripts/navigation-visual-check.py` geliştirme sunucusu üzerinde temiz adresleri, eski adres yönlendirmelerini, altı sayfanın ürün görsellerini, 31 ürünün önizlemesini ve marka açılışının erişilebilir kapanma davranışını doğrular.
+## Gerçek proje deneyimi
 
-## Etkileşimli deneyimler
+Ana sayfa gerçek Ankara uygulama görüntüsü, masaüstünde sabitlenerek yatay ilerleyen proje hikâyeleri ve anahtar teslim süreç anlatımı içerir. Mobilde projeler dikey akar. Hareket azaltma tercihi sabitlenen yatay geçişi kapatır. Proje detaylarında doğrulanmış bilgiler, uygulama kapsamı, büyütülebilir WebP galeri ve kullanıcı oynattığında yüklenen üç sessiz saha videosu bulunur. Ham faturalar/teklifler web köküne veya depoya eklenmez.
 
-Ana sayfada `#urun-deneyimi` scroll anlatımı ve üretici fotoğrafına oturan dört etkileşimli nokta; `#ekran-planlayici` altında boyutlandırıcı ve piksel aralığı simülasyonu bulunur. Grand Air ürün detaylarında da kabin noktaları kullanılabilir. Yeni hero, harici video indirmeyen özgün bir Canvas ışık animasyonudur; mimari fotoğrafa geçiş ve durdurma/başlatma düğmeleri vardır. Sekme gizliyken veya alan görünmüyorken animasyon çalışmaz; hareket azaltma tercihinde duraklar.
+`npm test` sayfaları, arşiv dosyalarının korunduğunu, bağlantıları, proje medyasını ve katalog görünürlüğünün kapalı kaldığını doğrular. `npm run dev` açıkken `npm run test:browser` / `npm run test:projects`, 4 ekran genişliğinde genel sayfaları, galeri klavye kontrolünü, video yükleme davranışını, sabitlenen proje bölümünü ve e-posta göndermeyen taklit form akışını kontrol eder. `npm run test:contact`, ayrı bir yerel posta yakalama sistemiyle gerçek PHP gönderimini test eder; gerçek posta göndermez.
 
-Katalogdaki ve ürün detaylarındaki karşılaştırma düğmeleri en fazla üç ürün seçer. Modal tabloda yalnızca farklar gösterilebilir; seçimlerin tamamı iletişim formuna aktarılabilir. Sekme oturumunda sessionStorage sadece halka açık ürün kimliklerini tutar. LED ekranı/kabin boyutlandırıcı, üretici föylerinden türetilen 42 gerçek seçenek üzerinden ölçüyü birim katlarına yuvarlar, toplam adedi ve çözünürlüğü hesaplar. Varyantlar ayrı seçilir; dinamik piksel serisinde fiziksel piksel çözünürlüğü kullanılır. Çelişkili zemin föyü bu hesapta kullanılmaz. Çerçeve, taşıyıcı ve kurulum payları hesap dışıdır. Hesaplanan ölçü ve ürün, teklif formuna taşınır.
-
-Piksel simülasyonu açıklayıcı bir modeldir; gerçek göz/kamera testi veya kesin izleme mesafesi hesabı değildir. Tam ekran uygulama galerisi dört **konsept** sahnesi içerir ve müşteri referansı olarak sunulmaz. Klavye okları, Escape, kapatma düğmesi ve mobil kaydırma kullanılabilir. Sayfalar arası geçişler destekleyen tarayıcılarda yerel View Transitions API ile çalışır; ürün görseli karttan detay sayfasına taşınır. Bağlantı tıklamaları engellenmez; eski tarayıcılar normal gezinmeye devam eder. Hareket azaltma tercihi desteklenir.
-
-`assets/leddisplay-logo-navy.png`, kullanıcının paylaştığı lacivert ve şeffaf zeminli logodur. Üst menü, footer ve karşılama ekranında kullanılır. `npm run test:experience` hesaplamaları ve sekiz deneyimin tarayıcı davranışlarını kontrol eder; gerçek e-posta göndermez.
+Eski ürün araçlarının kaynakları teknik arşivdir; genel sayfalarda çalıştırılmaz veya gösterilmez. Kullanıcının lacivert logosu üst menüde, beyaz sürümü footer'da ve marka filmi karşılama ekranında korunur.
 
 ## İletişim formu
 
-Form, ziyaretçiyi sayfadan çıkarmadan `POST /api/contact.php` üzerinden bilgileri ve tüm seçilen ürünleri **info@leddisplay.com.tr** adresine yollar. Gönderici sabit olarak `LEDDISPLAY <info@leddisplay.com.tr>`; Reply-To doğrulanmış ziyaretçi e-postasıdır. SMTP şifresi veya diğer kimlik bilgileri repoya eklenmez. Özel SMTP ayar dosyası varsa PHPMailer 7.1.1 ile şifreli ve kimlik doğrulamalı SMTP kullanılır. Ayar dosyası henüz oluşturulmadıysa mevcut PHP `mail()` aktarımı korunur. SMTP yapılandırılmışken bağlantı/şifre/sertifika hatasında yerel `mail()` aktarımına geri dönülmez.
+Form, ziyaretçiyi sayfadan çıkarmadan `POST /api/contact.php` üzerinden proje bilgilerini **info@leddisplay.com.tr** adresine yollar. Gönderici sabit olarak `LEDDISPLAY <info@leddisplay.com.tr>`; Reply-To doğrulanmış ziyaretçi e-postasıdır. SMTP şifresi veya diğer kimlik bilgileri repoya eklenmez. Özel SMTP ayar dosyası varsa PHPMailer 7.1.1 ile şifreli ve kimlik doğrulamalı SMTP kullanılır. Ayar dosyası henüz oluşturulmadıysa mevcut PHP `mail()` aktarımı korunur. SMTP yapılandırılmışken bağlantı/şifre/sertifika hatasında yerel `mail()` aktarımına geri dönülmez.
 
 - GET isteği, yalnızca form gönderimi gerektiğinde oturum bağlı doğrulama anahtarı üretir.
 - Zorunlu alanlar, e-posta, uzunluklar ve ürünler sunucuda doğrulanır. Alıcı adresi ziyaretçi tarafından değiştirilemez.

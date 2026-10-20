@@ -6,15 +6,16 @@
   "scripts": {
     "build": "node scripts/build.mjs",
     "dev": "python3 scripts/dev.py",
-    "test": "node scripts/check.mjs",
+    "test": "node scripts/check.mjs && node scripts/projects-check.mjs",
     "package": "npm run build && npm test && python3 scripts/package.py",
-    "test:browser": "python3 scripts/browser-check.py && python3 scripts/catalog-check.py && python3 scripts/home-check.py && python3 scripts/ux-check.py && python3 scripts/product-check.py",
+    "test:browser": "python3 scripts/projects-browser-check.py",
     "test:contact": "python3 scripts/contact-check.py",
     "test:motion": "python3 scripts/motion-check.py",
     "test:showcase": "python3 scripts/showcase-check.py",
     "test:brand-film": "python3 scripts/brand-film-check.py",
     "test:smtp": "python3 scripts/smtp-check.py",
     "test:navigation": "python3 scripts/navigation-visual-check.py",
-    "test:experience": "node scripts/experience-check.mjs && python3 scripts/experience-browser-check.py"
+    "test:experience": "node scripts/experience-check.mjs && python3 scripts/experience-browser-check.py",
+    "test:projects": "python3 scripts/projects-browser-check.py"
   }
 }

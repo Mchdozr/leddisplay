@@ -27,7 +27,7 @@ def server(frontend=False):
         shutil.copy2(ROOT/'data/products.json',web/'data/products.json')
         if frontend:
             shutil.copy2(ROOT/'iletisim.html',web/'iletisim.html');(web/'assets').mkdir()
-            for name in ['style.css','app.js','favicon.svg']:
+            for name in ['style.css','projects.css','app.js','projects.js','experience.js','experience-core.js','leddisplay-logo-navy.png','favicon.svg']:
                 shutil.copy2(ROOT/'assets'/name,web/'assets'/name)
         outbox=folder/'outbox';outbox.mkdir();failure=folder/'reject-mail'
         capture=folder/'sendmail.py'
@@ -99,20 +99,20 @@ with server(frontend=True) as (url,outbox,failure):
         page=browser.new_page(viewport={'width':1440,'height':1000},reduced_motion='reduce')
         page.goto(url+'/iletisim.html',wait_until='domcontentloaded')
         page.locator('[name=name]').fill('Tarayıcı Testi');page.locator('[name=email]').fill('browser@example.com')
-        page.locator('[name=message]').fill('Çoklu ürün seçimi ile doğrudan gönderim testi.')
-        page.locator(f'input[name=products][value="{title1}"]').check();page.locator(f'input[name=products][value="{title2}"]').check()
+        page.locator('[name=message]').fill('Anahtar teslim mağaza uygulaması için doğrudan gönderim testi.')
+        assert page.locator('input[name=products]').count()==0
         failure.touch();page.get_by_role('button',name='Talebi gönder',exact=True).click()
         page.wait_for_function("document.querySelector('#form-status').classList.contains('form-status-error')")
         assert page.locator('#project-form').is_visible() and not page.locator('#contact-success').is_visible()
         assert page.locator('[name=name]').input_value()=='Tarayıcı Testi'
-        assert page.locator('input[name=products]:checked').count()==2
+        assert page.locator('input[name=products]').count()==0
         assert not list(outbox.iterdir())
         failure.unlink();page.get_by_role('button',name='Talebi gönder',exact=True).click()
         page.wait_for_function("!document.querySelector('#contact-success').hidden")
         assert not page.locator('#project-form').is_visible()
         assert page.url==url+'/iletisim.html'
         assert len(list(outbox.iterdir()))==1
-        captured=next(outbox.iterdir()).read_text();assert title1 in captured and title2 in captured
+        captured=next(outbox.iterdir()).read_text();assert 'Anahtar teslim mağaza uygulaması' in captured
         assert page.locator('#contact-reference').inner_text() in captured
         for width in [1440,768,390,360]:
             page.set_viewport_size({'width':width,'height':900});assert page.evaluate('document.documentElement.scrollWidth<=innerWidth')
@@ -122,4 +122,4 @@ with server(frontend=True) as (url,outbox,failure):
         assert page.locator('#project-form').is_visible() and page.locator('[name=name]').input_value()==''
         assert page.locator('input[name=products]:checked').count()==0
         browser.close()
-        print('Real PHP + Chromium: failed mail retains inputs; retry sends both products, stays on-page, shows matching reference, adapts to mobile and resets for a new request.')
+        print('Real PHP + Chromium: failed mail retains inputs; retry sends the project request, stays on-page, shows matching reference, adapts to mobile and resets for a new request.')

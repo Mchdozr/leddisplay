@@ -1,0 +1,52 @@
+[
+  {
+    "slug": "ankara-dis-isleri",
+    "name": "Ankara Dış İşleri",
+    "location": "Ankara",
+    "sector": "Kurumsal iç mekân",
+    "headline": "Kurumsal mekânda, tek yüzeyde güçlü görüntü.",
+    "summary": "360 × 202,5 cm ölçüsünde P1.25 COB LED ekran. Ekran, görüntü kontrolü ve saha kurulumu birlikte ele alınarak anahtar teslim uygulandı.",
+    "cover": "/assets/projects/ankara-dis-isleri-2.webp",
+    "coverAlt": "Ankara Dış İşleri projesinde duvara yerleştirilmiş COB LED ekranın saha görüntüsü",
+    "facts": [["Uygulama", "Anahtar teslim LED ekran"], ["Ekran teknolojisi", "GKGD P1.25 mm COB"], ["Görüntü alanı", "360 × 202,5 cm"], ["Ekran yüzeyi", "7,29 m²"], ["Görüntü yönetimi", "Colorlight kontrol sistemi"], ["Fatura tarihi", "7 Ocak 2026"]],
+    "intro": "Ankara Dış İşleri projesinde, kurumsal iç mekânın mimari düzenine yerleşen geniş bir LED görüntü yüzeyi oluşturuldu. Ahşap duvar kaplamasıyla çevrelenen ekran, mekân içinde tek bir odak noktası olarak konumlandırıldı. Proje; LED ekran tedariği, görüntü kontrol sistemi ve saha kurulumunu kapsayan anahtar teslim uygulama yaklaşımıyla gerçekleştirildi.",
+    "challenge": "Ekranın yalnızca teknik bir donanım olarak değil, kullanılacağı mekânın parçası olarak ele alınması gerekiyordu. Yakından izlenebilen bir iç mekânda görüntü ayrıntısı, ekranın en-boy oranı ve duvar yüzeyiyle ilişkisi aynı çözüm içinde değerlendirildi.",
+    "solution": "Projede GKGD P1.25 mm COB LED ekran kullanıldı. 360 × 202,5 cm ölçüsü, 16:9 en-boy oranında yaklaşık 7,29 m² görüntü alanı oluşturuyor. Colorlight görüntü kontrol sistemi ve kurulum hizmeti ekran tedariğiyle birlikte proje kapsamına alındı. Saha videosu, ekranın mekâna yerleştirilmiş ve hareketli görüntü gösterir hâlini belgeliyor.",
+    "delivery": "Ekran ve kontrol sistemi tek bir uygulama bütünlüğünde ele alındı; yerinde montajla görüntü yüzeyi mekâna kazandırıldı. Proje kaydı, LED ekranın yanında görüntü kontrol cihazını ve kurulum hizmetini de içeriyor. Böylece müşteriye yalnızca bir ekran teslimi değil, mekânda çalışan bir görüntüleme çözümü sunuldu.",
+    "scope": ["İç mekâna uygun ekran çözümünün planlanması", "P1.25 COB LED ekran tedariği", "Colorlight görüntü kontrol sistemi", "Sahada montaj ve ekranın yerleştirilmesi", "Görüntünün sahada çalıştırılması"],
+    "note": "7 Ocak 2026, fatura tarihidir; kesin montaj günü olarak sunulmamaktadır. Görüntü alanı, 360 × 202,5 cm ölçüsünden hesaplanmıştır.",
+    "gallery": [
+      {"image": "/assets/projects/ankara-dis-isleri-1.webp", "caption": "Mekâna yerleşen geniş görüntü yüzeyi", "alt": "Ahşap duvar yüzeyine entegre Ankara COB LED ekran"},
+      {"image": "/assets/projects/ankara-dis-isleri-2.webp", "caption": "Hareketli içerikle saha görünümü", "alt": "Ankara kurumsal iç mekân LED ekranında doğa görüntüsü"},
+      {"image": "/assets/projects/ankara-dis-isleri-4.webp", "caption": "16:9 ekranda görüntü uygulaması", "alt": "Ankara Dış İşleri projesindeki çalışan LED ekranın farklı görüntüsü"}
+    ],
+    "videos": [{"src": "/assets/projects/ankara-dis-isleri.mp4", "poster": "/assets/projects/ankara-dis-isleri-2.webp", "title": "Ankara Dış İşleri · ekranın sahadaki görünümü", "orientation": "landscape"}]
+  },
+  {
+    "slug": "izmir-homend",
+    "name": "İzmir Homend",
+    "location": "İzmir",
+    "sector": "Perakende & mağaza",
+    "headline": "Mağazanın her noktasında, markanın canlı dili.",
+    "summary": "Giriş ekranları ve mağaza içi kayan yazı yüzeyleri aynı uygulamada buluştu. Mağaza mimarisine uyarlanan LED ekranlar, saha montajıyla birlikte anahtar teslim ele alındı.",
+    "cover": "/assets/projects/izmir-homend-giris-2.webp",
+    "coverAlt": "İzmir Homend mağazasında ürün teşhir alanına entegre LED ekran ve kayan yazı uygulaması",
+    "facts": [["Uygulama", "Anahtar teslim mağaza LED çözümü"], ["Konum", "İzmir"], ["Teknik proje formu", "GKGD P2.5 mm GOB"], ["Kullanım alanları", "Giriş, teşhir ve kayan yazı"], ["Kontrol sistemi planı", "Colorlight X6 / X2M"], ["Saha kaydı", "Kurulum aşamasından 2 video"]],
+    "intro": "İzmir Homend projesinde mağaza girişi, teşhir alanları ve yatay dijital bantlar aynı görsel iletişim yaklaşımının parçaları olarak ele alındı. Amaç, mağaza içinde tek bir ekran noktasıyla sınırlı kalmayan; ürün anlatımına ve marka görünürlüğüne eşlik eden bir görüntüleme düzeni oluşturmaktı.",
+    "challenge": "Perakende alanında ekranların mimari düzenle, ürün yerleşimiyle ve ziyaretçi akışıyla birlikte düşünülmesi gerekir. Bu uygulamada farklı noktalardaki giriş ekranlarının ve dar yatay görüntü bantlarının bir arada yerleşmesi, her alan için ayrı bir ölçü ve konum değerlendirmesi gerektirdi.",
+    "solution": "Proje formunda GKGD P2.5 mm GOB LED ekranlar; farklı uzunluklarda kayan yazı alanları ve tek taraflı ekran yüzeyleri için tanımlanıyor. Görüntü kontrolü için Colorlight X6 ve X2M cihazları aynı formda yer alıyor. Saha videoları, mağaza içindeki ekran yerleşimlerini, dijital bantları ve devam eden montaj çalışmalarını gösteriyor.",
+    "delivery": "Ekran yüzeylerinin mekâna uyarlanması, görüntü kontrolünün planlanması ve saha montajı anahtar teslim uygulama kapsamında bir arada yürütüldü. Girişten mağaza içi teşhir alanlarına uzanan yerleşim, markanın farklı noktalarda içerik gösterebilmesine uygun bir dijital yüzey düzeni oluşturdu. Galerideki kayıtlar, bu çalışmanın kurulum aşamasını yansıtıyor.",
+    "scope": ["Mağaza içi ekran yerleşimlerinin planlanması", "Giriş ve teşhir alanları için LED yüzeyler", "Farklı uzunluklarda dijital kayan yazı alanları", "Görüntü kontrol sisteminin planlanması", "Yerinde montaj ve saha uygulaması"],
+    "note": "Teknik bilgiler proje formundaki kapsamı özetler. Arşivde kesin uygulama tarihini veya son teslim ölçülerini doğrulayan dolu bir fatura bulunmadığı için bu bilgiler yayımlanmamıştır. Videolar kurulum aşamasına aittir.",
+    "gallery": [
+      {"image": "/assets/projects/izmir-homend-giris-1.webp", "caption": "Giriş alanındaki ekran yerleşimi · kurulum aşaması", "alt": "İzmir Homend girişinde konumlandırılan dikey LED ekran"},
+      {"image": "/assets/projects/izmir-homend-giris-2.webp", "caption": "Teşhir alanı ve mağaza mimarisiyle birlikte LED ekran", "alt": "Homend mağazasında ahşap teşhir duvarındaki görüntü yüzeyi"},
+      {"image": "/assets/projects/izmir-homend-kayan-yazi-1.webp", "caption": "Mağaza içi dijital bantlar · saha montajı", "alt": "İzmir Homend mağazasındaki kayan yazı ekranlarının montajından görüntü"},
+      {"image": "/assets/projects/izmir-homend-kayan-yazi-2.webp", "caption": "Mağaza içindeki ekranların birlikte görünümü", "alt": "Mağaza içindeki farklı ekran alanları ve kurulum çalışmaları"}
+    ],
+    "videos": [
+      {"src": "/assets/projects/izmir-homend-giris.mp4", "poster": "/assets/projects/izmir-homend-giris-2.webp", "title": "İzmir Homend · giriş ve mağaza içi ekranlar", "orientation": "portrait"},
+      {"src": "/assets/projects/izmir-homend-kayan-yazi.mp4", "poster": "/assets/projects/izmir-homend-kayan-yazi-2.webp", "title": "İzmir Homend · kayan yazı ve saha montajı", "orientation": "portrait"}
+    ]
+  }
+]
