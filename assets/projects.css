@@ -51,6 +51,16 @@
 .reference-cover img{width:100%;height:100%;object-fit:cover;transition:transform .7s cubic-bezier(.22,1,.36,1)}
 .reference-cover.portrait-media,.project-scene.portrait-media{background:#E4EAF0}
 .reference-cover.portrait-media>img,.project-scene.portrait-media>img{object-fit:contain}
+.record-cover,.project-record-banner{background:#101E34;color:#FFF}
+.project-record-visual{height:100%;padding:36px;display:flex;flex-direction:column;justify-content:center;align-items:flex-start;background:radial-gradient(ellipse at 100% 100%,#24415D 0%,transparent 70%);min-width:0}
+.project-record-visual>span:first-child{font-size:10px;letter-spacing:1.8px;color:#CBD6E1}
+.project-record-visual>strong{font-size:clamp(30px,3vw,48px);line-height:1.2;letter-spacing:-1.5px;font-weight:500;margin:30px 0 18px;color:#FFF;max-width:90%}
+.project-record-visual>span:not(:first-child){font-size:17px;line-height:1.6;color:#FDBA74}
+.project-record-visual>small{font-size:13px;line-height:1.8;margin-top:14px;color:#D2DCE5;max-width:400px}
+.project-record-banner .project-record-visual{padding:40px;min-height:260px}
+.project-record-banner .project-record-visual>strong{margin-top:22px}
+.project-record-note{padding-top:0}
+#uygulama-kapsami{scroll-margin-top:110px}
 .reference-number{position:absolute;right:20px;bottom:20px;font-size:38px;line-height:1;color:#FFF;text-shadow:0 2px 15px #101E34}
 .reference-copy{padding:30px}
 .reference-copy h2{font-size:30px;letter-spacing:-1px;margin:14px 0}
@@ -101,6 +111,7 @@
 .project-videos.two-videos{grid-template-columns:repeat(2,minmax(0,1fr));max-width:880px;margin-inline:auto}
 .project-videos figure{margin:0;min-width:0}
 .project-videos .wide-video{grid-column:1/-1}
+.project-videos.two-videos .wide-video:first-child+figure:last-child{grid-column:1/-1;width:100%;max-width:430px;justify-self:center}
 .project-videos video{display:block;background:#101E34;width:100%;max-height:75svh;object-fit:contain;aspect-ratio:848/474}
 .project-videos video.portrait{aspect-ratio:464/832;max-height:720px}
 .project-videos figcaption,.project-photo-grid figcaption{font-size:13px;line-height:1.8;color:#52677E;margin-top:12px}

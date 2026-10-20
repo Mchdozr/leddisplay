@@ -57,6 +57,16 @@ with sync_playwright() as p:
         assert page.locator('[data-project-photo]').count()==len(project['gallery'])
         assert page.locator('.project-facts').inner_text().find('Fatura')==-1
         assert len({v['src'] for v in project['videos']})==len(project['videos'])
+        if not project.get('cover'):
+            assert page.locator('.project-record-banner').is_visible()
+            assert page.locator('.project-banner,.project-gallery-section,.project-video-section').count()==0
+            assert page.locator('meta[property="og:image"]').get_attribute('content').endswith('/assets/leddisplay-logo-navy.png')
+            page.locator('a[href="#uygulama-kapsami"]').click()
+            assert page.locator('#uygulama-kapsami').is_visible()
+    page.goto(BASE+'/proje-zorlu-center-gant')
+    assert 'Ek uygulama tarihi' in page.locator('.project-facts').inner_text()
+    assert '15 Mayıs 2026' in page.locator('.project-facts').inner_text()
+    assert 'Ana kolon ekranının kesin yapılış günü' in page.locator('.project-document-note').inner_text()
     page.set_viewport_size({'width':390,'height':844})
     page.goto(BASE+'/projeler');page.screenshot(path='/workspace/leddisplay-projeler-mobile.png',full_page=True)
     page.get_by_role('button',name='Menüyü aç',exact=True).click()

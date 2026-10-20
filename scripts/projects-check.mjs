@@ -4,14 +4,16 @@ const projects=JSON.parse(readFileSync('data/projects.json','utf8'));
 assert.equal(new Set(projects.map(p=>p.slug)).size,projects.length);
 const sitemap=readFileSync('sitemap.xml','utf8');
 for(const p of projects){
- assert.ok(p.imageSize.length===2&&p.imageSize.every(n=>n>0),`${p.slug}: image dimensions`);
+ if(p.cover)assert.ok(p.imageSize.length===2&&p.imageSize.every(n=>n>0),`${p.slug}: image dimensions`);
+ else{assert.ok(p.visual?.title,`${p.slug}: project scope illustration`);assert.equal(p.gallery.length,0);assert.equal(p.videos.length,0)}
  assert.ok(p.facts.every(([label])=>!label.toLocaleLowerCase('tr').includes('fatura')),`${p.slug}: date heading must be Yapılış tarihi`);
  const file=`proje-${p.slug}.html`;
  assert.ok(existsSync(file));
  const html=readFileSync(file,'utf8');
  assert.ok(html.includes(p.name));assert.ok(html.includes('Anahtar teslim'));
  assert.ok(sitemap.includes(`/proje-${p.slug}</loc>`));
- for(const path of [p.cover,...p.gallery.map(x=>x.image),...p.videos.flatMap(x=>[x.src,x.poster])])assert.ok(existsSync(path.slice(1)),`${file}: missing ${path}`);
+ for(const path of [p.cover,...p.gallery.map(x=>x.image),...p.videos.flatMap(x=>[x.src,x.poster])].filter(Boolean))assert.ok(existsSync(path.slice(1)),`${file}: missing ${path}`);
+ if(!p.cover){assert.ok(!html.includes('Gerçek saha kaydı /'));assert.ok(!html.includes('GERÇEK SAHA GÖRÜNTÜSÜ'));assert.ok(!html.includes('id="saha-galerisi"'))}
  for(const match of html.matchAll(/<video\b([^>]*)>/g)){assert.match(match[1],/controls/);assert.match(match[1],/preload="none"/);assert.ok(!match[1].includes('autoplay'))}
 }
 for(const file of readdirSync('.').filter(f=>f.endsWith('.html'))){

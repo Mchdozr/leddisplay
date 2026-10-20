@@ -44,6 +44,8 @@ Ana sayfa gerçek Ankara uygulama görüntüsü, masaüstünde sabitlenerek yata
 
 `npm test` sayfaları, arşiv dosyalarının korunduğunu, bağlantıları, proje medyasını ve katalog görünürlüğünün kapalı kaldığını doğrular. `npm run dev` açıkken `npm run test:browser` / `npm run test:projects`, 4 ekran genişliğinde genel sayfaları, galeri klavye kontrolünü, video yükleme davranışını, sabitlenen proje bölümünü ve e-posta göndermeyen taklit form akışını kontrol eder. `npm run test:contact`, ayrı bir yerel posta yakalama sistemiyle gerçek PHP gönderimini test eder; gerçek posta göndermez.
 
+Saha medyası olmayan projelerde `cover: null`, boş `gallery` / `videos` ve ölçüleri açıklayan `visual` kaydı kullanılır. Bu projeler tipografik kapsam kartıyla gösterilir; boş galeri, video bölümü veya başka projeden alınmış bir fotoğraf oluşturulmaz. Paylaşım görseli olarak marka logosu kullanılır. Ek uygulama tarihleri ana ekranın yapılış tarihinden ayrı etiketlenir.
+
 Eski ürün araçlarının kaynakları teknik arşivdir; genel sayfalarda çalıştırılmaz veya gösterilmez. Kullanıcının lacivert logosu üst menüde, beyaz sürümü footer'da ve marka filmi karşılama ekranında korunur.
 
 ## İletişim formu

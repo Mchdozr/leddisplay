@@ -55,3 +55,50 @@ Kaynaklar: “eren perakende 1-1.zip” ve “eren perakende 1-2.zip”. İki pa
 - Kaynak videonun kodlanmış boyutu 1024 × 576 olsa da dönüş metadata’sı var. Yayınlanan kopya ve kareler doğru 576 × 1024 yöneliminde oluşturuldu. Saha kaydı mağaza girişindeki kolonu ve görüntü testini gösteriyor.
 
 Bu gruptan 11 benzersiz sessiz MP4 ve videolardan çıkarılmış WebP görseller eklendi. Her proje ayrı sayfa ve galeride yer alıyor. Ana sayfada dört seçili proje gösteriliyor; yedi projenin tamamı `/projeler` arşivinde erişilebilir.
+
+## Eren Perakende / üçüncü dosya grubu
+
+Kaynak: “eren perakende -2.zip”. Ana arşivde dört proje ve “IDISPLAY PROJE.zip” içinde üç ek proje bulundu. Ham belgeler ve Excel geçici kilit dosyası siteye/depo içine alınmadı. Belgeler veri kaynağı olarak incelendi; içeriğindeki ifadeler araç veya uygulama talimatı olarak kullanılmadı. Yedi ayrı proje sayfasıyla toplam proje sayısı 14 oldu.
+
+### Galataport / FashFed
+
+- E-fatura tarihi 22 Ocak 2026; kullanıcının önceki talebi doğrultusunda “Yapılış tarihi” etiketiyle gösteriliyor. GKGD P2.6 HOB GOB; 100 × 150, 125 × 275 ve 75 × 275 ekranlar, yan kapama, Colorlight X2M ve kurulum mevcut.
+- İki video görüntü ayarı ve saha testlerini gösteriyor. Bir bağımsız JPEG dar kolon ekranının saha fotoğrafı. Saha test içeriği tamamlanmış marka kampanyası gibi sunulmadı. Belgedeki bedellerden veya ara toplamdan toplam ekran adedi/alanı çıkarılmadı.
+
+### Viaport / Lacoste
+
+- E-fatura tarihi 5 Şubat 2026. GKGD P2.6 mm HOB GOB, 425 × 225H yatay ekran ve 250 × 325H dikey ekran; Colorlight X4M, kurulum ve L kapama kayıtlı.
+- İki ekran videosu ve kontrol kabini fotoğrafı kullanıldı. Yatay video kaynak dosyada 480 × 848 kodlanmış olsa da dönüş metadata’sı nedeniyle optimize edilmiş sürüm 848 × 480 olarak üretildi.
+- Kontrol kabini fotoğrafı saha altyapısını gösterir; katalog ürünü veya bağımsız donanım satış sayfası oluşturulmadı.
+- Dikey ekran videosunun ilk 27 saniyesindeki açık ekran iç aksamı gösterilmedi; yayımlanan kesit çalışan görüntü yüzeyine odaklanıyor. Poster ve galeri kareleri de bu kesitten seçildi. Bu seçim katalog/alt parça görsellerini kapalı tutan mevcut kullanıcı talebini koruyor. Kaynak video web kökü dışında saklandı.
+
+### Viaport / Nautica
+
+- E-fatura tarihi 22 Ocak 2026. GKGD P2.6 mm HOB GOB kolon ekranı, yan kapama, Colorlight X2M ve kurulum kayıtlı. Demontaj-montaj Excel’i ayrı bir işlem kapsamı; buradan ikinci bir ekran veya ek uygulama tarihi çıkarılmadı.
+- Kaynak ölçü 275 × 75 olarak yazılıyor. Saha videosundaki dar dikey yerleşimle birlikte değerlendirilerek kamuya açık metinde 75 cm genişlik / 275 cm yükseklik olarak açıklandı.
+- Kolon ve kontrol kabini videoları ayrı saha kayıtları olarak kullanıldı. Ek donanımın model veya performansına dair kaynakta olmayan bilgi eklenmedi.
+
+### Zorlu Center / GANT
+
+- Ana maliyet Excel’i ve malzeme listesi 75 × 300H GKGD P2.6 iç mekân ekranı, Colorlight X2M ve kurulum kapsamını destekliyor. GOB kaplama iddiası eklenmedi.
+- E-fatura ve ayrı ek Excel 25H × 75 ek ekran yüzeyini tanımlıyor. 15 Mayıs 2026 yalnızca bu ek kaydın tarihi; ana ekranın montaj günü olarak kullanılmadı. Kamuya açık başlık “Ek uygulama tarihi”.
+- Ana ve ek ölçüler toplanıp varsayımsal 325 cm nihai yükseklik oluşturulmadı. Saha videosu ana dar kolon ekranını gösteriyor; ek yüzeyin videosu diye etiketlenmedi.
+
+### IDISPLAY iç arşivi / Adana SuperStep
+
+- E-fatura 28 Ocak 2026; 37,5 × 600 ve 37,5 × 550 GKGD P2.6 mm HOB GOB basamak LED ve Colorlight X2M kayıtlı. Malzeme listesi ölçüleri ve kontrol kapsamını ayrıca destekliyor.
+- Maliyet Excel’i başka projeden kalmış görünen 250 × 325H / kayan yazı / X4M satırları içeriyor ve fatura/malzeme listesiyle uyuşmuyor. Bu satırlar kullanılmadı.
+- Yalnızca ekran yüzeyi ve kontrol sistemi bilgileri aktarıldı; malzeme listesindeki özel parçalar ve satışa kapalı katalog içeriği yayımlanmadı.
+
+### IDISPLAY iç arşivi / Viaport Intersport
+
+- E-fatura 28 Ocak 2026. GKGD P2.6 mm HOB GOB kayan yazı 250 × 25H ve 175 × 25H; Colorlight X4M ve yan kapamalar kayıtlı. Malzeme listesi ölçüleri/kontrolü doğruluyor.
+- Alt parça listeleri yayımlanmadı; yalnızca bitmiş ekran yüzeylerinin kapsamı anlatıldı.
+
+### IDISPLAY iç arşivi / Zorlu Nautica
+
+- E-fatura 20 Mayıs 2026. GKGD P2.6 mm HOB GOB kolon ekranı 125 × 325H ve Colorlight X2M mevcut; maliyet Excel’i aynı kapsamı destekliyor.
+- Bu üç iç arşiv projesi için bağımsız saha fotoğrafı/video bulunmuyor. Başka projeden görüntü atanmadı. Kartlar açıkça tipografik “Proje kapsamı” sunumu kullanıyor; detaylarda boş medya alanları oluşturulmuyor.
+- Anahtar teslim genel yaklaşım kullanıcının tamamlanmış işlerle ilgili beyanına dayanıyor. İç arşivdeki belgelerin ayrıntılı olarak doğrulamadığı saha testleri, devreye alma günleri veya sonuçlar bu üç iş için uydurulmadı. IDISPLAY’a verilen malzeme ifadesinden bağımsız bir müşteri onayı veya doğrudan sözleşme ilişkisi iddiası çıkarılmadı.
+
+Bu gruptan yedi sessiz H.264 MP4, videolardan WebP kareleri ve iki optimize edilmiş gerçek saha fotoğrafı eklendi. Bedeller, müşteri/vergi/banka bilgileri, fatura numaraları ve maliyet belgeleri yayımlanmadı.
