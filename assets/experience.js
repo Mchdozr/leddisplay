@@ -45,15 +45,34 @@ if(hero){
  if(context){visual.classList.add('hero-motion-ready');$('.hero-motion-controls').hidden=false;resize();new ResizeObserver(resize).observe(visual);new IntersectionObserver(entries=>{inView=entries[0].isIntersecting;update()},{threshold:.05}).observe(visual);pause.addEventListener('click',()=>{paused=!paused;update()});scene.addEventListener('click',()=>{architecture=!architecture;update()});document.addEventListener('visibilitychange',update);motion.addEventListener('change',()=>{if(motion.matches)paused=true;update()})}
 }
 
-// Project stories travel horizontally while the section remains in the vertical page flow.
+// Pin the complete stage inside the tall section; only the inner track travels.
 const showcase=document.querySelector('.showcase-section');
 if(showcase){
- const track=$('.showcase-grid',showcase);let distance=0,start=0,raf=0;
- const reset=()=>{track.style.transform='';showcase.style.height='';track.style.width='';distance=0};
- const layout=()=>{if(innerWidth<901||motion.matches){reset();return}track.style.width='max-content';distance=Math.max(0,track.scrollWidth-innerWidth);const sectionRect=showcase.getBoundingClientRect(),trackRect=track.getBoundingClientRect();start=trackRect.top+scrollY-110;showcase.style.height=`${trackRect.top-sectionRect.top+distance+120}px`;update()};
- const update=()=>{if(innerWidth<901||motion.matches){reset();return}const progress=Math.max(0,Math.min(1,(scrollY-start)/Math.max(1,distance)));track.style.transform=`translate3d(${-distance*progress}px,0,0)`};
+ const stage=$('.showcase-stage',showcase),viewport=$('.showcase-viewport',showcase),track=$('.showcase-grid',showcase),cards=$$('.showcase-card',showcase),steps=$$('[data-project-step]',showcase);
+ let distance=0,start=0,raf=0,enabled=false,active=-1;
+ const update=()=>{
+  if(!enabled)return;
+  const progress=Math.max(0,Math.min(1,(scrollY-start)/Math.max(1,distance)));
+  track.style.transform=`translate3d(${-distance*progress}px,0,0)`;
+  showcase.style.setProperty('--project-progress',progress);
+  const index=Math.round(progress*(cards.length-1));
+  if(index!==active){active=index;cards.forEach((card,i)=>card.classList.toggle('is-current',i===index));steps.forEach((step,i)=>{if(i===index)step.setAttribute('aria-current','step');else step.removeAttribute('aria-current')});}
+ };
+ const layout=()=>{
+  enabled=innerWidth>=901&&innerHeight>=600&&!motion.matches;
+  showcase.classList.toggle('showcase-pinned',enabled);
+  if(!enabled){track.style.transform='';showcase.style.height='';showcase.style.removeProperty('--project-progress');cards.forEach(card=>card.classList.remove('is-current'));active=-1;return}
+  const headerHeight=$('.header').getBoundingClientRect().height;
+  showcase.style.setProperty('--project-top',`${headerHeight}px`);
+  distance=Math.max(0,track.scrollWidth-viewport.clientWidth);
+  start=showcase.getBoundingClientRect().top+scrollY-headerHeight;
+  showcase.style.height=`${stage.offsetHeight+distance}px`;
+  update();
+ };
  const onScroll=()=>{if(raf)return;raf=requestAnimationFrame(()=>{raf=0;update()})};
- addEventListener('resize',layout);addEventListener('scroll',onScroll,{passive:true});layout();
+ steps.forEach((step,index)=>step.addEventListener('click',()=>{if(enabled)scrollTo({top:start+distance*index/(cards.length-1),behavior:'smooth'})}));
+ viewport.addEventListener('focusin',event=>{const index=cards.indexOf(event.target.closest('.showcase-card'));if(enabled&&index>=0){viewport.scrollLeft=0;scrollTo({top:start+distance*index/(cards.length-1),behavior:'instant'})}});
+ addEventListener('resize',layout);addEventListener('scroll',onScroll,{passive:true});motion.addEventListener('change',layout);document.fonts.ready.then(layout);layout();
 }
 
 // Match annotations to the actual object-fit:contain image, including narrow viewports.
