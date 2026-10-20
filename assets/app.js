@@ -138,9 +138,9 @@ if(previewPanel){
 // A short, original LED-field brand sequence, once per tab. No video download or loading wait.
 function showBrandIntro(){
  if(!document.querySelector('.home-main')||matchMedia('(prefers-reduced-motion: reduce)').matches)return;
- try{if(sessionStorage.getItem('leddisplay-intro-v1'))return;sessionStorage.setItem('leddisplay-intro-v1','1')}catch{return}
+ try{if(sessionStorage.getItem('leddisplay-intro-v2'))return;sessionStorage.setItem('leddisplay-intro-v2','1')}catch{return}
  const intro=document.createElement('div');intro.className='brand-intro';intro.setAttribute('aria-label','LEDDISPLAY marka açılışı');
- intro.innerHTML='<canvas aria-hidden="true"></canvas><div class="intro-horizon" aria-hidden="true"></div><div class="intro-content"><span class="intro-kicker">GÖRÜNTÜYE YENİ BİR PERSPEKTİF</span><div class="intro-wordmark"><img src="/assets/leddisplay-logo-navy.png" alt="LEDDISPLAY" width="700" height="140"></div><p>Teknoloji. Tasarım. Etki.</p><div class="intro-progress" aria-hidden="true"><span></span></div></div><button type="button" class="intro-skip">Açılışı geç <svg class="inline-arrow" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M6 18 18 6M6 6h12v12" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></button>';
+ intro.innerHTML='<canvas aria-hidden="true"></canvas><div class="intro-horizon" aria-hidden="true"></div><div class="intro-content"><span class="intro-kicker">GÖRÜNTÜYE YENİ BİR PERSPEKTİF</span><div class="intro-wordmark" role="img" aria-label="LEDDISPLAY"><div class="intro-logo-stage"><img class="intro-logo-mark" src="/assets/leddisplay-logo-navy.png" alt="" width="2147" height="375"><img class="intro-logo-writing" src="/assets/leddisplay-logo-navy.png" alt="" width="2147" height="375" aria-hidden="true"><span class="intro-type-cursor" aria-hidden="true"></span></div></div><p>Teknoloji. Tasarım. Etki.</p><div class="intro-progress" aria-hidden="true"><span></span></div></div><button type="button" class="intro-skip">Açılışı geç <svg class="inline-arrow" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M6 18 18 6M6 6h12v12" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></button>';
  document.body.append(intro);document.documentElement.classList.add('intro-playing');
  const siblings=[...document.body.children].filter(el=>el!==intro&&!el.inert);siblings.forEach(el=>el.inert=true);
  const canvas=intro.querySelector('canvas');const ctx=canvas.getContext('2d');let frame;let finished=false;const start=performance.now();
@@ -151,6 +151,6 @@ function showBrandIntro(){
   for(let x=0;x<width;x+=spacing){for(let y=0;y<height;y+=spacing){const wave=Math.sin(x*.008+y*.005-t*2.4);const sweep=Math.exp(-Math.pow((x/width-t*.65+.4)*4,2));const center=Math.abs(y-height*.6)/height;const alpha=(.035+sweep*.28*(wave*.5+.5))*(.6+center);ctx.fillStyle=`rgba(${sweep>.4?'239,107,45':'131,158,185'},${alpha})`;ctx.beginPath();ctx.arc(x,y,1.1+sweep*.7,0,Math.PI*2);ctx.fill()}}
   frame=requestAnimationFrame(draw);
  }
- const timer=setTimeout(close,2200);intro.querySelector('button').addEventListener('click',close);document.addEventListener('keydown',onKey);addEventListener('resize',resize);addEventListener('pagehide',close,{once:true});resize();frame=requestAnimationFrame(draw);
+ const timer=setTimeout(close,3000);intro.querySelector('button').addEventListener('click',close);document.addEventListener('keydown',onKey);addEventListener('resize',resize);addEventListener('pagehide',close,{once:true});resize();frame=requestAnimationFrame(draw);
 }
 showBrandIntro();
