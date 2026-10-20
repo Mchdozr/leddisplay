@@ -14,7 +14,7 @@ for portrait in (False, True):
         assert len(streams) == 1 and streams[0]['codec_type'] == 'video'
         assert streams[0]['width'] == (1080 if portrait else 1920)
         assert streams[0]['height'] == (1920 if portrait else 1080)
-        assert 5.3 < float(metadata['format']['duration']) < 5.5
+        assert 2.6 < float(metadata['format']['duration']) < 2.8
 
 with sync_playwright() as p:
     browser = p.chromium.launch(executable_path='/usr/bin/chromium', args=['--no-sandbox'])
@@ -29,7 +29,7 @@ with sync_playwright() as p:
         assert film.evaluate('(e)=>e.muted && e.playsInline && !e.paused')
         assert ('-portrait.' in film.evaluate('(e)=>e.currentSrc')) == portrait
         assert page.locator('main').evaluate('(e)=>e.inert')
-        page.wait_for_function("document.querySelector('.intro-film')?.currentTime>3.4")
+        page.wait_for_function("document.querySelector('.intro-film')?.currentTime>1.7")
         page.screenshot(path=f'/workspace/leddisplay-intro-v3-{ "mobile" if portrait else "desktop"}.png')
         page.wait_for_selector('.brand-intro', state='detached', timeout=5000)
         assert not page.locator('main').evaluate('(e)=>e.inert')
@@ -50,10 +50,10 @@ with sync_playwright() as p:
 
     context = browser.new_context()
     page = context.new_page()
-    page.route('**/assets/video/*.webm', lambda route: route.abort())
+    page.route('**/assets/video/*.webm*', lambda route: route.abort())
     page.goto(BASE, wait_until='domcontentloaded')
     page.wait_for_function("document.querySelector('.intro-film')?.currentTime>.2")
-    assert page.locator('.intro-film').evaluate('(e)=>e.currentSrc.endsWith(".mp4")')
+    assert page.locator('.intro-film').evaluate('(e)=>new URL(e.currentSrc).pathname.endsWith(".mp4")')
     page.get_by_role('button', name='Açılışı geç').click()
     context.close()
 

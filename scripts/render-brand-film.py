@@ -12,7 +12,7 @@ from PIL import Image, ImageDraw, ImageFont, ImageFilter
 
 ROOT = Path(__file__).resolve().parents[1]
 OUT = ROOT / 'assets/video'
-FPS, DURATION = 30, 5.4
+FPS, DURATION = 30, 2.7
 LOGO = Image.open(ROOT / 'assets/leddisplay-logo-navy.png').convert('RGBA')
 LOGO = LOGO.crop(LOGO.getbbox())
 FONT = '/usr/share/fonts/truetype/dejavu/DejaVuSans.ttf'
@@ -147,7 +147,7 @@ class Film:
         command = ['ffmpeg', '-hide_banner', '-loglevel', 'error', '-y', '-f', 'rawvideo', '-vcodec', 'rawvideo', '-s', f'{self.w}x{self.h}', '-pix_fmt', 'rgb24', '-r', str(FPS), '-i', '-', '-an', '-c:v', 'libx264', '-preset', 'medium', '-crf', '20', '-pix_fmt', 'yuv420p', '-movflags', '+faststart', str(mp4)]
         process = subprocess.Popen(command, stdin=subprocess.PIPE)
         for index in range(round(FPS * DURATION)):
-            process.stdin.write(self.frame(index / FPS).tobytes())
+            process.stdin.write(self.frame(index / FPS * 2).tobytes())
             if index % 45 == 0:
                 print(f'{name}: frame {index}/{round(FPS * DURATION)}', flush=True)
         process.stdin.close()
