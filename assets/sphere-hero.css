@@ -1,0 +1,40 @@
+/* Photorealistic spherical LED visualization with a restrained surface light sweep. */
+.sphere-home-hero{background:#F8FAFC;isolation:isolate}
+.sphere-home-hero .corporate-hero-copy{width:min(850px,59%);min-height:calc(100svh - 86px);padding:110px 0 60px 8%}
+.sphere-home-hero .corporate-hero-copy>p{max-width:470px;font-size:16px;line-height:1.9}
+.sphere-home-hero .corporate-hero-visual{min-height:0;height:100%;overflow:hidden}
+.sphere-home-hero .corporate-hero-visual>img{object-position:70% 50%;animation:none;opacity:1;filter:none}
+.sphere-home-hero .corporate-hero-visual:after{background:linear-gradient(90deg,#F8FAFCED 0%,#F8FAFCB8 32%,#F8FAFC2E 52%,transparent 64%);pointer-events:none}
+.sphere-home-hero .hero-breadcrumb{right:240px}
+.sphere-motion-toggle{position:absolute;right:28px;top:26px;z-index:5;display:inline-flex;align-items:center;gap:9px;border:1px solid #101E342E;border-radius:2px;padding:10px 13px;background:#F8FAFCE8;color:#101E34;font:inherit;font-size:12px;line-height:1.5;cursor:pointer;backdrop-filter:blur(8px)}
+.sphere-motion-toggle:hover{background:#FFF;border-color:#101E3466}
+.sphere-motion-toggle:focus-visible{outline:2px solid #C45220;outline-offset:4px}
+.sphere-motion-toggle[hidden]{display:none}
+.sphere-motion-toggle svg{width:14px;height:14px;flex-shrink:0}
+.hero-led-glow{position:absolute;overflow:hidden;pointer-events:none;border-radius:50%;mix-blend-mode:screen;opacity:0;mask-image:radial-gradient(ellipse,#000 45%,#000B 72%,transparent 100%)}
+.hero-led-glow:before{content:'';position:absolute;inset:-20% -60%;background:linear-gradient(110deg,transparent 27%,#00D5EA00 38%,#2DE5ED65 46%,#FFFFFF40 50%,#38A9EF30 55%,transparent 66%);transform:translateX(-45%)}
+.sphere-motion-ready .hero-led-glow{opacity:.22}
+.sphere-motion-ready .hero-led-glow:before{animation:sphere-led-light 11s ease-in-out infinite}
+.sphere-is-still .hero-led-glow:before{animation-play-state:paused}
+.sphere-is-still .hero-led-glow{opacity:0}
+@keyframes sphere-led-light{0%,100%{transform:translateX(-34%);opacity:.35}50%{transform:translateX(34%);opacity:1}}
+@media(max-width:1100px) and (min-width:901px){.sphere-home-hero .corporate-hero-copy{width:61%}.sphere-home-hero h1{font-size:clamp(48px,5.2vw,70px)}}
+@media(max-width:900px){
+ .sphere-home-hero{--sphere-photo-height:clamp(300px,56.25vw,500px)}
+ .sphere-home-hero .corporate-hero-grid{min-height:0}
+ .sphere-home-hero .corporate-hero-copy{width:100%;min-height:0;padding:calc(var(--sphere-photo-height) + 8px) 6% 42px}
+ .sphere-home-hero .corporate-hero-visual{height:var(--sphere-photo-height);min-height:0;bottom:auto}
+ .sphere-home-hero .corporate-hero-visual>img{object-position:70% 50%}
+ .sphere-home-hero .corporate-hero-visual:after{background:linear-gradient(180deg,transparent 90%,#F8FAFC 100%)}
+ .sphere-home-hero .hero-breadcrumb{left:6%;right:200px;top:14px;font-size:9px;line-height:1.8;letter-spacing:.6px}
+ .sphere-motion-toggle{right:6%;top:20px;font-size:11px;padding:8px 10px}
+ .sphere-home-hero h1{font-size:clamp(42px,6vw,56px);letter-spacing:-2px;line-height:1.1;margin:18px 0}
+ .sphere-home-hero .corporate-hero-copy>p{max-width:620px;font-size:15px;line-height:1.85}
+ .sphere-home-hero .hero-assurances{margin-top:24px}
+}
+@media(max-width:600px){
+ .sphere-home-hero .hero-breadcrumb{right:150px;font-size:8px}
+ .sphere-home-hero .hero-assurances{display:none}
+ .sphere-home-hero .actions{margin-top:22px;gap:10px}
+ .sphere-home-hero .actions>.btn{padding:14px 18px;font-size:14px}
+}
