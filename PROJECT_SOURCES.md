@@ -102,3 +102,47 @@ Kaynak: “eren perakende -2.zip”. Ana arşivde dört proje ve “IDISPLAY PRO
 - Anahtar teslim genel yaklaşım kullanıcının tamamlanmış işlerle ilgili beyanına dayanıyor. İç arşivdeki belgelerin ayrıntılı olarak doğrulamadığı saha testleri, devreye alma günleri veya sonuçlar bu üç iş için uydurulmadı. IDISPLAY’a verilen malzeme ifadesinden bağımsız bir müşteri onayı veya doğrudan sözleşme ilişkisi iddiası çıkarılmadı.
 
 Bu gruptan yedi sessiz H.264 MP4, videolardan WebP kareleri ve iki optimize edilmiş gerçek saha fotoğrafı eklendi. Bedeller, müşteri/vergi/banka bilgileri, fatura numaraları ve maliyet belgeleri yayımlanmadı.
+
+## Others / dördüncü dosya grubu
+
+Kaynaklar: “others-1-1.zip”, “others-1-2.zip”, “others-1-3.zip”. Üç arşiv birlikte incelendi ve altı proje oluşturuldu; toplam 20 proje oldu. Ham arşivler, e-faturalar, malzeme listeleri ve maliyet dosyaları site kökü dışında tutuldu. Tarihler, kullanıcının önceki talebi doğrultusunda belge kaynaklı “Yapılış tarihi” olarak sunuluyor; bağımsız kesin montaj günü teyidi iddiası bulunmuyor.
+
+### Borsa İstanbul
+
+- E-fatura 11 Mayıs 2026. GKGD H1.25 Flexible ekran yüzeyi 128 × 224 cm, kurulum ve Colorlight X4M kayıtlı. Malzeme listesi fotoğrafı H1.25 Flexible GOB ve beş ekran sayısını ayrıca doğruluyor.
+- Faturada kabin kapsam dışı; sitede kabin/gövde üretimi veya tüm konstrüksiyonun LEDDISPLAY tarafından imal edildiği iddiası eklenmedi. Yüzey, kontrol ve uygulama kapsamı anlatıldı.
+- Kavisli yüzeyin yakından görünümü ve koridor yerleşimi iki gerçek videoyla sunuldu. Tam 360° kaplama, özel içerik üretimi veya kurumun resmî onayı gibi kaynakta olmayan iddialar kullanılmadı.
+- Malzeme listesi fotoğrafı ve içindeki kişi adı, parça listeleri ve yedek adetleri yayımlanmadı.
+
+### Bursa Atasay
+
+- Malzeme listesi PDF’i 64 × 160H ekran ölçüsü, P1.53 GOB (J503) ve X2M kapsamını destekliyor. Maliyet Excel’i 0 byte ve okunabilir bilgi içermiyor; buradan veri çıkarılmadı.
+- İki gerçek saha JPEG’i vitrin yanındaki dikey ekranın yerleşimini gösteriyor. Tarih veya video uydurulmadı. Kamuya açık içerikte alt parça adetleri yerine bitmiş ekran yüzeyi ve kontrol ihtiyacı anlatıldı.
+
+### Ankara / Colin’s
+
+- E-fatura 11 Mayıs 2026; GKGD H5 mm Outdoor, 384 × 288H kapsamı. Excel ve malzeme listesi X2M kontrol sistemini destekliyor; Excel’de Colorlight adı da bulunuyor.
+- Saha videosu mağaza cephesinde köşede devam eden dış mekân ekranının gece görünümünü gösteriyor. 384 × 288 ölçüsü her cepheye ayrı ayrı atanmadı ve toplam alan hesaplanmadı.
+- Hareketli içerik “hologram” veya özel/anamorfik içerik üretimi iddiasıyla tanıtılmadı. Ekranın kendisi ve mağaza cephesi arasındaki ilişki anlatıldı.
+
+### Balıkesir / kurumsal uygulama
+
+- Kaynak klasörü ve belgeler askerî bir uygulamayı tarif ediyor; kamuya açık sayfa şehir ve kurumsal iç mekân kapsamıyla adlandırıldı. Özel birim adı, tesis ayrıntıları veya resmî onay iddiası eklenmedi.
+- E-fatura 16 Mart 2026; GKGD P1.86 mm iç mekân 480 × 288H, Colorlight X8M, ulaşım ve kurulum kayıtlı. Malzeme listesindeki kısaltılmış X8 yerine faturadaki X8M esas alındı.
+- İki video da kurulu ekranın doğa/renkli test içeriğini gösteriyor. Dosya adı “P1.86 D518” olsa da bu kayıt ayrı katalog/alt parça görseli değil, kurulu ekran görüntüsü olarak incelendi. Alt parça listeleri yayımlanmadı.
+
+### Ankara / Gordion AVM
+
+- E-fatura 23 Mart 2026; GKGD P2.5 iç mekân 1488 × 832 cm ve 480 × 1600 cm; konstrüksiyon aynı kapsamda. Excel’in ana sayfası aynı ölçüleri destekliyor. Kaynakta cm açıkça yazdığı için ölçüler dönüştürülmeden aktarıldı; toplam alan/çözünürlük üretilmedi.
+- Malzeme fotoğrafı X26M işlemci diyor, dosya adı X40M verildi ifadesini içeriyor. Bu çelişki nedeniyle kamuya açık içerikte kesin kontrol cihazı modeli verilmedi.
+- Excel’in ikinci sayfasındaki 800 × 16 kayan yazı satırı ana proje kaydıyla desteklenmediğinden kullanılmadı.
+- Kaynak isimlerinde “Forum Gordion” kullanılmış; fatura Gordion diyor. Başka bir AVM markasıyla birleştirmeden kamuya açık ad “Gordion AVM · Ankara” olarak verildi.
+- İki video yatay ve yüksek dikey görüntü alanlarını gösteriyor. Dönüş metadata’sı uygulanarak yatay kaynak 752 × 448, dikey kaynak 480 × 848 olarak üretildi. Saha görüntülerine varsayımsal bire bir ölçü veya konstrüksiyon detayı atanmadı.
+
+### Acıbadem Altunizade
+
+- E-fatura 27 Nisan 2026; GKGD P1.25 mm COB, 101,5 × 180 cm, Colorlight X4M ve kurulum. Excel aynı kapsamı destekliyor.
+- Saha videosundaki yatay ekran oranıyla birlikte değerlendirilerek ölçü en × yükseklik düzeninde 180 × 101,5 cm olarak anlatıldı. 101,5 değeri varsayımsal 101,25’e çevrilmedi; çözünürlük veya tıbbi performans iddiası eklenmedi.
+- Gerçek saha videosu renkli/test içerikleri ve ekranın yerleşimini gösteriyor; hasta verisi, klinik bilgi veya sağlık hizmeti sonucu yayımlanmadı.
+
+Bu gruptan sekiz sessiz H.264 MP4, videolardan WebP kareleri ve iki optimize edilmiş gerçek saha fotoğrafı eklendi. Ana sayfadaki dört seçili proje, farklı uygulama türlerini göstermek için Ankara Dış İşleri, Borsa İstanbul, Ankara Colin’s ve Gordion AVM olarak güncellendi. Diğer projeler arşiv ve sonraki proje bağlantılarında korunuyor.
