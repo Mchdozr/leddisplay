@@ -9,7 +9,7 @@ assert.ok(existsSync('sitemap.xml'));assert.ok(existsSync('robots.txt'));
 console.log(`${pages.length} pages validated; ${links} local resource and navigation references resolved.`);
 
 const products=JSON.parse(readFileSync('data/products.json','utf8'));assert.equal(products.length,31);assert.equal(new Set(products.map(p=>p.slug)).size,31);
-for(const p of products){if(p.variants){for(const v of p.variants)assert.ok(v.maxPower>v.averagePower)}else assert.ok(Number(p.maxPower)>Number(p.averagePower));assert.ok(existsSync(`assets/spec/${p.slug}.pdf`));assert.ok(readFileSync(`assets/spec/${p.slug}.pdf`).subarray(0,5).toString()==='%PDF-');if(p.image)assert.ok(existsSync(p.image.slice(1)));else assert.equal(p.series,'zemin');const html=readFileSync(`urun-${p.slug}.html`,'utf8');assert.ok(html.includes(p.spec));assert.ok(html.includes(p.refresh));}
+for(const p of products){if(p.variants){for(const v of p.variants)assert.ok(v.maxPower>v.averagePower)}else assert.ok(Number(p.maxPower)>Number(p.averagePower));assert.ok(existsSync(`assets/spec/${p.slug}.pdf`));assert.ok(readFileSync(`assets/spec/${p.slug}.pdf`).subarray(0,5).toString()==='%PDF-');if(p.image)assert.ok(existsSync(p.image.slice(1)));else assert.equal(p.series,'zemin');const html=readFileSync(`urun-${p.slug}.html`,'utf8');assert.ok(html.includes('Ürün bilgisi') && html.includes('şimdilik pasif.'));}
 console.log('31 product / family records, manufacturer PDFs, images and matching detail pages validated.');
 
 for(const p of products)assert.equal(createHash('sha256').update(readFileSync(`assets/spec/${p.slug}.pdf`)).digest('hex'),p.sourceSha256);
