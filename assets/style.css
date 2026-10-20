@@ -165,15 +165,19 @@ html.intro-playing{overflow:hidden}.brand-intro{position:fixed;inset:0;z-index:1
 .brand-intro>.intro-skip{z-index:2;text-shadow:0 1px 12px #061321}
 /* The motion visual now runs behind the complete hero, including the left copy. */
 .corporate-hero-grid{position:relative;display:block;min-height:560px}
-.corporate-hero-copy{position:relative;z-index:2;min-height:560px;width:min(560px,54%);padding:72px 0 45px;display:flex;flex-direction:column;justify-content:center}
+.corporate-hero{position:relative;min-height:calc(100svh - 86px);padding:0;overflow:hidden}
+.corporate-hero>.wrap{max-width:none;padding:0}
+.corporate-hero .hero-breadcrumb{position:absolute;z-index:4;top:18px;left:8%;right:8%;padding:10px 0;color:#536579}
+.corporate-hero-grid{min-height:calc(100svh - 86px)}
+.corporate-hero-copy{position:relative;z-index:2;min-height:560px;width:min(640px,58%);padding:72px 0 45px 8%;display:flex;flex-direction:column;justify-content:center}
 .corporate-hero-visual{position:absolute;z-index:0;inset:0;min-height:560px}
 .corporate-hero-visual:after{background:linear-gradient(90deg,#EFF3F7F2 0%,#EFF3F7E6 24%,#EFF3F7A6 42%,#101E3440 66%,#101E34A6 100%),linear-gradient(180deg,#101E3410 25%,#101E34CC 100%)}
 .corporate-hero-visual .visual-tag{left:auto;right:24px}
 .corporate-hero-visual .hero-motion-controls{left:auto;right:24px}
 .visual-caption{left:auto;right:28px;max-width:280px;text-align:right}
 .visual-round{right:25px}
-@media(max-width:1000px){.corporate-hero-copy{width:min(600px,70%)}.corporate-hero-grid{min-height:600px}.corporate-hero-visual{min-height:600px}}
-@media(max-width:760px){.corporate-hero-grid{display:block;min-height:640px}.corporate-hero-copy{width:100%;min-height:640px;padding:55px 0 42px;justify-content:flex-start}.corporate-hero-visual{min-height:640px}.corporate-hero-visual:after{background:linear-gradient(180deg,#EFF3F7F5 0%,#EFF3F7E8 36%,#101E344D 66%,#101E34D9 100%)}.corporate-hero-visual .visual-tag{right:18px;left:auto}.corporate-hero-visual .hero-motion-controls{right:18px;left:auto}.visual-caption{left:20px;right:auto;bottom:82px;max-width:250px;text-align:left}.visual-round{bottom:23px;right:20px}}
+@media(max-width:1000px){.corporate-hero-copy{width:min(600px,70%)}.corporate-hero-grid{min-height:calc(100svh - 86px)}.corporate-hero-visual{min-height:calc(100svh - 86px)}}
+@media(max-width:760px){.corporate-hero{min-height:calc(100svh - 72px)}.corporate-hero .hero-breadcrumb{top:12px;left:6%;right:6%;padding:8px 0}.corporate-hero-grid{display:block;min-height:calc(100svh - 72px)}.corporate-hero-copy{width:100%;min-height:calc(100svh - 72px);padding:125px 6% 42px;justify-content:flex-start}.corporate-hero-visual{min-height:calc(100svh - 72px)}.corporate-hero-visual:after{background:linear-gradient(180deg,#EFF3F7F5 0%,#EFF3F7E8 36%,#101E344D 66%,#101E34D9 100%)}.corporate-hero-visual .visual-tag{right:18px;left:auto}.corporate-hero-visual .hero-motion-controls{right:18px;left:auto}.visual-caption{left:20px;right:auto;bottom:105px;max-width:250px;text-align:left}.visual-round{bottom:23px;right:20px}}
 /* Intro identity: the supplied mark appears first, then its exact wordmark types on. */
 .brand-intro .intro-wordmark{position:relative;display:block;width:min(760px,88vw);margin:25px auto 15px;padding:clamp(13px,2vw,22px) clamp(16px,3vw,34px);background:#FFF;animation:intro-logo-panel .5s cubic-bezier(.22,1,.36,1) both}
 .intro-logo-stage{position:relative;width:100%;aspect-ratio:2147/375;overflow:hidden}
