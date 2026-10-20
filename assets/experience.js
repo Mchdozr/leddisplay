@@ -45,6 +45,17 @@ if(hero){
  if(context){visual.classList.add('hero-motion-ready');$('.hero-motion-controls').hidden=false;resize();new ResizeObserver(resize).observe(visual);new IntersectionObserver(entries=>{inView=entries[0].isIntersecting;update()},{threshold:.05}).observe(visual);pause.addEventListener('click',()=>{paused=!paused;update()});scene.addEventListener('click',()=>{architecture=!architecture;update()});document.addEventListener('visibilitychange',update);motion.addEventListener('change',()=>{if(motion.matches)paused=true;update()})}
 }
 
+// Project stories travel horizontally while the section remains in the vertical page flow.
+const showcase=document.querySelector('.showcase-section');
+if(showcase){
+ const track=$('.showcase-grid',showcase);let distance=0,start=0,raf=0;
+ const reset=()=>{track.style.transform='';showcase.style.height='';track.style.width='';distance=0};
+ const layout=()=>{if(innerWidth<901||motion.matches){reset();return}track.style.width='max-content';distance=Math.max(0,track.scrollWidth-innerWidth);const sectionRect=showcase.getBoundingClientRect(),trackRect=track.getBoundingClientRect();start=trackRect.top+scrollY-110;showcase.style.height=`${trackRect.top-sectionRect.top+distance+120}px`;update()};
+ const update=()=>{if(innerWidth<901||motion.matches){reset();return}const progress=Math.max(0,Math.min(1,(scrollY-start)/Math.max(1,distance)));track.style.transform=`translate3d(${-distance*progress}px,0,0)`};
+ const onScroll=()=>{if(raf)return;raf=requestAnimationFrame(()=>{raf=0;update()})};
+ addEventListener('resize',layout);addEventListener('scroll',onScroll,{passive:true});layout();
+}
+
 // Match annotations to the actual object-fit:contain image, including narrow viewports.
 function alignHotspots(root,image,overlay){
  const align=()=>{if(!image.naturalWidth)return;const box=image.getBoundingClientRect(),parent=root.getBoundingClientRect(),style=getComputedStyle(image);const left=parseFloat(style.paddingLeft)||0,right=parseFloat(style.paddingRight)||0,top=parseFloat(style.paddingTop)||0,bottom=parseFloat(style.paddingBottom)||0;const availableW=box.width-left-right,availableH=box.height-top-bottom;const scale=Math.min(availableW/image.naturalWidth,availableH/image.naturalHeight),width=image.naturalWidth*scale,height=image.naturalHeight*scale;Object.assign(overlay.style,{left:(box.left-parent.left+left+(availableW-width)/2)+'px',top:(box.top-parent.top+top+(availableH-height)/2)+'px',width:width+'px',height:height+'px',right:'auto',bottom:'auto',maxWidth:'none',margin:'0'});};
