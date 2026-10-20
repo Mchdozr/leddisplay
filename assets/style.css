@@ -201,3 +201,11 @@ html.intro-playing{overflow:hidden}.brand-intro{position:fixed;inset:0;z-index:1
 @keyframes intro-type-cursor{0%{left:20.5%;opacity:1}99%{left:99.5%;opacity:1}100%{left:99.5%;opacity:0}}
 @keyframes intro-cursor-blink{50%{opacity:.2}}
 @media(max-width:600px){.brand-intro .intro-wordmark{width:92vw;padding:12px 14px}.intro-content{width:94vw}.intro-kicker{letter-spacing:1.6px}.intro-skip{right:20px}}
+/* Hero visual callout: a restrained editorial panel keeps the message legible without competing with the artwork. */
+.visual-caption{right:7%;top:53%;max-width:330px;width:min(330px,38vw);padding:18px 20px 16px;border-right:2px solid #EF6B2D;background:linear-gradient(90deg,#101E3480,#101E34C9);backdrop-filter:blur(8px);text-align:right;transform:translateY(-50%)}
+.visual-caption>span{display:block;font-size:10px;letter-spacing:2.4px;color:#FDBA74}
+.visual-caption strong{font-size:clamp(28px,3vw,44px);line-height:1.03;letter-spacing:-1.8px;margin:10px 0 12px}
+.visual-caption small{font-size:10px;color:#FFFFFFCC}
+.visual-round{right:7%;top:76%;width:48px;height:48px;border-color:#FFFFFF99;background:#EF6B2D;color:#101E34;transform:translateY(-50%);font-weight:700}
+.visual-round:hover{background:#FDBA74}
+@media(max-width:760px){.visual-caption{right:6%;top:46%;width:78vw;max-width:300px;padding:15px 16px 14px}.visual-caption strong{font-size:30px}.visual-round{right:6%;top:69%;width:44px;height:44px}}
