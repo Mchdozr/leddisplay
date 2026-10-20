@@ -38,9 +38,9 @@ with sync_playwright() as p:
     assert page.locator('#environment-filter').input_value()=='İç mekân'
     page.goto('http://localhost:3000/iletisim.html?urun=GOB%20P1.86%20İç%20Mekân%20LED%20Modül')
     assert page.locator('.page-hero').bounding_box()['height']<260
-    first=page.locator('input[name=products][value="GOB P1.86 İç Mekân LED Modül"]')
+    first=page.locator('input[name=products][value="GOB P1.86 İç Mekân LED Ekran"]')
     assert first.is_checked()
-    second=page.locator('input[name=products][value="H1.25 İç Mekân LED Modül"]')
+    second=page.locator('input[name=products][value="H1.25 İç Mekân LED Ekran"]')
     second.check()
     assert '2 ürün' in page.locator('#selected-products-count').inner_text()
     page.locator('#picker-search').fill('Grand Air')
@@ -52,7 +52,7 @@ with sync_playwright() as p:
     with page.expect_download() as download:
         page.get_by_role('button',name='Proje özetini indir').click()
     text=Path(download.value.path()).read_text(encoding='utf-8-sig')
-    assert 'GOB P1.86 İç Mekân LED Modül' in text and 'H1.25 İç Mekân LED Modül' in text
+    assert 'GOB P1.86 İç Mekân LED Ekran' in text and 'H1.25 İç Mekân LED Ekran' in text
     for width in [1440,768,390,360]:
         page.set_viewport_size({'width':width,'height':900})
         assert page.evaluate('document.documentElement.scrollWidth<=innerWidth'),f'contact overflow {width}'

@@ -20,7 +20,7 @@ with sync_playwright() as p:
  with page.expect_download() as d:page.get_by_role('link',name='Teknik föyü indir').click()
  assert Path(d.value.path()).read_bytes().startswith(b'%PDF-')
  page.get_by_role('link',name='Bu ürünü konuşalım').click()
- assert page.locator('input[name=products][value="H1.86 İç Mekân LED Modül"]').is_checked()
+ assert page.locator('input[name=products][value="H1.86 İç Mekân LED Ekran"]').is_checked()
  page.goto('http://localhost:3000/')
  for y in range(0,6500,500):
   page.evaluate('(y)=>window.scrollTo(0,y)',y)

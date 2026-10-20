@@ -13,18 +13,17 @@ with sync_playwright() as p:
     assert page.locator('.featured-product:visible').count() == 8
     page.get_by_role('button', name='Dış mekân', exact=True).click()
     assert page.locator('.featured-product:visible').count() == 3
-    page.get_by_role('button', name='Kiralık & esnek', exact=True).click()
-    assert page.locator('.featured-product:visible').count() == 2
+        assert page.locator('.featured-product:visible').count() == 2
     page.get_by_role('button', name='Öne çıkanlar', exact=True).click()
     assert page.locator('.featured-product:visible').count() == 8
     page.locator('#solution-finder [name=place]').select_option('outdoor')
-    page.locator('#solution-finder [name=project]').select_option('rental')
+    page.locator('#solution-finder [name=project]').select_option('curved')
     assert page.locator('#finder-link').get_attribute('href') == '/urun-grand-air-dis-mekan'
     page.locator('#solution-finder [name=project]').select_option('curved')
     assert 'Dış mekânda' in page.locator('#finder-description').inner_text()
     assert page.locator('#finder-link').get_attribute('href') == '/ozel-led-cozumleri'
     for place in ['indoor', 'outdoor']:
-        for project in ['fixed', 'rental', 'curved']:
+        for project in ['fixed', 'curved']:
             page.locator('#solution-finder [name=place]').select_option(place)
             page.locator('#solution-finder [name=project]').select_option(project)
             expected = ('/ozel-led-cozumleri' if project == 'curved' else

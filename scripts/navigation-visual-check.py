@@ -4,7 +4,7 @@ from playwright.sync_api import sync_playwright
 
 ROOT=Path(__file__).resolve().parents[1]
 BASE='http://127.0.0.1:3000'
-solutions=['ic-mekan-led-ekran','dis-mekan-led-ekran','kiralik-led-ekran','ozel-led-cozumleri','led-video-wall']
+solutions=['ic-mekan-led-ekran','dis-mekan-led-ekran','etkinlik-led-ekrani','ozel-led-cozumleri','led-video-wall']
 with sync_playwright() as p:
     browser=p.chromium.launch(executable_path='/usr/bin/chromium',args=['--no-sandbox'])
     context=browser.new_context(viewport={'width':1480,'height':900},reduced_motion='reduce')

@@ -61,7 +61,7 @@ def request(opener,url,body=None,method=None,headers=None):
     except urllib.error.HTTPError as error:response=error
     with response:return response.status,json.loads(response.read())
 
-title1='GOB P1.86 İç Mekân LED Modül';title2='H1.25 İç Mekân LED Modül'
+title1='GOB P1.86 İç Mekân LED Ekran';title2='H1.25 İç Mekân LED Ekran'
 with server() as (url,outbox,failure):
     opener=client();status,body=request(opener,url);assert status==200
     payload=dict(csrf=body['csrf'],requestId=str(uuid.uuid4()),name='Test Kullanıcı',company='Test Firma',email='visitor@example.com',
