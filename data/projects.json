@@ -1026,13 +1026,13 @@
   {
     "slug": "bursa-kent-meydani-superstep", "featured": true, "showcaseRank": 1,
     "showcaseName": "SuperStep · Bursa Kent Meydanı", "showcaseSummary": "Cephe boyunca devam eden dijital yüzeyler; gerçek saha görüntüleriyle belgelenen mağaza uygulaması.",
-    "imageSize": [816, 464], "stage": "Gerçek saha videoları", "highlights": ["Cephe LED yüzeyleri", "SuperStep"],
+    "imageSize": [2048, 1536], "stage": "Gerçek saha videoları", "highlights": ["Cephe LED yüzeyleri", "SuperStep"],
     "name": "Bursa Kent Meydanı · SuperStep", "location": "Bursa Kent Meydanı", "sector": "Perakende & mağaza",
     "headline": "Gece görünürlüğünü markanın parçasına dönüştüren dijital cephe.",
     "summary": "SuperStep mağazasında farklı yönlerden görünen LED yüzeyler, gece saha kayıtlarıyla birlikte belgelendi.",
-    "cover": "/assets/projects/bursa-kent-meydani-superstep-cephe.webp", "coverAlt": "Bursa Kent Meydanı SuperStep mağazasında gece çalışan LED cephe ekranı",
+    "cover": "/assets/projects/bursa-kent-meydani-superstep-1.webp", "coverAlt": "Bursa Kent Meydanı SuperStep mağazasında gece çalışan yatay ve dikey LED cephe yüzeyleri",
     "facts": [["Uygulama", "Mağaza LED yüzeyleri"], ["Konum", "Bursa Kent Meydanı"], ["Saha kaydı", "2 gerçek uygulama videosu"]],
-    "gallery": [{"image": "/assets/projects/bursa-kent-meydani-superstep-cephe.webp", "caption": "Mağaza cephesindeki çalışan LED ekran", "alt": "Bursa Kent Meydanı SuperStep mağazasındaki LED cephe yüzeyi"}, {"image": "/assets/projects/bursa-kent-meydani-superstep-dikey.webp", "caption": "Dikey LED yüzeyin gece görünümü", "alt": "Bursa Kent Meydanı SuperStep mağazasındaki dikey LED ekran"}],
+    "gallery": [{"image": "/assets/projects/bursa-kent-meydani-superstep-1.webp", "caption": "Cephede birlikte çalışan yatay ve dikey LED yüzeyler", "alt": "Bursa Kent Meydanı SuperStep mağazasında Samba içeriği gösteren yatay ve dikey LED ekranlar"}, {"image": "/assets/projects/bursa-kent-meydani-superstep-2.webp", "caption": "Gece görünümünde dikey LED cephe ekranı", "alt": "Bursa Kent Meydanı SuperStep mağazasında gece çalışan büyük dikey LED ekran"}],
     "videos": [{"src": "/assets/projects/bursa-kent-meydani-superstep-cephe.mp4", "poster": "/assets/projects/bursa-kent-meydani-superstep-cephe.webp", "title": "Bursa Kent Meydanı SuperStep · cephe LED yüzeyi", "orientation": "landscape"}, {"src": "/assets/projects/bursa-kent-meydani-superstep-dikey.mp4", "poster": "/assets/projects/bursa-kent-meydani-superstep-dikey.webp", "title": "Bursa Kent Meydanı SuperStep · dikey LED yüzeyi", "orientation": "portrait"}]
   },
   {
