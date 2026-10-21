@@ -58,7 +58,15 @@
 .site-page .section .list-row p{font-size:15px;line-height:1.85}
 .site-page .section .list-row>span{font-size:12px;color:#B34D22;font-weight:600}
 
-/* Solution art: a dimensional screen and a different light palette for each family. */
+/* Solution pages use real, colour-balanced field photography instead of generic artwork. */
+.page-cozumler .solution-card-media{position:relative;display:block;margin:-30px -30px 25px;min-height:225px;overflow:hidden;border-radius:12px 12px 0 0;background:#10263A}
+.page-cozumler .solution-card-media:after{content:'';position:absolute;inset:0;background:linear-gradient(180deg,#07192A0A 25%,#07192ABF);pointer-events:none}
+.page-cozumler .solution-card-media>img{display:block;width:100%;height:225px;object-fit:cover;object-position:center;filter:saturate(1.08) contrast(1.045) brightness(1.025);transition:transform .8s var(--ui-ease),filter .45s ease}
+.page-cozumler .solution-card-media>figcaption{position:absolute;z-index:1;left:16px;right:16px;bottom:14px;color:#FFF;font-size:10px;font-weight:700;letter-spacing:.55px;line-height:1.5;text-shadow:0 1px 14px #07192A}
+.page-cozumler .solution-card-media.portrait-source>img{object-position:center 35%}
+.page-cozumler a.card:hover .solution-card-media>img{transform:scale(1.045);filter:saturate(1.13) contrast(1.07) brightness(1.045)}
+.page-cozumler .card .solution-card-media+.number{display:inline-block;margin-top:0}
+/* The retained abstract fallback is used only when a future solution has no field imagery yet. */
 .page-cozumler .card .screen-art{margin:-30px -30px 25px;height:225px;border-radius:12px 12px 0 0;background:radial-gradient(ellipse at 55% 15%,#FFFFFF,var(--card-tint) 75%);border-bottom:1px solid #E6ECF1;perspective:900px}
 .page-cozumler .section .card:before{z-index:1;left:0;top:0;width:100%;height:3px;border-radius:12px 12px 0 0;background:var(--card-tone);opacity:.75}
 .site-page .screen-art .mini-screen{position:relative;border-radius:6px;border:6px solid #142B3E;box-shadow:8px 18px 22px #122E4426;transform:rotateY(-14deg) rotateX(3deg);transition:transform .65s var(--ui-ease),box-shadow .65s var(--ui-ease)}
@@ -71,8 +79,9 @@
 .site-page .solution-overview{align-items:center}
 .site-page .solution-overview>.screen-art{margin:0!important;width:100%;height:360px!important;border:1px solid var(--ui-line);border-radius:16px;background:radial-gradient(ellipse at 50% 20%,#F8FAFC,#E5EFF2);overflow:hidden}
 .site-page .solution-reference-visual{border-radius:16px;overflow:hidden;border:1px solid var(--ui-line);background:#F3F6F9;box-shadow:0 10px 32px #101E3408}
-.site-page .solution-reference-visual>img{display:block;aspect-ratio:16/11;object-fit:cover;width:100%;height:auto}
-.site-page .solution-reference-visual>figcaption{background:#FFF;padding:18px 20px;font-size:12px;line-height:1.8;color:var(--ui-muted);gap:12px}
+.site-page .solution-reference-visual>img{display:block;aspect-ratio:16/11;object-fit:cover;width:100%;height:auto;filter:saturate(1.08) contrast(1.04) brightness(1.02)}
+.site-page .solution-reference-visual.portrait-source>img{object-fit:contain;background:#E7EDF1}
+.site-page .solution-reference-visual>figcaption{display:flex;align-items:center;justify-content:space-between;background:#FFF;padding:18px 20px;font-size:12px;line-height:1.8;color:var(--ui-muted);gap:12px}
 .site-page .solution-reference-visual>figcaption>a{color:#A7431A;font-size:13px}
 .site-page .project-solution-cta{border:1px solid #DCE6E8;border-radius:14px;background:linear-gradient(110deg,#EFF5F5,#F8FAFC);padding:32px;gap:24px}
 .site-page .project-solution-cta h2{font-size:clamp(26px,2.7vw,36px);margin-bottom:0}
@@ -168,6 +177,8 @@
  .site-page .section{padding:52px 0}
  .site-page .section .card{padding:25px}
  .site-page .section a.card{padding-bottom:73px}
+ .page-cozumler .solution-card-media{margin:-25px -25px 24px;min-height:220px}
+ .page-cozumler .solution-card-media>img{height:220px}
  .page-cozumler .card .screen-art{margin:-25px -25px 24px}
  .site-page .project-solution-cta{padding:26px}
  .page-iletisim #project-form{padding:25px}
@@ -208,6 +219,8 @@
  .site-page .section .card p{font-size:15px}
  .site-page .section .card:before{left:25px}
  .site-page main:not(.home-main) .grid{gap:22px}
+ .page-cozumler .solution-card-media{height:220px;margin:-25px -25px 23px}
+ .page-cozumler .solution-card-media>img{height:220px}
  .page-cozumler .card .screen-art{height:220px;margin:-25px -25px 23px}
  .page-cozumler .section .card:before{left:0}
  .site-page .solution-overview>.screen-art{height:280px!important;border-radius:12px}
@@ -253,7 +266,7 @@
 }
 @media(prefers-reduced-motion:reduce){
  .site-page *, .site-page *:before,.site-page *:after{scroll-behavior:auto}
- .site-page .btn,.site-page .btn>span,.site-page .header .navlinks>a:after,.site-page .section .card,.site-page .section .card .arrow,.site-page .screen-art .mini-screen,.site-page .section .faq,.site-page .section .faq summary:after{transition:none}
+ .site-page .btn,.site-page .btn>span,.site-page .header .navlinks>a:after,.site-page .section .card,.site-page .section .card .arrow,.page-cozumler .solution-card-media>img,.site-page .screen-art .mini-screen,.site-page .section .faq,.site-page .section .faq summary:after{transition:none}
  .site-page .btn:hover,.site-page .btn:hover>span,.site-page .section a.card:hover,.site-page .section a.card:hover .arrow{translate:none;transform:none}
  .site-page .screen-art .mini-screen,.page-cozumler a.card:hover .mini-screen{transform:none}
 }
