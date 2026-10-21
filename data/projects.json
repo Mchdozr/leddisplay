@@ -1,7 +1,7 @@
 [
   {
     "slug": "ankara-dis-isleri",
-    "featured": true,
+    "featured": false,
     "imageSize": [848, 474],
     "highlights": ["P1.25 COB", "360 × 202,5 cm"],
     "name": "Ankara Dış İşleri",
@@ -121,7 +121,7 @@
   },
   {
     "slug": "antalya-fenix-superstep",
-    "featured": false,
+    "featured": true,
     "showcaseName": "SuperStep · Antalya",
     "showcaseSummary": "Üst kotta ring, alt kotta basamak ve kayan yazı. Özel ölçülü LED yüzeyler, görüntü kontrolü ve saha montajıyla birlikte uygulandı.",
     "imageSize": [478, 850],
@@ -425,6 +425,32 @@
     ]
   },
   {
+    "slug": "bursa-ozdilek",
+    "imageSize": [832, 464],
+    "stage": "Saha uygulaması ve görüntü testi",
+    "highlights": ["P1.86 GOB", "İç mekân LED ekran"],
+    "name": "Bursa Özdilek",
+    "location": "Bursa",
+    "sector": "Kurumsal & mimari",
+    "headline": "Mekân ölçeğinde, kesintisiz bir görüntü yüzeyi.",
+    "summary": "Bursa Özdilek uygulamasında geniş yatay LED ekran, sahada hareketli içerikle görüntülendi. P1.86 GOB ekran teknolojisine ait güncel saha kaydı, uygulamanın çalışan hâlini gösteriyor.",
+    "cover": "/assets/projects/bursa-ozdilek-1.webp",
+    "coverAlt": "Bursa Özdilek uygulamasında geniş yatay LED ekranın sahadaki görünümü",
+    "facts": [["Uygulama", "İç mekân LED ekran"], ["Ekran teknolojisi", "P1.86 GOB"], ["Konum", "Bursa Özdilek"], ["Saha kaydı", "Güncel uygulama videosu"]],
+    "intro": "Bursa Özdilek uygulamasında geniş bir yatay LED görüntü yüzeyi mekânın ana odağına yerleştirildi. Güncel saha kaydı, ekranın ortam içindeki ölçeğini ve hareketli içerikle çalışmasını doğrudan gösteriyor.",
+    "challenge": "Geniş bir görüntü yüzeyinin mekân içinde dengeli görünmesi için ekranın yerleşimi, görüş yönleri ve içerikle kurduğu ilişki birlikte değerlendirilmelidir. Bu uygulamada ekran, çevresindeki mimari düzenle birlikte tek bir odak noktası oluşturacak şekilde ele alındı.",
+    "solution": "Projede P1.86 GOB LED ekran teknolojisi kullanıldı. Güncel saha videosu, yatay görüntü yüzeyinin hareketli içerikle çalışmasını ve mekândaki gerçek görünümünü belgeliyor. Ölçü, kontrol sistemi ve yapılış tarihine dair doğrulanmış bir kayıt paylaşılmadığı için bu bilgiler yayımlanmamıştır.",
+    "delivery": "LEDDISPLAY uygulamasında ekran çözümü, sahada çalışan bir görüntü alanı olarak ele alındı. Video kaydı, uygulamanın devredeki gerçek durumunu gösteriyor; teknik kapsam yalnızca doğrulanabilen bilgilerle sunuluyor.",
+    "scope": ["Mekâna uygun yatay LED görüntü yüzeyi", "P1.86 GOB ekran teknolojisi", "Sahada görüntü testi ve çalışan ekran kaydı"],
+    "note": "Bu sayfadaki teknik bilgi, kullanıcı tarafından iletilen video dosyasının adı ve gerçek saha görüntüsüyle doğrulanabilen kapsamla sınırlıdır. Kesin ölçü ve yapılış tarihi eklenmemiştir.",
+    "videoIntro": "Bursa Özdilek uygulamasındaki geniş yatay ekranın hareketli içerikle çalışmasını gösteren güncel saha videosu.",
+    "galleryIntro": "Güncel saha videosundan alınan gerçek uygulama karesi.",
+    "gallery": [
+      {"image": "/assets/projects/bursa-ozdilek-1.webp", "caption": "Geniş yatay LED ekran · saha görüntüsü", "alt": "Bursa Özdilek uygulamasında hareketli içerikle çalışan geniş LED ekran"}
+    ],
+    "videos": [{"src": "/assets/projects/bursa-ozdilek.mp4", "poster": "/assets/projects/bursa-ozdilek-1.webp", "title": "Bursa Özdilek · P1.86 GOB ekranın güncel saha görüntüsü", "orientation": "landscape"}]
+  },
+  {
     "slug": "bursa-atasay",
     "name": "Bursa · Atasay",
     "location": "Bursa",
@@ -565,9 +591,10 @@
     "gallery": [
       {"image": "/assets/projects/acibadem-altunizade-1.webp", "caption": "Yatay görüntü yüzeyinin mekândaki görünümü", "alt": "Acıbadem Altunizade iç mekânında duvara yerleştirilen LED ekran"},
       {"image": "/assets/projects/acibadem-altunizade-2.webp", "caption": "Farklı renklerle saha görüntü testi", "alt": "Acıbadem Altunizade COB LED ekranında renkli test içeriği"},
-      {"image": "/assets/projects/acibadem-altunizade-3.webp", "caption": "Görüntü yüzeyinin yakından görünümü", "alt": "Acıbadem Altunizade iç mekân LED ekranının farklı içerikle yakın görünümü"}
+      {"image": "/assets/projects/acibadem-altunizade-3.webp", "caption": "Görüntü yüzeyinin yakından görünümü", "alt": "Acıbadem Altunizade iç mekân LED ekranının farklı içerikle yakın görünümü"},
+      {"image": "/assets/projects/acibadem-altunizade-4.webp", "caption": "Güncel saha kaydından ekranın mekândaki görünümü", "alt": "Acıbadem Altunizade iç mekân LED ekranında renkli görüntü içeriği"}
     ],
-    "videos": [{"src": "/assets/projects/acibadem-altunizade.mp4", "poster": "/assets/projects/acibadem-altunizade-2.webp", "title": "Acıbadem Altunizade · P1.25 COB ekranın saha görüntüsü", "orientation": "portrait"}]
+    "videos": [{"src": "/assets/projects/acibadem-altunizade.mp4", "poster": "/assets/projects/acibadem-altunizade-4.webp", "title": "Acıbadem Altunizade · P1.25 COB ekranın güncel saha görüntüsü", "orientation": "portrait"}]
   },
   {
     "slug": "istinyepark-homend",

@@ -238,3 +238,17 @@ Kaynaklar: “orhers-2-1.zip” (dosya adı bu şekilde), “others-2-2.zip”, 
 - Giriş ve köşe kolon videoları kullanıldı. Açıkça parça gösteren JPEG ve kontrol kabini fotoğrafı yayımlanmadı.
 
 Bu gruptan 16 sessiz saha videosu ve sekiz optimize edilmiş mağaza/sahne fotoğrafı, videolardan alınmış WebP karelerle birlikte eklendi. Medyası olmayan dört proje için mevcut tipografik kapsam sunumu kullanıldı. Altı parçanın tamamı işlendi; önceki büyük arşiv kuyruğunda bekleyen dosya kalmadı.
+
+## Güncel saha videoları
+
+Kaynaklar: “Bursa Özdilek p1.86 gob.zip” ve “Acıbadem hastanesi p1.25 cob.zip”. Ham ZIP dosyaları web köküne eklenmedi; yalnızca kullanıcı tarafından iletilen gerçek saha videoları ve videolardan alınan WebP kareleri yayınlandı.
+
+### Bursa Özdilek
+
+- Dosya adı Bursa Özdilek ve P1.86 GOB bilgisini taşıyor; video, geniş yatay ekranın hareketli içerikle çalıştığını gösteriyor.
+- Ayrı fatura, teknik form, ölçü veya tarih paylaşılmadığı için bunlar yayımlanmadı. Bursa Atasay kaydıyla ilişkilendirilebilecek bir kanıt olmadığı için mevcut kayıt korunarak ayrı proje oluşturuldu.
+
+### Acıbadem Altunizade
+
+- Kullanıcının ilettiği yeni video, mevcut P1.25 COB uygulamasının güncel saha kaydı olarak eski yayımlanmış videonun yerine kullanıldı.
+- Önceki doğrulanmış teknik bilgiler ve yapılış tarihi değiştirilmedi; yeni videodan bir WebP kare galeriye eklendi.
