@@ -91,7 +91,11 @@ if(productGroup&&productToggle){
  document.addEventListener('keydown',e=>{if(e.key==='Escape'&&productGroup.classList.contains('is-open')){setProductMenu(false);productToggle.focus()}});
  toggle?.addEventListener('click',()=>{if(toggle.getAttribute('aria-expanded')==='false')setProductMenu(false)});
 }
-if(!homeRoot)observeEntryMotion(document.querySelectorAll('.reveal'));
+if(!homeRoot){
+ const interiorEntries=document.querySelectorAll('.reveal,.section .card:not(.reveal),.solution-overview>*,.project-archive-tools,.project-facts,.project-editorial>aside,.project-chapter,.project-scope,.project-videos>figure,.project-photo-grid>figure,.related-project-card,.contact-intro,.contact-methods,#project-form');
+ observeEntryMotion(interiorEntries);
+ document.querySelectorAll('.page-bilgi-merkezi .faq,.page-cozumler .faq').forEach(details=>details.addEventListener('toggle',()=>{if(details.open)animateEntry(details.querySelector('p'),0,5)}));
+}
 
 
 

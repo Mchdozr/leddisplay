@@ -52,6 +52,10 @@ Ana sayfadaki vitrin gerçek proje fotoğraflarını geniş bir alanda, açıkla
 
 `npm run test:discovery`, proje araması ve sektör filtrelerini, paylaşılan arama bağlantılarını, sonuç bulunamaması durumunu ve sıfırlamayı doğrular. Ayrıca 320–1440 px genişliklerinde görselli proje navigasyonunu, sabitlenen sahnedeki metinlerin sığmasını, ilgili proje bağlantılarını ve JavaScript/hareket azaltma seçeneklerini kontrol eder.
 
+Genel görsel düzen `assets/site-polish.css`, ana sayfanın içerik bölümleri `assets/home-polish.css`, proje arşivi ve detayları `assets/project-polish.css` ile tamamlanır. Sayfalara eklenen `site-page` / `page-*` sınıfları stilleri ilgili alanlarla sınırlar; yalnız gereken ek stil dosyası yüklenir. Ortak dosyalarda beyaz yüzeyler, lacivert tipografi, teal teknik vurgular ve turuncu işlem düğmeleri kullanılır. Mobil iletişim sayfasında proje formu giriş yazısının ardından gelir; iletişim yöntemleri devamında korunur. Ekrana girişler tam opaklıkta kısa yukarı hareket kullanır, hareket azaltma tercihinde kapatılır.
+
+Yalnız görsel düzenleme yapılan bir sürümde `python3 scripts/visual-content-check.py <önceki-commit>` komutu üretilen HTML metinlerini, bağlantıları, form alanlarını ve medya kimliklerini önceki sürümle karşılaştırır; proje verileri ve iletişim arka ucunun değişmediğini de doğrular. Sonraki içerik güncellemelerinde karşılaştırılacak commit ayrıca seçilmelidir.
+
 Saha medyası olmayan projelerde `cover: null`, boş `gallery` / `videos` ve ölçüleri açıklayan `visual` kaydı kullanılır. Bu projeler tipografik kapsam kartıyla gösterilir; boş galeri, video bölümü veya başka projeden alınmış bir fotoğraf oluşturulmaz. Paylaşım görseli olarak marka logosu kullanılır. Ek uygulama tarihleri ana ekranın yapılış tarihinden ayrı etiketlenir.
 
 Eski ürün araçlarının kaynakları teknik arşivdir; genel sayfalarda çalıştırılmaz veya gösterilmez. Kullanıcının lacivert logosu üst menüde, beyaz sürümü footer'da ve marka filmi karşılama ekranında korunur.

@@ -1,0 +1,259 @@
+/* Shared visual language. Content, routes and native controls stay in their templates. */
+:root{
+ --ui-navy:#101E34;--ui-teal:#0B3A40;--ui-orange:#EF6B2D;--ui-paper:#F8FAFC;
+ --ui-muted:#52677E;--ui-line:#DDE5EC;--ui-ease:cubic-bezier(.22,1,.36,1);
+}
+.site-page{background:var(--ui-navy);text-rendering:optimizeLegibility}
+.site-page main:not(.home-main){background:#FFF;color:var(--ui-navy)}
+.site-page :where(h1,h2,h3){text-wrap:balance}
+.site-page :where(p,li){text-wrap:pretty}
+.site-page a,.site-page button{touch-action:manipulation}
+.site-page :where(a,button,input,textarea,select):focus-visible{outline:2px solid #C45220;outline-offset:4px}
+.site-page .section{padding:64px 0}
+.site-page .section:nth-of-type(even){background:#FFF}
+.site-page .section :where(h2){font-size:clamp(28px,3vw,40px);line-height:1.24;letter-spacing:-1.25px}
+.site-page .section :where(p){font-size:16px;line-height:1.9}
+.site-page .section .eyebrow{font-size:11px;line-height:1.8;letter-spacing:1.65px;color:var(--ui-muted)}
+.site-page .eyebrow:before{border-radius:1px}
+
+/* A steady header with a quiet active-page cue; original heights are retained. */
+.site-page .header{background:#FFFFFFF5;border-bottom:1px solid #DDE5ECCC;box-shadow:0 5px 24px #101E3404}
+.site-page .header .navlinks>a{position:relative;padding:10px 0;transition:color .22s}
+.site-page .header .navlinks>a:after{content:'';position:absolute;bottom:3px;left:0;right:0;height:2px;background:var(--ui-orange);transform:scaleX(0);transform-origin:left;transition:transform .3s var(--ui-ease)}
+.site-page .header .navlinks>a:is(:hover,[aria-current=page]):after{transform:scaleX(1)}
+.site-page .header .navlinks>a[aria-current=page]{color:#A73E14}
+.site-page .menu-toggle{border-radius:8px;background:#F8FAFC;min-width:44px;min-height:44px;line-height:1}
+.site-page .btn{border-radius:7px;transition:background .25s,border-color .25s,box-shadow .25s,translate .35s var(--ui-ease)}
+.site-page .btn:not(.ghost){box-shadow:0 3px 10px #EF6B2D0A}
+.site-page .btn:hover{box-shadow:0 6px 18px #101E340D}
+.site-page .btn>span{transition:transform .3s var(--ui-ease)}
+.site-page .btn:hover>span{transform:translate(2px,-2px)}
+.site-page .btn.ghost:hover{background:#F0F5F6;border-color:#8DA8AB}
+
+/* Compact interior headers: an LED dot field adds depth without displacing copy. */
+.site-page .page-hero{position:relative;overflow:hidden;padding:30px 0 32px;background:linear-gradient(110deg,#F8FAFC 55%,#F0F5F6);border-bottom:1px solid var(--ui-line);isolation:isolate}
+.site-page .page-hero:after{content:'';position:absolute;right:5%;top:0;bottom:0;width:240px;z-index:-1;background-image:radial-gradient(#527B7E38 .9px,transparent 1px);background-size:11px 11px;mask-image:linear-gradient(90deg,transparent,#000);pointer-events:none}
+.site-page .page-hero>.wrap{position:relative}
+.site-page .page-hero .crumb{font-size:12px;margin:0 0 15px;color:#60748A}
+.site-page .crumb a{color:#43586E;transition:color .2s}
+.site-page .crumb a:hover{color:#AF4619}
+.site-page .page-hero h1{font-size:clamp(29px,3vw,43px);line-height:1.22;letter-spacing:-1.4px;margin:0 0 15px;max-width:950px}
+.site-page .page-hero h1 em{font-style:normal;color:var(--ui-teal)}
+.site-page .page-hero p{font-size:15px;line-height:1.8;max-width:860px;color:var(--ui-muted)}
+
+/* Interior cards use color to distinguish purpose rather than compete with text. */
+.site-page main:not(.home-main) .grid{gap:24px}
+.site-page .section .card{--card-tone:#24637A;--card-tint:#EAF2F6;position:relative;padding:30px;min-height:220px;border:1px solid var(--ui-line);border-radius:13px;background:#FFF;box-shadow:0 4px 22px #101E3403;transition:border-color .25s,box-shadow .35s,transform .4s var(--ui-ease)}
+.site-page .section .card:nth-child(3n+2){--card-tone:#17656B;--card-tint:#E9F3F2}
+.site-page .section .card:nth-child(3n){--card-tone:#AF4C22;--card-tint:#FFF1E7}
+.site-page .section .card:before{content:'';position:absolute;left:30px;top:0;width:38px;height:3px;border-radius:0 0 3px 3px;background:var(--card-tone);opacity:.8}
+.site-page .section a.card:hover{border-color:#A7BAC9;box-shadow:0 14px 35px #101E340A;transform:translateY(-3px)}
+.site-page .section .card h3{font-size:23px;line-height:1.35;letter-spacing:-.65px;margin:16px 0 12px;color:var(--ui-navy)}
+.site-page .section .card p{font-size:15px;line-height:1.85;color:var(--ui-muted);margin:0}
+.site-page .section .card .number{font-size:11px;letter-spacing:1px;color:var(--card-tone)}
+.site-page .section .card .arrow{display:grid;place-items:center;width:36px;height:36px;bottom:23px;right:24px;border-radius:50%;background:var(--card-tint);color:var(--card-tone);font-size:19px;transition:transform .3s var(--ui-ease),background .25s}
+.site-page .section a.card:hover .arrow{transform:translate(2px,-2px)}
+.site-page .section a.card{padding-bottom:76px}
+.site-page .split{gap:clamp(30px,5vw,72px)}
+.site-page .section .list-row p{font-size:15px;line-height:1.85}
+.site-page .section .list-row>span{font-size:12px;color:#B34D22;font-weight:600}
+
+/* Solution art: a dimensional screen and a different light palette for each family. */
+.page-cozumler .card .screen-art{margin:-30px -30px 25px;height:225px;border-radius:12px 12px 0 0;background:radial-gradient(ellipse at 55% 15%,#FFFFFF,var(--card-tint) 75%);border-bottom:1px solid #E6ECF1;perspective:900px}
+.page-cozumler .section .card:before{z-index:1;left:0;top:0;width:100%;height:3px;border-radius:12px 12px 0 0;background:var(--card-tone);opacity:.75}
+.site-page .screen-art .mini-screen{position:relative;border-radius:6px;border:6px solid #142B3E;box-shadow:8px 18px 22px #122E4426;transform:rotateY(-14deg) rotateX(3deg);transition:transform .65s var(--ui-ease),box-shadow .65s var(--ui-ease)}
+.site-page .screen-art.blue .mini-screen{background:radial-gradient(ellipse at 28% 35%,#7EC3D2,transparent 50%),radial-gradient(ellipse at 80% 80%,#F5A975,transparent 55%),linear-gradient(135deg,#143850,#235B78)}
+.site-page .screen-art.green .mini-screen{background:radial-gradient(ellipse at 70% 30%,#94D3BC,transparent 55%),radial-gradient(ellipse at 20% 80%,#D6B77A,transparent 55%),linear-gradient(135deg,#10383B,#207273)}
+.site-page .screen-art.orange .mini-screen{background:radial-gradient(ellipse at 70% 20%,#FDBA74,transparent 55%),radial-gradient(ellipse at 20% 90%,#638BA7,transparent 55%),linear-gradient(135deg,#702F2B,#D9693B)}
+.site-page .screen-art.purple .mini-screen{background:radial-gradient(ellipse at 20% 30%,#A6B9D3,transparent 55%),radial-gradient(ellipse at 90% 80%,#94CCC6,transparent 55%),linear-gradient(135deg,#3A405C,#264D64)}
+.site-page .screen-art .mini-screen:before{content:'';position:absolute;inset:0;background:radial-gradient(#FFFFFF45 .6px,transparent .8px);background-size:4px 4px;border-radius:1px;pointer-events:none}
+.page-cozumler a.card:hover .mini-screen{transform:rotateY(-5deg) rotateX(0);box-shadow:3px 16px 24px #122E442B}
+.site-page .solution-overview{align-items:center}
+.site-page .solution-overview>.screen-art{margin:0!important;width:100%;height:360px!important;border:1px solid var(--ui-line);border-radius:16px;background:radial-gradient(ellipse at 50% 20%,#F8FAFC,#E5EFF2);overflow:hidden}
+.site-page .solution-reference-visual{border-radius:16px;overflow:hidden;border:1px solid var(--ui-line);background:#F3F6F9;box-shadow:0 10px 32px #101E3408}
+.site-page .solution-reference-visual>img{display:block;aspect-ratio:16/11;object-fit:cover;width:100%;height:auto}
+.site-page .solution-reference-visual>figcaption{background:#FFF;padding:18px 20px;font-size:12px;line-height:1.8;color:var(--ui-muted);gap:12px}
+.site-page .solution-reference-visual>figcaption>a{color:#A7431A;font-size:13px}
+.site-page .project-solution-cta{border:1px solid #DCE6E8;border-radius:14px;background:linear-gradient(110deg,#EFF5F5,#F8FAFC);padding:32px;gap:24px}
+.site-page .project-solution-cta h2{font-size:clamp(26px,2.7vw,36px);margin-bottom:0}
+
+/* Brand perspective and the process timeline gain a clear visual hierarchy. */
+.page-kurumsal .split{align-items:stretch}
+.page-kurumsal .split>div:first-child{align-self:center}
+.page-kurumsal .panel{position:relative;overflow:hidden;border-radius:16px;min-height:360px;padding:42px;background:linear-gradient(135deg,#123745,#0B3A40);box-shadow:0 14px 35px #0B3A4012;isolation:isolate}
+.page-kurumsal .panel:after{content:'';position:absolute;right:-60px;bottom:-60px;width:240px;height:240px;border:1px solid #A9CDCC35;border-radius:50%;box-shadow:0 0 0 35px #A9CDCC0A,0 0 0 70px #A9CDCC08;z-index:-1}
+.page-kurumsal .panel .eyebrow{color:#C5DDDC}
+.page-kurumsal .panel h2{font-size:clamp(35px,4vw,54px);line-height:1.2;color:#FFF;letter-spacing:-1.7px;margin:45px 0 0}
+.page-kurumsal .grid .card{min-height:245px}
+.page-proje-yaklasimimiz .split{align-items:start;grid-template-columns:.8fr 1.2fr}
+.page-proje-yaklasimimiz .split>div:first-child{position:sticky;top:120px}
+.page-proje-yaklasimimiz .split>div:last-child{position:relative;display:grid;gap:16px}
+.page-proje-yaklasimimiz .split>div:last-child:before{content:'';position:absolute;top:32px;bottom:32px;left:25px;width:1px;background:#CEDDE1}
+.page-proje-yaklasimimiz .list-row{position:relative;border:1px solid #DEE7EC;border-radius:12px;padding:24px;gap:20px;background:#FFF;align-items:flex-start;box-shadow:0 4px 16px #101E3403}
+.page-proje-yaklasimimiz .list-row>span{display:grid;place-items:center;flex:0 0 35px;height:35px;border-radius:50%;background:#EAF3F2;color:var(--ui-teal);font-size:12px}
+.page-proje-yaklasimimiz .list-row:nth-child(even)>span{color:#A7431A;background:#FFF0E6}
+.page-proje-yaklasimimiz .list-row h3{font-size:21px;line-height:1.45;letter-spacing:-.5px;margin:2px 0 8px}
+.page-proje-yaklasimimiz .list-row p{margin:0}
+
+/* Sector cards are shaped as short editorial entries, with a strong category marker. */
+.page-sektorler .card{min-height:300px;padding-top:31px}
+.page-sektorler .card .number{display:inline-flex;align-items:center;gap:12px;line-height:1.6;padding:8px 11px;border-radius:5px;background:var(--card-tint);font-size:11px}
+.page-sektorler .card h3{margin-top:25px;font-size:25px}
+
+/* Native FAQ interaction stays intact; the two-column rhythm uses the available width. */
+.page-bilgi-merkezi .article{max-width:none;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));align-items:start;gap:20px}
+.site-page .section .faq{padding:0;margin:0;border:1px solid var(--ui-line);border-radius:12px;background:#FFF;transition:border-color .25s,background .25s,box-shadow .3s}
+.site-page .section .faq:hover{border-color:#B4C6D1;box-shadow:0 5px 18px #101E3405}
+.site-page .section .faq summary{position:relative;padding:23px 65px 23px 24px;list-style:none;font-size:16px;line-height:1.65;font-weight:600;color:var(--ui-navy)}
+.site-page .section .faq summary::-webkit-details-marker{display:none}
+.site-page .section .faq summary:after{content:'+';position:absolute;right:21px;top:22px;width:29px;height:29px;display:grid;place-items:center;border:1px solid #DCE6E8;border-radius:50%;background:#F0F5F5;color:var(--ui-teal);font:20px/1 Arial,sans-serif;transition:transform .3s var(--ui-ease),background .2s}
+.site-page .section .faq[open]{border-color:#ABC4C6;background:#F8FBFB}
+.site-page .section .faq[open] summary:after{transform:rotate(45deg);background:#E7F1EF}
+.site-page .section .faq p{padding:0 24px 24px;font-size:15px;line-height:1.9;margin:0;color:var(--ui-muted)}
+.page-cozumler .faq+.faq{margin-top:14px}
+.page-gizlilik .article,.page-cerez-politikasi .article{max-width:900px;padding:4px 0 12px}
+.page-gizlilik .article>h2,.page-cerez-politikasi .article>h2{font-size:27px;border-top:1px solid var(--ui-line);padding-top:28px;margin:30px 0 14px}
+.page-gizlilik .article>h2:first-child,.page-cerez-politikasi .article>h2:first-child{margin-top:0}
+
+/* A calm form surface, real labels, and visible focus. No change to submission behavior. */
+.page-iletisim .contact{gap:clamp(28px,4vw,64px);align-items:start;grid-template-columns:minmax(0,.85fr) minmax(0,1.15fr)}
+.page-iletisim .contact-intro h2{font-size:clamp(29px,3vw,40px)}
+.page-iletisim .contact-intro>p{font-size:16px;margin-bottom:26px}
+.page-iletisim .contact-methods .contact-email{position:relative;background:#F8FAFC;border:1px solid #DEE7EC;border-radius:11px;padding:18px 21px;margin:16px 0}
+.page-iletisim .contact-email>span{color:#60748A;font-size:10px;font-weight:700;letter-spacing:1.4px}
+.page-iletisim .contact-email>strong{color:var(--ui-navy);font-size:clamp(20px,2vw,25px);line-height:1.5;margin:6px 0}
+.page-iletisim .contact-email>small{font-size:12px;line-height:1.8;color:var(--ui-muted)}
+.page-iletisim .contact-whatsapp{border-radius:8px;font-size:14px;padding:13px 16px}
+.page-iletisim .notice{border:0;border-left:3px solid #98B9BA;background:#EFF5F5;border-radius:0 7px 7px 0;padding:16px 19px;margin-top:22px}
+.page-iletisim .notice>p{font-size:14px;line-height:1.85;margin:0}
+.page-iletisim #project-form{padding:30px;border:1px solid #DAE4EB;border-radius:16px;background:#FFF;box-shadow:0 12px 40px #101E3407;gap:21px}
+.page-iletisim .form label{font-size:13px;font-weight:600;line-height:1.6;color:#354C62}
+.page-iletisim .form :is(input,select,textarea){font-size:15px;font-weight:400;border:1px solid #CDD9E3;background:#FBFCFD;border-radius:7px;line-height:1.6;padding:13px 14px;margin-top:8px;min-height:50px;transition:background .2s,border-color .2s,box-shadow .2s}
+.page-iletisim .form :is(input,select,textarea):hover{border-color:#9CB1C2}
+.page-iletisim .form :is(input,select,textarea):focus{outline:none;background:#FFF;border-color:#4D858A;box-shadow:0 0 0 3px #5E969B1C}
+.page-iletisim .form textarea{min-height:150px}
+.page-iletisim .form .form-note{font-size:12px!important;line-height:1.85;color:var(--ui-muted);margin:0}
+.page-iletisim .form .form-note>a{text-underline-offset:3px}
+.page-iletisim .contact-form-actions{gap:11px}
+.page-iletisim .contact-form-actions .btn{font-size:13px;padding:14px 17px;gap:15px;min-height:50px}
+.page-iletisim .form #form-status:empty{display:none}
+.page-iletisim .contact-success{border-radius:16px;background:linear-gradient(145deg,#F3F9F7,#FFF);border-color:#BED9CC;box-shadow:0 14px 40px #101E3406}
+.page-iletisim .contact-success .contact-reference{border-radius:8px}
+
+/* A concise, light invitation connects the white page surface to the navy footer. */
+.site-page>main+.wrap{max-width:none;padding:36px 6% 44px;background:#FFF}
+.site-page>main+.wrap>.cta{max-width:1268px;margin:auto;border:1px solid #DDE6EC;border-radius:16px;padding:34px 38px;background:linear-gradient(105deg,#F8FAFC,#EFF5F5);color:var(--ui-navy);gap:28px}
+.site-page .cta .eyebrow{font-size:11px;color:var(--ui-muted)}
+.site-page .cta h2{font-size:clamp(28px,3vw,40px);line-height:1.25;letter-spacing:-1.2px;margin:14px 0}
+.site-page .cta p{font-size:15px;color:var(--ui-muted);line-height:1.8;margin-bottom:0}
+.site-page .cta>.btn{flex-shrink:0;background:var(--ui-orange);border-color:var(--ui-orange);color:var(--ui-navy)}
+.site-page .footer-compact{background:linear-gradient(125deg,#101E34,#122B3B);border-top:1px solid #FFFFFF12}
+.site-page .footer-compact-links>a{font-size:13px;color:#BDCBD9;transition:color .2s}
+.site-page .footer-compact-links>a:hover{color:#FDBA74}
+.site-page .footer-compact .footer-signature{color:#B6C8D5}
+.site-page .footer-compact .footer-bottom{padding-right:80px}
+.site-page .footer-compact .footer-bottom,.site-page .footer-compact .footer-bottom nav>a{font-size:12px;color:#B6C5D4}
+.site-page .footer-compact .footer-bottom nav>a:hover{color:#FDBA74}
+.site-page .footer-link-group>summary{cursor:pointer}
+
+@media(min-width:1101px){
+ .site-page .header .navlinks>a:focus-visible{border-radius:3px}
+}
+@media(max-width:1100px){
+ .site-page .header .navlinks.open{left:5%;right:5%;padding:16px 22px;border:1px solid #DCE6EC;border-top:0;border-radius:0 0 13px 13px;box-shadow:0 18px 35px #101E341A}
+ .site-page .header .navlinks>a{padding:11px 8px;border-radius:5px}
+ .site-page .header .navlinks>a:after{display:none}
+ .site-page .header .navlinks>a[aria-current=page]{background:#FFF1E7}
+ .site-page .header .navlinks>a:hover{background:#F0F5F5}
+ .site-page .section{padding:52px 0}
+ .site-page .section .card{padding:25px}
+ .site-page .section a.card{padding-bottom:73px}
+ .page-cozumler .card .screen-art{margin:-25px -25px 24px}
+ .site-page .project-solution-cta{padding:26px}
+ .page-iletisim #project-form{padding:25px}
+ .page-iletisim .contact-form-actions{flex-direction:column;align-items:stretch}
+ .page-iletisim .contact-form-actions .btn{justify-content:space-between}
+ .site-page .footer-compact-links>a{font-size:13px}
+}
+@media(max-width:900px){
+ .page-proje-yaklasimimiz .split{grid-template-columns:1fr;gap:32px}
+ .page-proje-yaklasimimiz .split>div:first-child{position:static;max-width:650px}
+ .page-iletisim .contact{grid-template-columns:1fr;gap:32px}
+ .page-iletisim .contact>div:first-child{display:contents}
+ .page-iletisim .contact-intro{order:0}
+ .page-iletisim #project-form,.page-iletisim #contact-success{order:1;grid-column:1}
+ .page-iletisim .contact-methods{order:2}
+ .page-iletisim .contact-intro>p{margin-bottom:0}
+ .page-iletisim #project-form{grid-template-columns:1fr 1fr}
+ .page-iletisim .contact-form-actions{flex-direction:row}
+ .page-iletisim .contact-form-actions .btn{width:auto}
+ .page-iletisim .contact-methods{display:grid;grid-template-columns:1fr 1fr;gap:20px;align-items:stretch}
+ .page-iletisim .contact-methods .contact-email{margin:0}
+ .page-iletisim .contact-whatsapp{margin:0;justify-content:center}
+ .page-iletisim .contact-methods>.notice{margin:0}
+ .page-bilgi-merkezi .article{gap:16px}
+}
+@media(max-width:600px){
+ .site-page .section{padding:40px 0}
+ .site-page .section :where(h2){font-size:30px;letter-spacing:-1px}
+ .site-page .section :where(p){font-size:15px;line-height:1.85}
+ .site-page .page-hero{padding:24px 0 27px}
+ .site-page .page-hero:after{width:130px;right:0;opacity:.6}
+ .site-page .page-hero .crumb{font-size:12px;margin-bottom:13px}
+ .site-page .page-hero h1{font-size:30px;line-height:1.25;letter-spacing:-1px;margin-bottom:13px}
+ .site-page .page-hero p{font-size:14px;line-height:1.85}
+ .site-page .section .card{padding:25px;min-height:220px;border-radius:12px}
+ .site-page .section a.card{padding-bottom:74px}
+ .site-page .section .card h3{font-size:24px}
+ .site-page .section .card p{font-size:15px}
+ .site-page .section .card:before{left:25px}
+ .site-page main:not(.home-main) .grid{gap:22px}
+ .page-cozumler .card .screen-art{height:220px;margin:-25px -25px 23px}
+ .page-cozumler .section .card:before{left:0}
+ .site-page .solution-overview>.screen-art{height:280px!important;border-radius:12px}
+ .site-page .solution-reference-visual{border-radius:12px}
+ .site-page .solution-reference-visual>figcaption{padding:16px;font-size:11px;display:flex;flex-direction:column;align-items:flex-start}
+ .site-page .project-solution-cta{padding:25px;border-radius:12px}
+ .site-page .project-solution-cta h2{font-size:28px}
+ .site-page .project-solution-cta>.btn{width:100%;justify-content:space-between}
+ .page-kurumsal .panel{padding:30px;min-height:315px}
+ .page-kurumsal .panel h2{font-size:40px;letter-spacing:-1.5px;margin-top:35px}
+ .page-kurumsal .grid .card{min-height:220px}
+ .page-sektorler .card{min-height:290px}
+ .page-sektorler .card h3{margin-top:23px}
+ .page-proje-yaklasimimiz .list-row{padding:21px 18px;gap:15px}
+ .page-proje-yaklasimimiz .list-row>span{flex-basis:31px;height:31px;font-size:11px}
+ .page-proje-yaklasimimiz .list-row h3{font-size:20px}
+ .page-proje-yaklasimimiz .list-row p{font-size:15px}
+ .page-bilgi-merkezi .article{grid-template-columns:1fr}
+ .site-page .section .faq summary{font-size:16px;padding:21px 60px 21px 20px}
+ .site-page .section .faq summary:after{right:17px;top:20px;width:27px;height:27px}
+ .site-page .section .faq p{padding:0 20px 22px;font-size:15px}
+ .page-iletisim .contact{gap:26px}
+ .page-iletisim .contact-intro h2{font-size:31px}
+ .page-iletisim #project-form{padding:22px;grid-template-columns:1fr;gap:21px;border-radius:13px}
+ .page-iletisim .form .full{grid-column:1}
+ .page-iletisim .contact-form-actions{flex-direction:column}
+ .page-iletisim .contact-form-actions .btn{width:100%}
+ .page-iletisim .contact-methods{grid-template-columns:1fr;gap:16px}
+ .page-iletisim .contact-methods .contact-email{padding:18px 21px}
+ .page-iletisim .contact-whatsapp{padding:15px}
+ .page-iletisim .contact-email>strong{font-size:23px}
+ .page-iletisim .contact-success{padding:25px}
+ .site-page>main+.wrap{padding:18px 6% 32px}
+ .site-page>main+.wrap>.cta{padding:27px 24px;border-radius:13px}
+ .site-page .cta h2{font-size:30px;letter-spacing:-1px}
+ .site-page .cta>.btn{width:100%;justify-content:space-between}
+ .site-page .footer-compact .footer-bottom{padding-right:0}
+ .site-page .footer-compact-links>a{font-size:14px}
+ .site-page .footer-compact .footer-bottom,.site-page .footer-compact .footer-bottom nav>a{font-size:12px}
+}
+@media(hover:hover) and (pointer:fine){
+ .site-page .btn:hover{translate:0 -1px}
+}
+@media(prefers-reduced-motion:reduce){
+ .site-page *, .site-page *:before,.site-page *:after{scroll-behavior:auto}
+ .site-page .btn,.site-page .btn>span,.site-page .header .navlinks>a:after,.site-page .section .card,.site-page .section .card .arrow,.site-page .screen-art .mini-screen,.site-page .section .faq,.site-page .section .faq summary:after{transition:none}
+ .site-page .btn:hover,.site-page .btn:hover>span,.site-page .section a.card:hover,.site-page .section a.card:hover .arrow{translate:none;transform:none}
+ .site-page .screen-art .mini-screen,.page-cozumler a.card:hover .mini-screen{transform:none}
+}
