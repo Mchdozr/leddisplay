@@ -252,3 +252,12 @@ Kaynaklar: “Bursa Özdilek p1.86 gob.zip” ve “Acıbadem hastanesi p1.25 co
 
 - Kullanıcının ilettiği yeni video, mevcut P1.25 COB uygulamasının güncel saha kaydı olarak eski yayımlanmış videonun yerine kullanıldı.
 - Önceki doğrulanmış teknik bilgiler ve yapılış tarihi değiştirilmedi; yeni videodan bir WebP kare galeriye eklendi.
+
+## İlave saha video arşivi
+
+Kaynaklar: “g-1.zip”, “g-2.zip”, “g-3.zip”, “g-4.zip” ve “g-4.1.zip”. Dosya adları proje eşleştirmesinde kullanıldı; ham ZIP dosyaları, ses kanalları ve yayımlanmayan kaynaklar web köküne alınmadı. Yayınlanan MP4’ler sessiz H.264 kopyalarıdır; her biri gerçek saha videosundan alınmış bir WebP kareyle eşleştirildi.
+
+- Bursa Kent Meydanı SuperStep, iki video ve kullanıcının sohbet içinde doğruladığı proje adıyla tek proje kaydında toplandı. Antalya Fenix SuperStep ile ilişkilendirilmedi.
+- LEDAJANS Fuar iki kayıtla, Zorlu Center House of SuperStep üç kayıtla aynı proje sayfalarında gruplandı. Zorlu cam önü kayan yazı dosyası yalnızca adından doğrulanabilen ayrı kayıt olarak tutuldu.
+- Acıbadem Hastanesi, İzmir Acıbadem Hastanesi, Balıkesir Totem, Eskişehir Ticaret Odası, Marmara Forum’daki üç ayrı uygulama, Taşyapı sahne uygulaması, Türk Şeker Fabrikası, Yeni Koza ve adı doğrulanamayan kurumsal video wall kaydı ayrı medya kayıtları olarak yayımlandı.
+- Video dosyalarında paylaşılmayan ölçü, tarih, teknik ürün modeli, müşteri onayı veya sonuç iddiası eklenmedi. “Taşyapı Rental” dosya adı, sitenin kiralama hizmeti sunmadığı yönündeki kullanıcı tercihi nedeniyle halka açık başlıkta kullanılmadı.

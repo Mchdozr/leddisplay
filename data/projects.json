@@ -121,7 +121,7 @@
   },
   {
     "slug": "antalya-fenix-superstep",
-    "featured": true,
+    "featured": false,
     "showcaseName": "SuperStep · Antalya",
     "showcaseSummary": "Üst kotta ring, alt kotta basamak ve kayan yazı. Özel ölçülü LED yüzeyler, görüntü kontrolü ve saha montajıyla birlikte uygulandı.",
     "imageSize": [478, 850],
@@ -1000,5 +1000,160 @@
       {"src": "/assets/projects/yeditepe-giris.mp4", "poster": "/assets/projects/yeditepe-giris-2.webp", "title": "Yeditepe Üniversitesi · yatay giriş ekranı", "orientation": "landscape"},
       {"src": "/assets/projects/yeditepe-kolon.mp4", "poster": "/assets/projects/yeditepe-kolon-2.webp", "title": "Yeditepe Üniversitesi · köşe kolon ekranı", "orientation": "portrait"}
     ]
+  },
+  {
+    "slug": "acibadem-hastanesi-cob",
+    "imageSize": [832, 464], "stage": "Gerçek saha videosu", "highlights": ["COB LED ekran", "İç mekân"],
+    "name": "Acıbadem Hastanesi", "location": "Acıbadem Hastanesi", "sector": "Sağlık & kurumsal alan",
+    "headline": "Karşılama alanında güçlü ve dengeli görüntü.",
+    "summary": "İç mekândaki geniş LED görüntü yüzeyi, gerçek saha kaydında mekân akışıyla birlikte görülüyor.",
+    "cover": "/assets/projects/acibadem-hastanesi-cob.webp", "coverAlt": "Acıbadem Hastanesinde yürüyen merdiven yanında çalışan geniş LED ekran",
+    "facts": [["Uygulama", "İç mekân LED ekran"], ["Ekran teknolojisi", "COB"], ["Saha kaydı", "Gerçek uygulama videosu"]],
+    "gallery": [{"image": "/assets/projects/acibadem-hastanesi-cob.webp", "caption": "Karşılama alanındaki geniş görüntü yüzeyi", "alt": "Acıbadem Hastanesi iç mekânındaki LED ekran"}],
+    "videos": [{"src": "/assets/projects/acibadem-hastanesi-cob.mp4", "poster": "/assets/projects/acibadem-hastanesi-cob.webp", "title": "Acıbadem Hastanesi · COB LED ekran", "orientation": "landscape"}]
+  },
+  {
+    "slug": "balikesir-totem",
+    "imageSize": [848, 480], "stage": "Gerçek saha videosu", "highlights": ["Dikey totem LED", "Kurumsal alan"],
+    "name": "Balıkesir · Totem LED uygulaması", "location": "Balıkesir", "sector": "Kurumsal & mimari",
+    "headline": "Dikey mimaride, görünür bir dijital odak.",
+    "summary": "Dikey LED totem yüzeyi, gerçek saha videosunda çevresindeki mekânla birlikte görülüyor.",
+    "cover": "/assets/projects/balikesir-totem.webp", "coverAlt": "Balıkesir uygulamasındaki dikey LED totem ekran",
+    "facts": [["Uygulama", "Dikey LED totem"], ["Saha kaydı", "Gerçek uygulama videosu"]],
+    "gallery": [{"image": "/assets/projects/balikesir-totem.webp", "caption": "Dikey totem LED ekran", "alt": "Balıkesir uygulamasındaki çalışan totem ekran"}],
+    "videos": [{"src": "/assets/projects/balikesir-totem.mp4", "poster": "/assets/projects/balikesir-totem.webp", "title": "Balıkesir · dikey totem LED uygulaması", "orientation": "landscape"}]
+  },
+  {
+    "slug": "bursa-kent-meydani-superstep", "featured": true, "showcaseRank": 1,
+    "showcaseName": "SuperStep · Bursa Kent Meydanı", "showcaseSummary": "Cephe boyunca devam eden dijital yüzeyler; gerçek saha görüntüleriyle belgelenen mağaza uygulaması.",
+    "imageSize": [816, 464], "stage": "Gerçek saha videoları", "highlights": ["Cephe LED yüzeyleri", "SuperStep"],
+    "name": "Bursa Kent Meydanı · SuperStep", "location": "Bursa Kent Meydanı", "sector": "Perakende & mağaza",
+    "headline": "Gece görünürlüğünü markanın parçasına dönüştüren dijital cephe.",
+    "summary": "SuperStep mağazasında farklı yönlerden görünen LED yüzeyler, gece saha kayıtlarıyla birlikte belgelendi.",
+    "cover": "/assets/projects/bursa-kent-meydani-superstep-cephe.webp", "coverAlt": "Bursa Kent Meydanı SuperStep mağazasında gece çalışan LED cephe ekranı",
+    "facts": [["Uygulama", "Mağaza LED yüzeyleri"], ["Konum", "Bursa Kent Meydanı"], ["Saha kaydı", "2 gerçek uygulama videosu"]],
+    "gallery": [{"image": "/assets/projects/bursa-kent-meydani-superstep-cephe.webp", "caption": "Mağaza cephesindeki çalışan LED ekran", "alt": "Bursa Kent Meydanı SuperStep mağazasındaki LED cephe yüzeyi"}, {"image": "/assets/projects/bursa-kent-meydani-superstep-dikey.webp", "caption": "Dikey LED yüzeyin gece görünümü", "alt": "Bursa Kent Meydanı SuperStep mağazasındaki dikey LED ekran"}],
+    "videos": [{"src": "/assets/projects/bursa-kent-meydani-superstep-cephe.mp4", "poster": "/assets/projects/bursa-kent-meydani-superstep-cephe.webp", "title": "Bursa Kent Meydanı SuperStep · cephe LED yüzeyi", "orientation": "landscape"}, {"src": "/assets/projects/bursa-kent-meydani-superstep-dikey.mp4", "poster": "/assets/projects/bursa-kent-meydani-superstep-dikey.webp", "title": "Bursa Kent Meydanı SuperStep · dikey LED yüzeyi", "orientation": "portrait"}]
+  },
+  {
+    "slug": "eskisehir-ticaret-odasi",
+    "imageSize": [480, 720], "stage": "Gerçek saha videosu", "highlights": ["Kurumsal ekran", "İç mekân"],
+    "name": "Eskişehir Ticaret Odası", "location": "Eskişehir", "sector": "Kurumsal & mimari",
+    "headline": "Kurumsal mekânın odağında net görüntü.",
+    "summary": "Kurumsal iç mekândaki LED ekran, gerçek saha kaydında farklı içeriklerle görülüyor.",
+    "cover": "/assets/projects/eskisehir-ticaret-odasi.webp", "coverAlt": "Eskişehir Ticaret Odası iç mekânında çalışan LED ekran",
+    "facts": [["Uygulama", "Kurumsal iç mekân LED ekranı"], ["Saha kaydı", "Gerçek uygulama videosu"]],
+    "gallery": [{"image": "/assets/projects/eskisehir-ticaret-odasi.webp", "caption": "Kurumsal mekândaki görüntü yüzeyi", "alt": "Eskişehir Ticaret Odası LED ekran uygulaması"}],
+    "videos": [{"src": "/assets/projects/eskisehir-ticaret-odasi.mp4", "poster": "/assets/projects/eskisehir-ticaret-odasi.webp", "title": "Eskişehir Ticaret Odası · LED ekran uygulaması", "orientation": "portrait"}]
+  },
+  {
+    "slug": "ledajans-fuar", "imageSize": [832, 464], "stage": "Gerçek saha videoları", "highlights": ["Fuar uygulaması", "Çoklu LED yüzey"],
+    "name": "LEDAJANS · Fuar uygulaması", "location": "Fuar alanı", "sector": "Etkinlik & sahne",
+    "headline": "Ziyaretçi akışında, ekrandan başlayan deneyim.",
+    "summary": "Fuar alanındaki farklı LED yüzeyler iki gerçek saha videosuyla birlikte sunuluyor.",
+    "cover": "/assets/projects/ledajans-fuar-genis.webp", "coverAlt": "LEDAJANS fuar alanındaki dairesel LED uygulama",
+    "facts": [["Uygulama", "Fuar LED yüzeyleri"], ["Saha kaydı", "2 gerçek uygulama videosu"]],
+    "gallery": [{"image": "/assets/projects/ledajans-fuar-genis.webp", "caption": "Fuar alanındaki geniş LED uygulama", "alt": "LEDAJANS fuar uygulamasındaki LED yüzey"}, {"image": "/assets/projects/ledajans-fuar-giris.webp", "caption": "Farklı noktadan fuar ekranı", "alt": "LEDAJANS fuar alanındaki LED uygulama"}],
+    "videos": [{"src": "/assets/projects/ledajans-fuar-genis.mp4", "poster": "/assets/projects/ledajans-fuar-genis.webp", "title": "LEDAJANS · fuar LED uygulaması", "orientation": "landscape"}, {"src": "/assets/projects/ledajans-fuar-giris.mp4", "poster": "/assets/projects/ledajans-fuar-giris.webp", "title": "LEDAJANS · fuar alanı görüntü kaydı", "orientation": "portrait"}]
+  },
+  {
+    "slug": "marmara-forum-superkids", "imageSize": [464, 832], "stage": "Gerçek saha videosu", "highlights": ["Mağaza LED ekranı", "Marmara Forum"],
+    "name": "Marmara Forum · SuperKids", "location": "Marmara Forum", "sector": "Perakende & mağaza",
+    "headline": "Mağaza ritmine eşlik eden canlı görüntü.",
+    "summary": "Marmara Forum SuperKids mağazasındaki LED ekran, saha videosunda mağaza çevresiyle birlikte görülüyor.",
+    "cover": "/assets/projects/marmara-forum-superkids.webp", "coverAlt": "Marmara Forum SuperKids mağazasında çalışan LED ekran",
+    "facts": [["Uygulama", "Mağaza LED ekranı"], ["Saha kaydı", "Gerçek uygulama videosu"]],
+    "gallery": [{"image": "/assets/projects/marmara-forum-superkids.webp", "caption": "Mağaza içindeki görüntü alanı", "alt": "Marmara Forum SuperKids LED ekranı"}],
+    "videos": [{"src": "/assets/projects/marmara-forum-superkids.mp4", "poster": "/assets/projects/marmara-forum-superkids.webp", "title": "Marmara Forum SuperKids · LED ekran", "orientation": "portrait"}]
+  },
+  {
+    "slug": "marmara-forum-superstep", "imageSize": [464, 832], "stage": "Gerçek saha videosu", "highlights": ["Mağaza LED ekranı", "Marmara Forum"],
+    "name": "Marmara Forum · SuperStep", "location": "Marmara Forum", "sector": "Perakende & mağaza",
+    "headline": "Mağaza cephesinde, markayla birlikte çalışan ekran.",
+    "summary": "Marmara Forum SuperStep uygulamasındaki LED görüntü yüzeyi gerçek saha videosuyla belgelendi.",
+    "cover": "/assets/projects/marmara-forum-superstep.webp", "coverAlt": "Marmara Forum SuperStep mağazasındaki LED ekran",
+    "facts": [["Uygulama", "Mağaza LED ekranı"], ["Saha kaydı", "Gerçek uygulama videosu"]],
+    "gallery": [{"image": "/assets/projects/marmara-forum-superstep.webp", "caption": "SuperStep mağazasındaki görüntü alanı", "alt": "Marmara Forum SuperStep LED ekranı"}],
+    "videos": [{"src": "/assets/projects/marmara-forum-superstep.mp4", "poster": "/assets/projects/marmara-forum-superstep.webp", "title": "Marmara Forum SuperStep · LED ekran", "orientation": "portrait"}]
+  },
+  {
+    "slug": "marmara-forum-esnek-led", "imageSize": [464, 832], "stage": "Gerçek saha videosu", "highlights": ["Mimari LED yüzey", "Marmara Forum"],
+    "name": "Marmara Forum · Mimari LED uygulaması", "location": "Marmara Forum", "sector": "Perakende & mağaza",
+    "headline": "Mimari çizgiyi takip eden dijital yüzey.",
+    "summary": "Marmara Forum’daki LED yüzey, mağaza mimarisi içindeki yerleşimiyle gerçek saha videosunda görülüyor.",
+    "cover": "/assets/projects/marmara-forum-esnek-led.webp", "coverAlt": "Marmara Forum mağazasında mimari LED yüzey",
+    "facts": [["Uygulama", "Mimari LED görüntü yüzeyi"], ["Saha kaydı", "Gerçek uygulama videosu"]],
+    "gallery": [{"image": "/assets/projects/marmara-forum-esnek-led.webp", "caption": "Mekâna eşlik eden LED yüzey", "alt": "Marmara Forum mimari LED uygulaması"}],
+    "videos": [{"src": "/assets/projects/marmara-forum-esnek-led.mp4", "poster": "/assets/projects/marmara-forum-esnek-led.webp", "title": "Marmara Forum · mimari LED uygulaması", "orientation": "portrait"}]
+  },
+  {
+    "slug": "tasyapi-sahne-uygulamasi", "imageSize": [480, 848], "stage": "Gerçek saha videosu", "highlights": ["Sahne ekranı", "Görüntü uygulaması"],
+    "name": "Taşyapı · Sahne uygulaması", "location": "Taşyapı", "sector": "Etkinlik & sahne",
+    "headline": "Sahne ölçeğinde, güçlü görüntü etkisi.",
+    "summary": "Sahne arkasındaki LED görüntü yüzeyi, gerçek saha videosunda hareketli içerikle görülüyor.",
+    "cover": "/assets/projects/tasyapi-sahne-uygulamasi.webp", "coverAlt": "Taşyapı sahne uygulamasındaki LED ekran",
+    "facts": [["Uygulama", "Sahne LED görüntü yüzeyi"], ["Saha kaydı", "Gerçek uygulama videosu"]],
+    "gallery": [{"image": "/assets/projects/tasyapi-sahne-uygulamasi.webp", "caption": "Sahne arkasındaki LED görüntü yüzeyi", "alt": "Taşyapı sahne LED ekran uygulaması"}],
+    "videos": [{"src": "/assets/projects/tasyapi-sahne-uygulamasi.mp4", "poster": "/assets/projects/tasyapi-sahne-uygulamasi.webp", "title": "Taşyapı · sahne LED uygulaması", "orientation": "portrait"}]
+  },
+  {
+    "slug": "turk-seker-fabrikasi", "imageSize": [464, 832], "stage": "Gerçek saha videosu", "highlights": ["3D görüntü", "Kurumsal cephe"],
+    "name": "Türk Şeker Fabrikası", "location": "Türk Şeker Fabrikası", "sector": "Endüstriyel alan",
+    "headline": "Cephede, uzaktan da okunabilen dijital etki.",
+    "summary": "Kurumsal yapıdaki LED ekran, saha videosunda üç boyut etkili içerikle görülüyor.",
+    "cover": "/assets/projects/turk-seker-fabrikasi-3d.webp", "coverAlt": "Türk Şeker Fabrikası yapısındaki LED cephe ekranı",
+    "facts": [["Uygulama", "Kurumsal LED ekran"], ["Saha kaydı", "Gerçek uygulama videosu"]],
+    "gallery": [{"image": "/assets/projects/turk-seker-fabrikasi-3d.webp", "caption": "Cephedeki LED görüntü yüzeyi", "alt": "Türk Şeker Fabrikası LED ekran uygulaması"}],
+    "videos": [{"src": "/assets/projects/turk-seker-fabrikasi-3d.mp4", "poster": "/assets/projects/turk-seker-fabrikasi-3d.webp", "title": "Türk Şeker Fabrikası · LED ekran", "orientation": "portrait"}]
+  },
+  {
+    "slug": "kurumsal-video-wall", "imageSize": [768, 576], "stage": "Gerçek saha videosu", "highlights": ["Video wall", "İç mekân"],
+    "name": "Kurumsal video wall uygulaması", "location": "İç mekân", "sector": "Kurumsal & mimari",
+    "headline": "Duvar ölçeğinde, sakin ve bütün bir görüntü.",
+    "summary": "Paylaşılan saha videosunda iç mekândaki geniş video wall uygulaması görülüyor; proje adı doğrulanmadığı için genel bir başlık kullanıldı.",
+    "cover": "/assets/projects/kurumsal-video-wall.webp", "coverAlt": "Kurumsal iç mekândaki geniş LED video wall",
+    "facts": [["Uygulama", "İç mekân video wall"], ["Saha kaydı", "Gerçek uygulama videosu"]],
+    "gallery": [{"image": "/assets/projects/kurumsal-video-wall.webp", "caption": "İç mekândaki geniş görüntü yüzeyi", "alt": "Kurumsal video wall uygulaması"}],
+    "videos": [{"src": "/assets/projects/kurumsal-video-wall.mp4", "poster": "/assets/projects/kurumsal-video-wall.webp", "title": "Kurumsal iç mekân · video wall uygulaması", "orientation": "landscape"}]
+  },
+  {
+    "slug": "yeni-koza", "imageSize": [848, 480], "stage": "Gerçek saha videosu", "highlights": ["Geniş LED yüzey", "İç mekân"],
+    "name": "Yeni Koza", "location": "Yeni Koza", "sector": "Kurumsal & mimari",
+    "headline": "Mekân boyunca devam eden güçlü görüntü.",
+    "summary": "Geniş iç mekân LED görüntü yüzeyi, gerçek saha videosunda mimariyle birlikte görülüyor.",
+    "cover": "/assets/projects/yeni-koza.webp", "coverAlt": "Yeni Koza uygulamasındaki geniş LED ekran",
+    "facts": [["Uygulama", "İç mekân LED ekran"], ["Saha kaydı", "Gerçek uygulama videosu"]],
+    "gallery": [{"image": "/assets/projects/yeni-koza.webp", "caption": "Geniş iç mekân LED yüzeyi", "alt": "Yeni Koza LED ekran uygulaması"}],
+    "videos": [{"src": "/assets/projects/yeni-koza.mp4", "poster": "/assets/projects/yeni-koza.webp", "title": "Yeni Koza · LED ekran uygulaması", "orientation": "landscape"}]
+  },
+  {
+    "slug": "zorlu-house-of-superstep", "imageSize": [464, 832], "stage": "Gerçek saha videoları", "highlights": ["Mağaza LED ekranları", "3 saha videosu"],
+    "name": "Zorlu Center · House of SuperStep", "location": "Zorlu Center", "sector": "Perakende & mağaza",
+    "headline": "Farklı katlarda, aynı mağaza deneyiminin dijital yüzeyleri.",
+    "summary": "House of SuperStep mağazasının farklı katlarındaki LED ekranlar üç gerçek saha videosuyla birlikte sunuluyor.",
+    "cover": "/assets/projects/zorlu-house-of-superstep-giris.webp", "coverAlt": "Zorlu Center House of SuperStep mağazasındaki LED ekran",
+    "facts": [["Uygulama", "Mağaza LED ekranları"], ["Konum", "Zorlu Center"], ["Saha kaydı", "3 gerçek uygulama videosu"]],
+    "gallery": [{"image": "/assets/projects/zorlu-house-of-superstep-giris.webp", "caption": "Mağazadaki dikey LED yüzey", "alt": "Zorlu Center House of SuperStep LED ekranı"}, {"image": "/assets/projects/zorlu-house-of-superstep-birinci-kat.webp", "caption": "Birinci kattaki görüntü alanı", "alt": "House of SuperStep birinci kat LED ekranı"}, {"image": "/assets/projects/zorlu-house-of-superstep-ikinci-kat.webp", "caption": "İkinci kattaki görüntü alanı", "alt": "House of SuperStep ikinci kat LED ekranı"}],
+    "videos": [{"src": "/assets/projects/zorlu-house-of-superstep-giris.mp4", "poster": "/assets/projects/zorlu-house-of-superstep-giris.webp", "title": "Zorlu House of SuperStep · mağaza ekranı", "orientation": "portrait"}, {"src": "/assets/projects/zorlu-house-of-superstep-birinci-kat.mp4", "poster": "/assets/projects/zorlu-house-of-superstep-birinci-kat.webp", "title": "Zorlu House of SuperStep · birinci kat", "orientation": "portrait"}, {"src": "/assets/projects/zorlu-house-of-superstep-ikinci-kat.mp4", "poster": "/assets/projects/zorlu-house-of-superstep-ikinci-kat.webp", "title": "Zorlu House of SuperStep · ikinci kat", "orientation": "portrait"}]
+  },
+  {
+    "slug": "zorlu-cam-onu-kayan-yazi", "imageSize": [464, 832], "stage": "Gerçek saha videosu", "highlights": ["Kayan yazı", "Vitrin önü"],
+    "name": "Zorlu Center · Vitrin önü LED bant", "location": "Zorlu Center", "sector": "Perakende & mağaza",
+    "headline": "Vitrin çizgisinde devam eden hareketli mesaj.",
+    "summary": "Vitrin önündeki dar LED görüntü bandı, gerçek saha videosunda mağaza akışıyla birlikte görülüyor.",
+    "cover": "/assets/projects/zorlu-cam-onu-kayan-yazi.webp", "coverAlt": "Zorlu Center mağazasında vitrin önündeki LED görüntü bandı",
+    "facts": [["Uygulama", "Vitrin önü LED görüntü bandı"], ["Saha kaydı", "Gerçek uygulama videosu"]],
+    "gallery": [{"image": "/assets/projects/zorlu-cam-onu-kayan-yazi.webp", "caption": "Vitrin önündeki LED görüntü bandı", "alt": "Zorlu Center vitrin önü LED bant"}],
+    "videos": [{"src": "/assets/projects/zorlu-cam-onu-kayan-yazi.mp4", "poster": "/assets/projects/zorlu-cam-onu-kayan-yazi.webp", "title": "Zorlu Center · vitrin önü LED bant", "orientation": "portrait"}]
+  },
+  {
+    "slug": "izmir-acibadem-hastanesi-cob", "imageSize": [464, 832], "stage": "Gerçek saha videosu", "highlights": ["COB LED ekran", "İç mekân"],
+    "name": "İzmir Acıbadem Hastanesi", "location": "İzmir", "sector": "Sağlık & kurumsal alan",
+    "headline": "İç mekânda, detaylı ve dengeli görüntü.",
+    "summary": "İzmir Acıbadem Hastanesindeki COB LED ekran uygulaması, gerçek saha videosuyla belgeleniyor.",
+    "cover": "/assets/projects/izmir-acibadem-hastanesi-cob.webp", "coverAlt": "İzmir Acıbadem Hastanesi iç mekânındaki COB LED ekran",
+    "facts": [["Uygulama", "İç mekân LED ekran"], ["Ekran teknolojisi", "COB"], ["Saha kaydı", "Gerçek uygulama videosu"]],
+    "gallery": [{"image": "/assets/projects/izmir-acibadem-hastanesi-cob.webp", "caption": "İç mekândaki COB ekran", "alt": "İzmir Acıbadem Hastanesi COB LED ekranı"}],
+    "videos": [{"src": "/assets/projects/izmir-acibadem-hastanesi-cob.mp4", "poster": "/assets/projects/izmir-acibadem-hastanesi-cob.webp", "title": "İzmir Acıbadem Hastanesi · COB LED ekran", "orientation": "portrait"}]
   }
 ]

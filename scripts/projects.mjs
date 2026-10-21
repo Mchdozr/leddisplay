@@ -1,7 +1,7 @@
 import {readFileSync} from 'node:fs';
 
 export const projects=JSON.parse(readFileSync(new URL('../data/projects.json',import.meta.url),'utf8'));
-export const showcaseProjects=projects.filter(p=>p.featured);
+export const showcaseProjects=projects.filter(p=>p.featured).sort((a,b)=>(a.showcaseRank??99)-(b.showcaseRank??99));
 const esc=value=>String(value).replaceAll('&','&amp;').replaceAll('<','&lt;').replaceAll('>','&gt;').replaceAll('"','&quot;');
 const href=p=>`/proje-${p.slug}`;
 const arrow='<svg class="project-arrow" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M6 18 18 6M6 6h12v12" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>';
@@ -40,13 +40,20 @@ function renderVideos(p){return p.videos.length?`<section class="section project
 function renderGallery(p){return p.gallery.length?`<section class="section project-gallery-section" id="saha-galerisi"><div class="wrap"><div class="section-head"><div>${label('SAHA DETAYLARI')}<h2>Mekânın içinden,<br>uygulamanın yakından.</h2></div><p>${esc(p.galleryIntro||'Saha videolarından alınan gerçek görüntüler. Fotoğrafları büyüterek inceleyebilirsiniz.')}</p></div><div class="project-photo-grid">${p.gallery.map(g=>`<figure><button type="button" data-project-photo="${g.image}" data-project-alt="${esc(g.alt)}" data-project-caption="${esc(g.caption)}" aria-label="${esc(g.caption)} — görseli büyüt">${photo(p,g)}<span aria-hidden="true">${arrow}</span></button><figcaption>${esc(g.caption)}</figcaption></figure>`).join('')}</div>${p.note?`<p class="project-document-note">${esc(p.note)}</p>`:''}</div></section>`:p.note?`<section class="section project-record-note"><div class="wrap"><p class="project-document-note">${esc(p.note)}</p></div></section>`:''}
 
 export function renderProjectDetail(p){
+ const story={
+  intro:p.intro||p.summary,
+  challenge:p.challenge||'Uygulamanın mekân içindeki yeri, görüş yönleri ve kullanım senaryosu birlikte değerlendirildi.',
+  solution:p.solution||'Gerçek saha kaydı, ekranın yerleşimini ve hareketli içerikle çalışmasını doğrudan gösteriyor. Teknik kapsam yalnızca doğrulanabilen bilgilerle sunuluyor.',
+  delivery:p.delivery||'Ekran çözümü, mekânda çalışan bir görüntü alanı olarak ele alındı. Saha kaydı uygulamanın gerçek görünümünü belgeliyor.',
+  scope:p.scope||['Mekâna uygun LED görüntü yüzeyi','Sahada görüntü testi ve çalışan ekran kaydı']
+ };
  return `<section class="section project-detail-hero"><div class="wrap">
   <div class="crumb"><a href="/">Ana sayfa</a> / <a href="/projeler">Projeler</a> / ${esc(p.name)}</div>
   <div class="project-detail-heading"><div>${label(`${p.location} / ${p.sector}`)}<h1>${esc(p.name)}</h1><p class="project-deck">${esc(p.headline)}</p></div><span class="project-delivery-badge">ANAHTAR TESLİM<br><strong>LEDDISPLAY UYGULAMASI</strong></span></div>
   ${p.cover?`<figure class="project-banner ${portrait(p)?'portrait-source':''}">${photo(p,{},true)}<figcaption>Gerçek saha kaydı / ${esc(p.name)}${p.stage?' / '+esc(p.stage):''}</figcaption></figure>`:`<div class="project-record-banner">${recordVisual(p)}</div>`}
   <dl class="project-facts">${p.facts.map(([k,v])=>`<div><dt>${esc(k)}</dt><dd>${esc(v)}</dd></div>`).join('')}</dl>
  </div></section>
- <section class="section project-story-section"><div class="wrap project-editorial"><aside>${label('PROJENİN HİKÂYESİ')}<h2>${esc(p.headline)}</h2><p>${esc(p.intro)}</p><a class="project-text-link" href="#${p.videos.length?'saha-videolari':p.gallery.length?'saha-galerisi':'uygulama-kapsami'}">${p.videos.length?'Sahadan videoları izleyin':p.gallery.length?'Saha galerisini inceleyin':'Uygulama kapsamını inceleyin'} <span aria-hidden="true">↓</span></a></aside><div>${[['İhtiyaç',p.challenge],['Uygulanan çözüm',p.solution],['Anahtar teslim kapsam',p.delivery]].map(([t,d],i)=>`<article class="project-chapter"><span>${number(i)}</span><div><h3>${t}</h3><p>${esc(d)}</p></div></article>`).join('')}<div class="project-scope" id="uygulama-kapsami"><h3>Birlikte ele alınan işler</h3><ul>${p.scope.map(t=>`<li>${esc(t)}</li>`).join('')}</ul></div></div></div></section>
+ <section class="section project-story-section"><div class="wrap project-editorial"><aside>${label('PROJENİN HİKÂYESİ')}<h2>${esc(p.headline)}</h2><p>${esc(story.intro)}</p><a class="project-text-link" href="#${p.videos.length?'saha-videolari':p.gallery.length?'saha-galerisi':'uygulama-kapsami'}">${p.videos.length?'Sahadan videoları izleyin':p.gallery.length?'Saha galerisini inceleyin':'Uygulama kapsamını inceleyin'} <span aria-hidden="true">↓</span></a></aside><div>${[['İhtiyaç',story.challenge],['Uygulanan çözüm',story.solution],['Anahtar teslim kapsam',story.delivery]].map(([t,d],i)=>`<article class="project-chapter"><span>${number(i)}</span><div><h3>${t}</h3><p>${esc(d)}</p></div></article>`).join('')}<div class="project-scope" id="uygulama-kapsami"><h3>Birlikte ele alınan işler</h3><ul>${story.scope.map(t=>`<li>${esc(t)}</li>`).join('')}</ul></div></div></div></section>
  ${renderVideos(p)}
  ${renderGallery(p)}
  ${renderRelatedProjects(p)}`;
