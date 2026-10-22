@@ -27,8 +27,9 @@ def server(frontend=False):
         shutil.copy2(ROOT/'data/products.json',web/'data/products.json')
         if frontend:
             shutil.copy2(ROOT/'iletisim.html',web/'iletisim.html');(web/'assets').mkdir()
-            for name in ['style.css','projects.css','app.js','projects.js','experience.js','experience-core.js','leddisplay-logo-navy.png','favicon.svg']:
+            for name in ['style.css','projects.css','app.js','projects.js','experience.js','experience-core.js','leddisplay-logo-navy.png','favicon.svg','favicon-48.png','favicon-192.png','apple-touch-icon.png']:
                 shutil.copy2(ROOT/'assets'/name,web/'assets'/name)
+            shutil.copy2(ROOT/'favicon.ico',web/'favicon.ico')
         outbox=folder/'outbox';outbox.mkdir();failure=folder/'reject-mail'
         capture=folder/'sendmail.py'
         capture.write_text('import sys,uuid\nfrom pathlib import Path\n'+
